@@ -35,7 +35,7 @@ def run(output: Path, api_base_url: str = ''):
         shutil.copytree(ROOT / 'app' / 'static', output / 'static', dirs_exist_ok=True)
         page = (ROOT / 'app' / 'static' / 'index.html').read_text(encoding='utf-8')
         page = page.replace('/static/', './static/')
-        page = page.replace('RESEARCH BUILD · v0.2', 'GITHUB ACTIONS · v0.3')
+        page = page.replace('RESEARCH BUILD · v0.4', 'GITHUB ACTIONS · v0.4')
         page = page.replace('href="./static/outcomes_template.csv"', 'href="./static/outcomes_template.csv"')
         (output / 'index.html').write_text(page, encoding='utf-8')
         (output / '.nojekyll').write_text('', encoding='utf-8')
@@ -55,6 +55,15 @@ def run(output: Path, api_base_url: str = ''):
                 response=client.get('/api/programs', params={'year': year})
                 response.raise_for_status()
                 write_json(data_dir / f'programs-{year}.json', response.json())
+        # Official grade-boundary profile x verified university formula precomputation.
+        from scripts.precompute import build_dataset
+        from app.database import connect
+        with connect() as con:
+            programs = [dict(p) for p in con.execute('SELECT * FROM programs')]
+        by_year, summary = build_dataset(programs)
+        for year, records in by_year.items():
+            write_json(data_dir / f'precomputed-{year}.json', records)
+        write_json(data_dir / 'precomputed-summary.json', summary)
         write_json(data_dir / 'build-info.json', {
             'generated_at_utc': datetime.now(timezone.utc).isoformat(),
             'imported_public_csv_count': len(imported),

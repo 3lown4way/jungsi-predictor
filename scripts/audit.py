@@ -46,6 +46,10 @@ def run():
             'yearly_coverage':coverage['program_coverage'],
             'actual_outcomes_in_public_snapshot':0,
             'note':'입시 자료의 최신화 여부를 네트워크에서 검증한 것은 아닙니다.'}
+    from scripts.precompute import load_boundaries
+    bundles, boundary_files = load_boundaries()
+    report['grade_cut_bundle_count'] = len(bundles)
+    report['grade_cut_csv_files'] = boundary_files
     return report
 
 
