@@ -1,0 +1,36 @@
+name: Weekly admissions data audit
+on:
+  schedule:
+    # 월요일 오전 6시 KST = 일요일 21:00 UTC
+    - cron: '0 21 * * 0'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Audit checked-in public data
+        run: python -m scripts.audit --output audit-report.json
+      - name: Publish step summary
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          d=json.load(open('audit-report.json'))
+          print('# 정시 데이터 감사')
+          print(f"- 등록된 검증 공식 산식: **{d['verified_formula_count']}건**")
+          print(f"- 공개 모집단위 CSV: **{len(d['public_csv_files'])}개**")
+          print('- 공개용 스냅샷은 실제 지원자 개별 합불 정보를 포함하지 않습니다.')
+          print('- 이 작업은 공식 웹사이트에서 최신 모집요강을 자동 수집하지 않습니다.')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: weekly-data-audit
+          path: audit-report.json

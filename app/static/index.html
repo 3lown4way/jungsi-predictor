@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101a2a"><title>정시렌즈 | 연도별 정시 합격 예측 연구실</title>
+<link rel="stylesheet" href="/static/styles.css">
+</head><body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand"><span class="brandmark">◎</span><span>정시<span class="brand-accent">렌즈</span><small>ADMISSION INTELLIGENCE LAB</small></span></div>
+    <div class="navlabel">RESEARCH WORKSPACE</div>
+    <button class="nav active" data-page="score"><span>▣</span> 성적 분석 · 환산점수</button>
+    <button class="nav" data-page="backtest"><span>◷</span> 합불 실측 백테스트</button>
+    <button class="nav" data-page="scope"><span>◎</span> 분석 대상 대학</button>
+    <button class="nav" data-page="data"><span>▤</span> 데이터 커버리지</button>
+    <div class="side-bottom">
+      <span class="status-light"></span> 공식 자료 기반 프로토타입
+      <p>2022–2027 정시 · 주요20교 + 의치한약수</p>
+      <p class="tiny">2027학년도 실제 수능 합불은 미래 정보이므로 사용하지 않습니다.</p>
+    </div>
+  </aside>
+  <main class="main">
+    <div class="topbar"><span>대학 입학 가능성 분석</span><span class="build">RESEARCH BUILD · v0.2</span></div>
+    <section id="page-score" class="page active">
+      <div class="hero"><div><div class="eyebrow">YEAR-AWARE ADMISSIONS ENGINE</div><h1>같은 점수라도 다른 결과.<br><em>그해의 입시 구조</em>를 봅니다.</h1><p>주요 일반대학 20곳과 전국 의·치·한·약·수를 대상으로, 연도별 환산식과 실측 합불을 구분합니다.</p></div><div class="hero-figure"><b>2022 <span>→</span> 2027</b><small>독립 학년도 데이터 모델</small><div class="waves"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
+      <div class="metrics"><div class="metric"><small>분석 대상 학년도</small><strong>6<span>개년</span></strong><p>2022–2027 (실측은 2026까지)</p></div><div class="metric"><small>공식 환산식 등록</small><strong id="metric-rules">—</strong><p>분석 범위 안에서 검증된 연도·학과</p></div><div class="metric"><small>개별 실측 합불 기록</small><strong id="metric-outcomes">0<span>건</span></strong><p>없으면 합격 확률을 제시하지 않음</p></div></div>
+      <div class="content-grid">
+        <form id="score-form" class="panel form-panel">
+          <div class="panel-head"><div><div class="eyebrow">01 / SCORE INPUT</div><h2>나의 성적 입력</h2></div><span class="tag">로컬 기록 저장</span></div>
+          <div class="input-pair"><label>모집 학년도<select name="year" id="year"><option value="2027">2027학년도</option><option value="2026">2026학년도</option><option value="2025" selected>2025학년도</option><option value="2024">2024학년도</option><option value="2023">2023학년도</option><option value="2022">2022학년도</option></select></label><label>시험 유형<select name="exam_type" id="exam_type"><option value="june">6월 모의평가</option><option value="september">9월 모의평가</option><option value="csat" selected>실제 수능</option></select></label></div>
+          <div class="form-divider">영역별 성적 <small>백분위 기준 · 표준점수 입력란 별도 제공</small></div>
+          <div class="subj"><b>국어</b><div class="subfields"><label><span>백분위</span><input type="number" name="korean_pct" min="0" max="100" step="1" value="88" required></label><label><span>표준점수 (선택)</span><input type="number" name="korean_std" min="0" max="250" placeholder="선택"></label></div></div>
+          <div class="subj"><b>수학</b><div class="subfields"><label><span>백분위</span><input type="number" name="math_pct" min="0" max="100" value="90" required></label><label><span>표준점수 (선택)</span><input type="number" name="math_std" min="0" max="250" placeholder="선택"></label></div><label class="track-label">선택 과목<select name="math_track"><option value="calculus">미적분</option><option value="probability">확률과 통계</option><option value="geometry">기하</option></select></label></div>
+          <div class="subj simple"><b>영어</b><label>등급<select name="english_grade"><option value="1">1등급</option><option value="2">2등급</option><option value="3">3등급</option><option value="4">4등급</option><option value="5">5등급</option><option value="6">6등급</option><option value="7">7등급</option><option value="8">8등급</option><option value="9">9등급</option></select></label><b>한국사</b><label>등급<select name="history_grade"><option value="1">1등급</option><option value="2">2등급</option><option value="3">3등급</option><option value="4">4등급</option><option value="5">5등급</option><option value="6">6등급</option><option value="7">7등급</option><option value="8">8등급</option><option value="9">9등급</option></select></label></div>
+          <div class="subj"><b>탐구 1</b><div class="subfields"><label><span>계열</span><select name="inquiry1_kind"><option value="science">과학탐구</option><option value="social">사회탐구</option><option value="vocational">직업탐구</option></select></label><label><span>백분위</span><input name="inquiry1_pct" type="number" min="0" max="100" value="86" required></label></div><input class="subjectname" name="inquiry1_name" value="물리학Ⅰ" aria-label="탐구 1 과목명" placeholder="탐구 과목명"></div>
+          <div class="subj"><b>탐구 2</b><div class="subfields"><label><span>계열</span><select name="inquiry2_kind"><option value="science">과학탐구</option><option value="social">사회탐구</option><option value="vocational">직업탐구</option></select></label><label><span>백분위</span><input name="inquiry2_pct" type="number" min="0" max="100" value="81" required></label></div><input class="subjectname" name="inquiry2_name" value="화학Ⅰ" aria-label="탐구 2 과목명" placeholder="탐구 과목명"></div>
+          <div class="actions"><button class="primary" type="submit">환산점수 계산하기 <span>↗</span></button><button type="button" id="save-record" class="secondary">성적 추이 기록</button></div>
+          <p id="form-msg" class="form-msg" role="status"></p>
+        </form>
+        <div class="right-col"><section class="panel results-panel"><div class="panel-head"><div><div class="eyebrow">02 / UNIVERSITY MATCH</div><h2>대학·학과 분석 결과</h2></div><select id="department-filter" aria-label="계열 필터"><option value="all">전체 계열</option><option value="humanities">인문</option><option value="natural">자연</option></select></div><div id="result-intro" class="result-intro">주요 20개 일반대학 + 전국 의치한약수 모집단위에 한해, 공식 학년도별 산식을 검증하여 계산합니다.</div><div id="results"><div class="empty"><div class="empty-icon">⌕</div><b>성적을 입력하고 계산해 주세요</b><span>분석 범위 내에서 검증 완료한 해당 학년도 산식만 계산합니다.</span></div></div></section>
+        <section class="panel trend-panel"><div class="panel-head"><div><div class="eyebrow">03 / SCORE JOURNAL</div><h2>내 성적 변화</h2></div><button id="clear-records" type="button" class="linkbutton">기록 지우기</button></div><div id="trend"><div class="empty slim">아직 기록된 모의평가/수능 점수가 없습니다.</div></div></section></div>
+      </div>
+      <div class="notice"><strong>해석 주의</strong> 동일 학년도 공개 70% 컷은 특정 최종등록자의 점수이지 합격선 전체가 아닙니다. 모평→수능 변환이나 과거 학년도 점수의 직접 비교는 하지 않습니다.</div>
+    </section>
+    <section id="page-scope" class="page">
+      <div class="sectionhero"><div class="eyebrow">TARGET UNIVERSITIES · MEDICAL FIELDS</div><h1>전국 모든 대학 대신<br><em>주요 20개 대학 + 의치한약수.</em></h1><p>의·치·한·약·수는 일반대학 목록에 없더라도 전국 모든 대학의 해당 면허 직결 모집단위를 포함합니다.</p></div>
+      <div class="panel"><div class="panel-head"><div><div class="eyebrow">WORKING LIST · NOT A RANKING</div><h2>주요 일반대학 20곳</h2></div><span class="tag">수정 가능한 초기 명단</span></div><div id="target-universities" class="university-grid"></div><p class="form-msg">20개 명단은 대학의 공인 순위를 의미하지 않습니다. 필요하면 교체·추가할 수 있습니다.</p></div>
+      <div class="panel"><div class="panel-head"><div><div class="eyebrow">MEDICAL · NATIONWIDE</div><h2>전국 매디컬 5계열</h2></div><span class="tag">학교 수 제한 없음</span></div><div id="target-medical" class="medical-grid"></div><p class="form-msg">면허 직결 모집단위만 대상으로 하며, 일반대학 20곳 바깥의 간호학·의공학·약과학 등은 포함하지 않습니다. 지역인재전형은 별도 연구 범위입니다.</p></div>
+      <div class="panel"><div class="panel-head"><div><div class="eyebrow">REGISTERED ≠ VERIFIED</div><h2>현재 수집·검증 진행 현황</h2></div></div><div id="target-registration" class="form-msg">범위 정보를 불러오는 중...</div></div>
+    </section>
+    <section id="page-backtest" class="page"><div class="sectionhero"><div class="eyebrow">FORWARD-CHAINED EVALUATION</div><h1>결과를 안 보고 예측한 뒤,<br><em>실제 합불과 대조합니다.</em></h1><p>각 학년도의 수능 성적과 실제 지원·합격 기록으로만 모델을 학습하고 검증합니다.</p></div>
+      <div class="panel"><div class="panel-head"><div><div class="eyebrow">VALIDATION DESIGN</div><h2>연도 순행 검증</h2></div><button type="button" class="secondary" id="refresh-backtest">새로고침</button></div><div class="flowline"><div>2022·2023·2024<br><strong>과거 데이터 학습</strong></div><span>→</span><div>2025<br><strong>미학습 연도 예측</strong></div><span>→</span><div>2025 실제 지원·합불<br><strong>성능 검증</strong></div></div><div id="backtest-results" class="backtest-results"></div></div>
+      <div class="notice">AUC: 합격자를 불합격자보다 높게 평가하는 구분 성능 (0.5는 무작위 수준). Brier: 확률 오차 (낮을수록 좋음). 합격자만 모인 70% 컷 자료로는 이러한 지표를 계산할 수 없습니다.</div>
+    </section>
+    <section id="page-data" class="page"><div class="sectionhero"><div class="eyebrow">DATA LINEAGE & COVERAGE</div><h1>어떤 데이터가 있고,<br><em>어떤 데이터가 없는지.</em></h1><p>소스·기준 연도·수집 상태를 숨기지 않는 데이터 품질 대시보드입니다.</p></div><div class="panel"><div class="panel-head"><div><div class="eyebrow">YEAR MATRIX</div><h2>학년도별 확보 현황</h2></div><span class="tag">공개 공식 자료만 초기 적재</span></div><div id="coverage"></div></div>
+      <div class="panel upload"><div class="panel-head"><div><div class="eyebrow">SENSITIVE DATA · LOCAL ADMIN ONLY</div><h2>익명화한 실제 지원·합불 CSV 적재</h2></div></div><p>2022~2026학년도 실제로 해당 학과에 <b>지원한</b> 학생의 성적·최종 합격 여부가 있어야 합니다. 허위 불합격 샘플 또는 미지원자 라벨은 허용하지 않습니다. 데이터 제공 동의 및 출처 증빙을 확인하세요.</p><form id="upload-form"><input type="file" name="file" accept=".csv,text/csv" required><input type="password" name="admin_token" placeholder="관리자 토큰 (환경변수)" required><button class="primary" type="submit">실측 데이터 가져오기</button></form><p id="upload-msg" role="status" class="form-msg"></p><a href="/static/outcomes_template.csv" download class="reference-link">CSV 양식 다운로드 ↗</a></div>
+      <div class="panel"><div class="panel-head"><div><div class="eyebrow">SOURCE REGISTER</div><h2>공식 자료 출처</h2></div></div><div id="sources"></div></div>
+    </section>
+    <footer>정시렌즈 · 데이터 검증을 우선하는 공개 연구용 프로토타입 · 입시 원서 접수의 최종 판단은 대학 공식 모집요강으로 재확인하세요.</footer>
+  </main>
+</div>
+<script src="/static/config.js"></script>
+<script src="/static/app.js" defer></script>
+</body></html>

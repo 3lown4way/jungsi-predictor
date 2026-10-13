@@ -1,0 +1,40 @@
+name: CI - tests and data safety
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run unit and API tests
+        env:
+          ADMISSION_DB: ${{ runner.temp }}/test-admissions-${{ matrix.python-version }}.sqlite3
+        run: python -m pytest -q
+      - name: Validate public data and privacy guard
+        run: python -m scripts.audit --output audit-report.json
+      - name: Compile Python
+        run: python -m compileall -q app scripts tools tests
+      - name: Verify GitHub Pages static build
+        run: python -m scripts.build_pages --output site
+      - name: Upload audit report
+        if: always() && matrix.python-version == '3.12'
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-data-audit
+          path: audit-report.json
+          if-no-files-found: ignore

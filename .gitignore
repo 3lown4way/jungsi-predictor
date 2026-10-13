@@ -1,0 +1,22 @@
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*.sqlite3
+*.sqlite3-*
+*.db
+.venv/
+.env
+.env.*
+!.env.example
+.site/
+site/
+dist/
+build/
+.coverage
+htmlcov/
+.DS_Store
+# 절대로 실측 개인 지원·합격 데이터 또는 산출물을 Git에 포함하지 않음
+data/private/
+data/raw/
+*.pkl
+*.joblib
