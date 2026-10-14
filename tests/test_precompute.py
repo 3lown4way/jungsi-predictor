@@ -72,7 +72,8 @@ def test_static_export_is_precomputed_reader_not_personal_form(tmp_path):
     target=tmp_path/'site'
     run(target)
     html=(target/'index.html').read_text(encoding='utf-8')
-    assert 'id="score-form"' not in html
+    assert 'id="official-score-form"' in html
+    assert 'id="grade-profile"' not in html
     assert 'localStorage' not in (target/'static'/'app.js').read_text(encoding='utf-8')
     assert 'id="subject-select"' in html
     assert html.index('id="university"') < html.index('id="distribution"')
@@ -80,8 +81,8 @@ def test_static_export_is_precomputed_reader_not_personal_form(tmp_path):
     assert 'id="uni-category"' in html
     assert 'href="#university"' in html
     assert 'id="filter-year"' not in html
-    summary=json.loads((target/'data'/'precomputed-summary.json').read_text(encoding='utf-8'))
-    assert summary['year']==2027
-    assert (target/'data'/'precomputed-2027.json').is_file()
+    assert not (target/'data'/'precomputed-summary.json').exists()
+    assert not (target/'data'/'precomputed-2027.json').exists()
+    assert (target/'data'/'scoring-rules-2027.json').exists()
     for year in range(2022,2027):
         assert not (target/'data'/f'precomputed-{year}.json').exists()

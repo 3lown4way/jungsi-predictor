@@ -19,17 +19,17 @@
 <section class="page active">
 <div class="hero admission-hero">
  <div><div class="eyebrow">2027 ADMISSIONS · SEPTEMBER MOCK EXAM</div>
- <h1>9평 성적으로<br><em>어느 대학, 어느 학과를 노릴 수 있을까?</em></h1>
- <p>2027학년도 정시 일반전형을 대상으로 대학별 환산점수·예상 지원선·모의지원 경쟁 위치·합격 가능성을 한곳에서 비교합니다.</p></div>
+ <h1>9평 공식 표준점수로<br><em>지원 가능 대학·학과를 찾아보세요.</em></h1>
+ <p>과목별 공식 표준점수를 입력하면 대학·학과마다 다른 환산식과 검증된 예측 자료를 적용해 지원 전망을 비교합니다.</p></div>
  <div class="hero-figure"><b>2027 <span>정시</span></b><small>대학·학과별 분석 우선</small></div>
 </div>
 <div class="metrics admission-metrics">
  <div class="metric"><small>2027 공식 등록 모집단위</small><strong id="metric-programs">—</strong><p>실제 모집요강 검증 등록</p></div>
- <div class="metric"><small>환산점수 분석 가능 모집단위</small><strong id="metric-ready">—</strong><p>검증된 해당 연도 성적 조합 기준</p></div>
+ <div class="metric"><small>환산식 확인된 모집단위</small><strong id="metric-ready">—</strong><p>개인별 공식 점수 입력 후 산출</p></div>
  <div class="metric"><small>합격확률 검증 완료 모집단위</small><strong id="metric-probability">—</strong><p>모델·데이터 기준을 통과한 경우만 표시</p></div>
 </div>
 <section class="panel focus-panel" id="university">
- <div class="panel-head"><div><div class="eyebrow">SEARCH UNIVERSITY & MAJOR</div><h2>2027 지원 가능 대학·학과 찾기</h2></div><span class="tag">9평 기반 · 정시 일반전형</span></div>
+ <div class="panel-head"><div><div class="eyebrow">OFFICIAL SCORES → UNIVERSITY MATCH</div><h2>내 9평 성적으로 지원 가능 대학·학과 찾기</h2></div><span class="tag">표준점수 중심 · 2027 정시</span></div>
  <div class="admission-search-grid">
   <label>대학·학과명<input id="uni-search" type="search" autocomplete="off" placeholder="대학 또는 학과명 검색 · 예: 연세대, 약학, 의예"></label>
   <label>지원 분야<select id="uni-category">
@@ -40,9 +40,41 @@
    <option value="oriental_medicine">한의예·한의학</option><option value="pharmacy">약학</option><option value="veterinary">수의예·수의학</option>
   </select></label>
   <label>계열<select id="uni-track"><option value="all">전체 계열</option><option value="natural">자연계열</option><option value="humanities">인문계열</option></select></label>
-  <label>9평 등급 경계 조합<select id="grade-profile"><option value="all">전체 성적 조합</option></select></label>
  </div>
- <p class="form-msg">합격 가능성은 대학·모집단위별 변환표준점수, 영역 반영비율, 과거 입결 및 모의지원 분포를 종합해야 산출됩니다. 미등록 자료는 ‘예측 준비 중’으로 표시합니다.</p>
+ <form id="official-score-form" class="official-score-form" autocomplete="off">
+  <div class="form-intro"><div><div class="eyebrow">MY OFFICIAL SCORE REPORT</div><h3>2027학년도 9평 성적표 입력</h3><p>국어·수학·탐구는 <strong>공식 표준점수</strong>, 영어·한국사는 등급으로 입력하세요. 백분위는 대학에서 사용할 수 있으므로 성적표에 표시된 값을 함께 입력하는 것이 좋습니다.</p></div><span class="privacy-note">이 화면에서만 사용 · 전송·저장 없음</span></div>
+  <div class="subject-input-grid">
+   <fieldset class="score-field"><legend>국어</legend>
+    <label>선택과목<select name="korean_track"><option value="speech">화법과 작문</option><option value="language">언어와 매체</option></select></label>
+    <label>표준점수 <input name="korean_std" type="number" min="0" max="250" step="1" required placeholder="표준점수"></label>
+    <label>백분위 <input name="korean_pct" type="number" min="0" max="100" step="1" placeholder="성적표 백분위 (선택)"></label>
+   </fieldset>
+   <fieldset class="score-field"><legend>수학</legend>
+    <label>선택과목<select name="math_track"><option value="calculus">미적분</option><option value="probability">확률과 통계</option><option value="geometry">기하</option></select></label>
+    <label>표준점수 <input name="math_std" type="number" min="0" max="250" step="1" required placeholder="표준점수"></label>
+    <label>백분위 <input name="math_pct" type="number" min="0" max="100" step="1" placeholder="성적표 백분위 (선택)"></label>
+   </fieldset>
+   <fieldset class="score-field"><legend>탐구 1</legend>
+    <label>과목<select name="inquiry1_name" id="inquiry1-name" required><option value="">과목 선택</option></select></label>
+    <label>표준점수 <input name="inquiry1_std" type="number" min="0" max="250" step="1" required placeholder="표준점수"></label>
+    <label>백분위 <input name="inquiry1_pct" type="number" min="0" max="100" step="1" placeholder="성적표 백분위 (선택)"></label>
+   </fieldset>
+   <fieldset class="score-field"><legend>탐구 2</legend>
+    <label>과목<select name="inquiry2_name" id="inquiry2-name" required><option value="">과목 선택</option></select></label>
+    <label>표준점수 <input name="inquiry2_std" type="number" min="0" max="250" step="1" required placeholder="표준점수"></label>
+    <label>백분위 <input name="inquiry2_pct" type="number" min="0" max="100" step="1" placeholder="성적표 백분위 (선택)"></label>
+   </fieldset>
+   <fieldset class="score-field grade-only"><legend>영어 · 한국사</legend>
+    <label>영어 등급<select name="english_grade"><option value="1">1등급</option><option value="2">2등급</option><option value="3">3등급</option><option value="4">4등급</option><option value="5">5등급</option><option value="6">6등급</option><option value="7">7등급</option><option value="8">8등급</option><option value="9">9등급</option></select></label>
+    <label>한국사 등급<select name="history_grade"><option value="1">1등급</option><option value="2">2등급</option><option value="3">3등급</option><option value="4">4등급</option><option value="5">5등급</option><option value="6">6등급</option><option value="7">7등급</option><option value="8">8등급</option><option value="9">9등급</option></select></label>
+   </fieldset>
+  </div>
+  <div class="score-actions"><button type="submit" class="primary">공식 성적으로 대학별 결과 확인 <span>→</span></button><span class="muted-xs">대학별 환산점수는 등록된 2027학년도 공식 산식만 적용합니다.</span></div>
+  <p id="score-input-message" role="status" class="form-msg"></p>
+ </form>
+ <div class="admission-search-grid secondary-filters">
+ </div>
+ <p class="form-msg">합격 가능성은 개인 공식 점수에 대한 대학별 환산점수, 과거 입결 및 모의지원 분포를 종합해 모델을 검증한 뒤 표시합니다. 미등록 자료는 ‘예측 준비 중’입니다.</p>
  <div class="admission-legend"><span><i class="legend-dot ready"></i> 검증된 예측</span><span><i class="legend-dot pending"></i> 환산점수 계산 가능</span><span><i class="legend-dot missing"></i> 공식 자료 수집 중</span></div>
  <div id="university-results" aria-live="polite"><div class="empty slim">2027 대학별 데이터를 확인하는 중입니다.</div></div>
  <div class="target-strip">
@@ -81,5 +113,5 @@
 </section>
 <footer>정시렌즈 · 2027학년도 정시 일반전형 · 대학·학과별 공식 모집요강과 최종 모집인원을 지원 전에 재확인하세요.</footer>
 </section></main></div>
-<script src="/static/config.js"></script><script src="/static/app.js" defer></script>
+<script src="/static/config.js"></script><script src="/static/score-engine.js"></script><script src="/static/app.js" defer></script>
 </body></html>

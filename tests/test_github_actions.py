@@ -20,11 +20,17 @@ def test_static_export_no_raw_personal_outcomes(tmp_path):
     assert 'src="./static/app.js"' in html
     assert 'href="/static/' not in html
     assert (site/'static'/'config.js').exists()
+    assert (site/'static'/'score-engine.js').exists()
+    assert (site/'data'/'scoring-rules-2027.json').is_file()
+    rulebook=json.loads((site/'data'/'scoring-rules-2027.json').read_text())
+    assert rulebook['year']==2027
+    assert rulebook['formula_count']==len(rulebook['rules'])
     assert not (site/'data'/'meta.json').exists()
     assert not (site/'data'/'backtest.json').exists()
     assert (site/'data'/'programs-2027.json').is_file()
     assert not list(site.glob('data/programs-202[2-6].json'))
-    assert not list(site.glob('data/precomputed-202[2-6].json'))
+    assert not list(site.glob('data/precomputed-202*.json'))
+    assert not (site/'data'/'precomputed-summary.json').exists()
     distribution=json.loads((site/'data'/'score-distribution-2027.json').read_text())
     assert distribution['subject_count']==25
     assert len(distribution['subjects'])==25

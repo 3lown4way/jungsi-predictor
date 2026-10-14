@@ -51,18 +51,32 @@ def run(output: Path, api_base_url: str = ''):
         write_json(data_dir / 'targets-2027.json', {'year':2027,
             'universities':list(TOP_20), 'medical_fields':MEDICAL_FIELDS,
             'status_note':'대상 대학 명단은 공식 반영식·합격확률 확보를 의미하지 않습니다.'})
-        # Official grade-boundary profile x verified university formula precomputation.
-        from scripts.precompute import build_dataset
+        # No grade-boundary admission scenarios: individual report-card scores are the input.
         from app.database import connect
+        from app.weighted_rules import read_conversion_tables, validate_spec
         with connect() as con:
-            programs = [dict(p) for p in con.execute('SELECT * FROM programs')]
-        by_year, summary = build_dataset(programs)
-        # 2022~2026 are internal training/validation years; NEVER export their result datasets.
-        write_json(data_dir / 'precomputed-2027.json', by_year[2027])
-        write_json(data_dir / 'precomputed-summary.json', {
-            'year':2027, 'record_count':len(by_year[2027]),
-            'grade_boundary_scenarios':'최종 수능 성적이나 합격확률이 아닌 확정 경계값 조합',
-            'status':'available' if by_year[2027] else 'official_2027_formula_and_boundary_missing',
+            programs=[dict(p) for p in con.execute('SELECT * FROM programs WHERE year=2027')]
+        verified_rules=[]
+        lookups=read_conversion_tables()
+        for p in programs:
+            if p['formula_id']!='weighted_official_v1' or not p.get('formula_config_json'):
+                continue
+            if not (p.get('formula_source_url') or '').startswith('https://'):
+                continue
+            spec=validate_spec(json.loads(p['formula_config_json']),p)
+            table_ids={v['table_id'] for v in spec['components'].values()
+                       if v['metric']=='converted_std'}
+            tables=[{'table_id':key[2], 'subject':key[3], 'std_score':key[4],
+                     'converted_score':value}
+                    for key,value in sorted(lookups.items())
+                    if key[0]==2027 and key[1]==p['university'] and key[2] in table_ids]
+            verified_rules.append({
+                'program_key':p['program_key'], 'university':p['university'],
+                'source_url':p['formula_source_url'],'spec':spec,'tables':tables
+            })
+        write_json(data_dir/'scoring-rules-2027.json',{
+            'year':2027,'exam_type':'september','formula_count':len(verified_rules),
+            'rules':verified_rules,'note':'공식 원문 검수한 대학별 환산식. 합격확률 ML 모델 아님.'
         })
         from scripts.score_adjustment import make_snapshot, read_frequencies
         snapshot=make_snapshot()
@@ -106,55 +120,37 @@ def run(output: Path, api_base_url: str = ''):
                 'snapshot_mode': 'offline_github_actions', 'published_programs': 0,
                 'predictions': [], 'message': 'No published cohort snapshot yet'
             })
-        # Single publishable 2027 admissions overview; historical observations remain offline.
-        # Scores and mock-cohort statistics were all computed above during this Actions run.
+        # The individual inputs are entered locally by the user. No grade-level profiles.
+        # Only trained and calibrated curves could provide a probability for that score,
+        # and none is currently available. Never publish a single unconditional probability.
         from app.scope import in_scope, medical_field
-        from collections import defaultdict
-        by_program = defaultdict(list)
-        for scored in by_year[2027]:
-            by_program[scored['program_key']].append(scored)
-        cohort_by_key = {p['program_key']: p for p in snapshot.get('predictions', [])}
-        overview = []
+        cohort_by_key={p['program_key']:p for p in snapshot.get('predictions',[])}
+        approved_keys={r['program_key'] for r in verified_rules}
+        overview=[]
         for p in programs:
-            if p['year'] != 2027 or not in_scope(p):
+            if not in_scope(p):
                 continue
-            scenarios = by_program.get(p['program_key'], [])
-            cohort = cohort_by_key.get(p['program_key'], {})
-            # Null never means 0% chance; no uncalibrated admission probabilities.
-            probability = cohort.get('admission_probability')
-            if probability is not None and cohort.get('probability_status') != 'calibrated_and_backtested':
-                probability = None
+            cohort=cohort_by_key.get(p['program_key'],{})
             overview.append({
-                'year': 2027, 'program_key': p['program_key'], 'university': p['university'],
-                'department': p['department'], 'campus': p['campus'], 'track': p['track'],
-                'admission_round': p['round'], 'quota': p['quota'],
-                'medical_field': medical_field(p), 'formula_source_url': p['formula_source_url'],
-                'formula_verified': bool(p['formula_id'] and p['formula_source_url']),
-                'score_scenario_count': len(scenarios),
-                'scenarios': [{'grade_profile': s['grade_profile'],
-                               'converted_score': s['converted_score'],
-                               'score_scale': s['score_scale'],
-                               'university_weights': s.get('university_weights'),
-                               'score_breakdown': s.get('score_breakdown')}
-                              for s in scenarios],
-                'cohort_count_band': cohort.get('participant_count_band'),
-                'cohort_score_p25': cohort.get('score_p25'),
-                'cohort_score_p50': cohort.get('score_p50'),
-                'cohort_score_p75': cohort.get('score_p75'),
-                'admission_probability': probability,
-                'status': ('validated_probability' if probability is not None else
-                           'cohort_available' if cohort else
-                           'converted_scenarios' if scenarios else
-                           'rule_verified_no_score_profiles' if p['formula_id'] else
-                           'formula_unavailable'),
+                'year':2027,'program_key':p['program_key'],
+                'university':p['university'],'department':p['department'],
+                'campus':p['campus'],'track':p['track'],'admission_round':p['round'],
+                'quota':p['quota'],'medical_field':medical_field(p),
+                'formula_source_url':p['formula_source_url'],
+                'formula_verified':p['program_key'] in approved_keys,
+                'cohort_count_band':cohort.get('participant_count_band'),
+                'cohort_score_p25':cohort.get('score_p25'),
+                'cohort_score_p50':cohort.get('score_p50'),
+                'cohort_score_p75':cohort.get('score_p75'),
+                'probability_curve':None,
+                'status':'rule_registered' if p['program_key'] in approved_keys else 'formula_unavailable',
             })
-        write_json(data_dir / 'admissions-outlook-2027.json', {
-            'schema_version': '1.0', 'year': 2027, 'exam_type': 'september',
-            'program_count': len(overview),
-            'score_ready_count': sum(bool(p['scenarios']) for p in overview),
-            'probability_ready_count': sum(p['admission_probability'] is not None for p in overview),
-            'programs': overview,
-            'warning': '미등록 대학은 합격 불가능이 아닌 데이터 미확보 상태입니다. 등급 경계 시나리오는 합격 확률과 다릅니다.'
+        write_json(data_dir/'admissions-outlook-2027.json',{
+            'schema_version':'2.0','year':2027,'exam_type':'september',
+            'input_mode':'individual_official_report_card_scores',
+            'program_count':len(overview),'score_ready_count':len(verified_rules),
+            'probability_ready_count':0,'programs':overview,
+            'warning':'공식 점수 기반 대학별 환산. 2027 예측확률 검증 전에는 퍼센트를 출력하지 않음.'
         })
         write_json(data_dir / 'build-info.json', {
             'generated_at_utc': datetime.now(timezone.utc).isoformat(),
