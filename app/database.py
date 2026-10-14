@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS programs (
  quota INTEGER,
  formula_id TEXT,
  formula_source_url TEXT,
+ formula_config_json TEXT,
  cutoff_70 REAL,
  cutoff_source_url TEXT,
  cutoff_kind TEXT,
@@ -83,6 +84,8 @@ def init_database():
             con.execute("ALTER TABLE programs ADD COLUMN medical_field TEXT NOT NULL DEFAULT ''")
         if 'selection_type' not in existing_program_columns:
             con.execute("ALTER TABLE programs ADD COLUMN selection_type TEXT NOT NULL DEFAULT '일반'")
+        if 'formula_config_json' not in existing_program_columns:
+            con.execute('ALTER TABLE programs ADD COLUMN formula_config_json TEXT')
         count = con.execute('SELECT count(*) FROM programs').fetchone()[0]
         if count == 0:
             seed(con)

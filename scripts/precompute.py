@@ -92,7 +92,7 @@ def build_dataset(programs, boundary_dir=CUT_DIR, grades=GRADE_LEVELS):
             for kg, mg, eg, i1g, i2g in itertools.product(grades, repeat=5):
                 by_area = {'korean': kg, 'math': mg, 'inquiry1': i1g, 'inquiry2': i2g}
                 samples = {area: slots.get((area, grade)) for area, grade in by_area.items()}
-                if any(value is None or value['pct'] is None for value in samples.values()):
+                if any(value is None or (value['pct'] is None and value['std'] is None) for value in samples.values()):
                     skipped['missing_published_percentile_boundary'] += 1
                     continue
                 math_opt = samples['math']['math_track']
@@ -100,10 +100,12 @@ def build_dataset(programs, boundary_dir=CUT_DIR, grades=GRADE_LEVELS):
                     skipped['missing_math_option'] += 1
                     continue
                 student = {'korean_pct': samples['korean']['pct'],
+                           'korean_std': samples['korean']['std'],
                            'math_pct': samples['math']['pct'],
+                           'math_std': samples['math']['std'],
                            'english_grade': eg, 'history_grade': 1,
                            'math_track': math_opt,
-                           'inquiries': [{'pct': samples[area]['pct'],
+                           'inquiries': [{'pct': samples[area]['pct'], 'std':samples[area]['std'],
                                           'kind': samples[area]['kind'],
                                           'name': samples[area]['subject']}
                                          for area in ('inquiry1', 'inquiry2')]}

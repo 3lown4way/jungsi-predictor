@@ -18,6 +18,9 @@ class ScoreResult:
 
 
 def compute(student: dict, program: dict) -> Optional[ScoreResult]:
+    if program.get('formula_id') == 'weighted_official_v1':
+        from app.weighted_rules import compute_weighted
+        return compute_weighted(student,program)
     if program.get('formula_id') != 'sangmyung_pct_2025_2026':
         return None
     y = program['year']
