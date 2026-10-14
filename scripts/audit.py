@@ -81,7 +81,8 @@ def run():
       'data/public/university_research/2026_konkuk_sejong_partial.json',
       'data/public/university_research/2026_sogang_inha_hufs_partial.json',
       'data/public/university_research/2026_six_more_universities.json',
-      'data/public/university_research/2026_ewha_hongik_kookmin_ajou.json'
+      'data/public/university_research/2026_ewha_hongik_kookmin_ajou.json',
+      'data/public/university_research/2025_hanyang_uos_sookmyung_ewha.json'
     ]
     group_count=0
     for relative in weights:

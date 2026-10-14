@@ -1,0 +1,385 @@
+{
+  "year": 2025,
+  "records": [
+    {
+      "year": 2025,
+      "university": "한양대학교",
+      "group": "자연계열",
+      "weights": {
+        "korean": 0.25,
+        "math": 0.4,
+        "english": 0.1,
+        "inquiry": 0.25
+      },
+      "selection_type": "정시 일반전형",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2025&unvCd=0000203",
+      "notes": "2025년 수능 100%, 2026년 90%+학생부10%로 변경. 2025 9평/합격 기록 분석 시 2025 산식 사용",
+      "official_full_conversion_verified": false,
+      "missing": [
+        "actual 2025 inquiry percentile-to-converted score table if required",
+        "final university-year-specific worked-score validations",
+        "individual September-to-admission verified outcomes"
+      ]
+    },
+    {
+      "year": 2025,
+      "university": "한양대학교",
+      "group": "인문계열",
+      "weights": {
+        "korean": 0.35,
+        "math": 0.3,
+        "english": 0.1,
+        "inquiry": 0.25
+      },
+      "selection_type": "정시 일반전형",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2025&unvCd=0000203",
+      "notes": "2025 수능 100%, 탐구 자체 변표",
+      "official_full_conversion_verified": false,
+      "missing": [
+        "actual 2025 inquiry percentile-to-converted score table if required",
+        "final university-year-specific worked-score validations",
+        "individual September-to-admission verified outcomes"
+      ]
+    },
+    {
+      "year": 2025,
+      "university": "한양대학교",
+      "group": "상경·인터칼리지",
+      "weights": {
+        "korean": 0.35,
+        "math": 0.35,
+        "english": 0.1,
+        "inquiry": 0.2
+      },
+      "selection_type": "정시 일반전형",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2025&unvCd=0000203",
+      "notes": "2025 수능 100%, 탐구 자체 변표",
+      "official_full_conversion_verified": false,
+      "missing": [
+        "actual 2025 inquiry percentile-to-converted score table if required",
+        "final university-year-specific worked-score validations",
+        "individual September-to-admission verified outcomes"
+      ]
+    },
+    {
+      "year": 2025,
+      "university": "서울시립대학교",
+      "group": "인문Ⅰ",
+      "weights": {
+        "korean": 0.35,
+        "math": 0.3,
+        "english": 0.15,
+        "inquiry": 0.2
+      },
+      "selection_type": "정시 일반전형",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2025&unvCd=0000040",
+      "notes": "탐구 백분위 자체 변표; 자연 과탐 두 과목 7%, 인문 사탐 두 과목 3% 가산 (계열 한정)",
+      "official_full_conversion_verified": false,
+      "missing": [
+        "actual 2025 inquiry percentile-to-converted score table if required",
+        "final university-year-specific worked-score validations",
+        "individual September-to-admission verified outcomes"
+      ]
+    },
+    {
+      "year": 2025,
+      "university": "서울시립대학교",
+      "group": "인문Ⅱ",
+      "weights": {
+        "korean": 0.35,
+        "math": 0.4,
+        "english": 0.15,
+        "inquiry": 0.1
+      },
+      "selection_type": "정시 일반전형",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2025&unvCd=0000040",
+      "notes": "탐구 백분위 자체 변표; 자연 과탐 두 과목 7%, 인문 사탐 두 과목 3% 가산 (계열 한정)",
+      "official_full_conversion_verified": false,
+      "missing": [
+        "actual 2025 inquiry percentile-to-converted score table if required",
+        "final university-year-specific worked-score validations",
+        "individual September-to-admission verified outcomes"
+      ]
+    },
+    {
+      "year": 2025,
+      "university": "서울시립대학교",
+      "group": "인문Ⅲ",
+      "weights": {
+        "korean": 0.35,
+        "math": 0.25,
+        "english": 0.25,
+        "inquiry": 0.15
+      },
+      "selection_type": "정시 일반전형",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2025&unvCd=0000040",
+      "notes": "탐구 백분위 자체 변표; 자연 과탐 두 과목 7%, 인문 사탐 두 과목 3% 가산 (계열 한정)",
+      "official_full_conversion_verified": false,
+      "missing": [
+        "actual 2025 inquiry percentile-to-converted score table if required",
+        "final university-year-specific worked-score validations",
+        "individual September-to-admission verified outcomes"
+      ]
+    },
+    {
+      "year": 2025,
+      "university": "서울시립대학교",
+      "group": "자연Ⅰ",
+      "weights": {
+        "korean": 0.2,
+        "math": 0.4,
+        "english": 0.1,
+        "inquiry": 0.3
+      },
+      "selection_type": "정시 일반전형",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2025&unvCd=0000040",
+      "notes": "탐구 백분위 자체 변표; 자연 과탐 두 과목 7%, 인문 사탐 두 과목 3% 가산 (계열 한정)",
+      "official_full_conversion_verified": false,
+      "missing": [
+        "actual 2025 inquiry percentile-to-converted score table if required",
+        "final university-year-specific worked-score validations",
+        "individual September-to-admission verified outcomes"
+      ]
+    },
+    {
+      "year": 2025,
+      "university": "서울시립대학교",
+      "group": "자연Ⅱ",
+      "weights": {
+        "korean": 0.2,
+        "math": 0.35,
+        "english": 0.1,
+        "inquiry": 0.35
+      },
+      "selection_type": "정시 일반전형",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2025&unvCd=0000040",
+      "notes": "탐구 백분위 자체 변표; 자연 과탐 두 과목 7%, 인문 사탐 두 과목 3% 가산 (계열 한정)",
+      "official_full_conversion_verified": false,
+      "missing": [
+        "actual 2025 inquiry percentile-to-converted score table if required",
+        "final university-year-specific worked-score validations",
+        "individual September-to-admission verified outcomes"
+      ]
+    },
+    {
+      "year": 2025,
+      "university": "서울시립대학교",
+      "group": "자연Ⅲ",
+      "weights": {
+        "korean": 0.2,
+        "math": 0.35,
+        "english": 0.1,
+        "inquiry": 0.35
+      },
+      "selection_type": "정시 일반전형",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2025&unvCd=0000040",
+      "notes": "탐구 백분위 자체 변표; 자연 과탐 두 과목 7%, 인문 사탐 두 과목 3% 가산 (계열 한정)",
+      "official_full_conversion_verified": false,
+      "missing": [
+        "actual 2025 inquiry percentile-to-converted score table if required",
+        "final university-year-specific worked-score validations",
+        "individual September-to-admission verified outcomes"
+      ]
+    },
+    {
+      "year": 2025,
+      "university": "숙명여자대학교",
+      "group": "인문(경상 제외)",
+      "weights": {
+        "korean": 0.35,
+        "math": 0.25,
+        "english": 0.2,
+        "inquiry": 0.2
+      },
+      "selection_type": "정시 일반전형",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2025&unvCd=0000141",
+      "notes": "탐구 자체 변표, 모집단위별 과탐 필수 또는 가산 여부 다름",
+      "official_full_conversion_verified": false,
+      "missing": [
+        "actual 2025 inquiry percentile-to-converted score table if required",
+        "final university-year-specific worked-score validations",
+        "individual September-to-admission verified outcomes"
+      ]
+    },
+    {
+      "year": 2025,
+      "university": "숙명여자대학교",
+      "group": "경상대학",
+      "weights": {
+        "korean": 0.3,
+        "math": 0.3,
+        "english": 0.2,
+        "inquiry": 0.2
+      },
+      "selection_type": "정시 일반전형",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2025&unvCd=0000141",
+      "notes": "탐구 자체 변표, 모집단위별 과탐 필수 또는 가산 여부 다름",
+      "official_full_conversion_verified": false,
+      "missing": [
+        "actual 2025 inquiry percentile-to-converted score table if required",
+        "final university-year-specific worked-score validations",
+        "individual September-to-admission verified outcomes"
+      ]
+    },
+    {
+      "year": 2025,
+      "university": "숙명여자대학교",
+      "group": "자연 생명·공학·약학부",
+      "weights": {
+        "korean": 0.25,
+        "math": 0.35,
+        "english": 0.2,
+        "inquiry": 0.2
+      },
+      "selection_type": "정시 일반전형",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2025&unvCd=0000141",
+      "notes": "탐구 자체 변표, 모집단위별 과탐 필수 또는 가산 여부 다름",
+      "official_full_conversion_verified": false,
+      "missing": [
+        "actual 2025 inquiry percentile-to-converted score table if required",
+        "final university-year-specific worked-score validations",
+        "individual September-to-admission verified outcomes"
+      ]
+    },
+    {
+      "year": 2025,
+      "university": "숙명여자대학교",
+      "group": "수학과",
+      "weights": {
+        "korean": 0.15,
+        "math": 0.5,
+        "english": 0.2,
+        "inquiry": 0.15
+      },
+      "selection_type": "정시 일반전형",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2025&unvCd=0000141",
+      "notes": "탐구 자체 변표, 모집단위별 과탐 필수 또는 가산 여부 다름",
+      "official_full_conversion_verified": false,
+      "missing": [
+        "actual 2025 inquiry percentile-to-converted score table if required",
+        "final university-year-specific worked-score validations",
+        "individual September-to-admission verified outcomes"
+      ]
+    },
+    {
+      "year": 2025,
+      "university": "숙명여자대학교",
+      "group": "통계학과",
+      "weights": {
+        "korean": 0.25,
+        "math": 0.4,
+        "english": 0.2,
+        "inquiry": 0.15
+      },
+      "selection_type": "정시 일반전형",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2025&unvCd=0000141",
+      "notes": "탐구 자체 변표, 모집단위별 과탐 필수 또는 가산 여부 다름",
+      "official_full_conversion_verified": false,
+      "missing": [
+        "actual 2025 inquiry percentile-to-converted score table if required",
+        "final university-year-specific worked-score validations",
+        "individual September-to-admission verified outcomes"
+      ]
+    },
+    {
+      "year": 2025,
+      "university": "숙명여자대학교",
+      "group": "인공지능·컴퓨터·데이터",
+      "weights": {
+        "korean": 0.25,
+        "math": 0.35,
+        "english": 0.2,
+        "inquiry": 0.2
+      },
+      "selection_type": "정시 일반전형",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2025&unvCd=0000141",
+      "notes": "탐구 자체 변표, 모집단위별 과탐 필수 또는 가산 여부 다름",
+      "official_full_conversion_verified": false,
+      "missing": [
+        "actual 2025 inquiry percentile-to-converted score table if required",
+        "final university-year-specific worked-score validations",
+        "individual September-to-admission verified outcomes"
+      ]
+    },
+    {
+      "year": 2025,
+      "university": "숙명여자대학교",
+      "group": "첨단공학부",
+      "weights": {
+        "korean": 0.25,
+        "math": 0.35,
+        "english": 0.15,
+        "inquiry": 0.25
+      },
+      "selection_type": "정시 일반전형",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2025&unvCd=0000141",
+      "notes": "탐구 자체 변표, 모집단위별 과탐 필수 또는 가산 여부 다름",
+      "official_full_conversion_verified": false,
+      "missing": [
+        "actual 2025 inquiry percentile-to-converted score table if required",
+        "final university-year-specific worked-score validations",
+        "individual September-to-admission verified outcomes"
+      ]
+    },
+    {
+      "year": 2025,
+      "university": "숙명여자대학교",
+      "group": "자유전공",
+      "weights": {
+        "korean": 0.3,
+        "math": 0.3,
+        "english": 0.15,
+        "inquiry": 0.25
+      },
+      "selection_type": "정시 일반전형",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2025&unvCd=0000141",
+      "notes": "탐구 자체 변표, 모집단위별 과탐 필수 또는 가산 여부 다름",
+      "official_full_conversion_verified": false,
+      "missing": [
+        "actual 2025 inquiry percentile-to-converted score table if required",
+        "final university-year-specific worked-score validations",
+        "individual September-to-admission verified outcomes"
+      ]
+    },
+    {
+      "year": 2025,
+      "university": "이화여자대학교",
+      "group": "인문계열",
+      "weights": {
+        "korean": 0.3,
+        "math": 0.3,
+        "english": 0.2,
+        "inquiry": 0.2
+      },
+      "selection_type": "정시 일반전형",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2025&unvCd=0000163",
+      "notes": "자연계열 응시자도 일부 간호학/미래산업약학 계열별 유리한 점수 적용",
+      "official_full_conversion_verified": false,
+      "missing": [
+        "actual 2025 inquiry percentile-to-converted score table if required",
+        "final university-year-specific worked-score validations",
+        "individual September-to-admission verified outcomes"
+      ]
+    },
+    {
+      "year": 2025,
+      "university": "이화여자대학교",
+      "group": "자연계열",
+      "weights": {
+        "korean": 0.25,
+        "math": 0.3,
+        "english": 0.2,
+        "inquiry": 0.25
+      },
+      "selection_type": "정시 일반전형",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2025&unvCd=0000163",
+      "notes": "과탐 2과목 변표, 자연계열 과탐 과목당 6% 가산 - 2025 요강 대조 필요",
+      "official_full_conversion_verified": false,
+      "missing": [
+        "actual 2025 inquiry percentile-to-converted score table if required",
+        "final university-year-specific worked-score validations",
+        "individual September-to-admission verified outcomes"
+      ]
+    }
+  ]
+}
