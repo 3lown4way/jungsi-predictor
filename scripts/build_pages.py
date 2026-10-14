@@ -106,6 +106,56 @@ def run(output: Path, api_base_url: str = ''):
                 'snapshot_mode': 'offline_github_actions', 'published_programs': 0,
                 'predictions': [], 'message': 'No published cohort snapshot yet'
             })
+        # Single publishable 2027 admissions overview; historical observations remain offline.
+        # Scores and mock-cohort statistics were all computed above during this Actions run.
+        from app.scope import in_scope, medical_field
+        from collections import defaultdict
+        by_program = defaultdict(list)
+        for scored in by_year[2027]:
+            by_program[scored['program_key']].append(scored)
+        cohort_by_key = {p['program_key']: p for p in snapshot.get('predictions', [])}
+        overview = []
+        for p in programs:
+            if p['year'] != 2027 or not in_scope(p):
+                continue
+            scenarios = by_program.get(p['program_key'], [])
+            cohort = cohort_by_key.get(p['program_key'], {})
+            # Null never means 0% chance; no uncalibrated admission probabilities.
+            probability = cohort.get('admission_probability')
+            if probability is not None and cohort.get('probability_status') != 'calibrated_and_backtested':
+                probability = None
+            overview.append({
+                'year': 2027, 'program_key': p['program_key'], 'university': p['university'],
+                'department': p['department'], 'campus': p['campus'], 'track': p['track'],
+                'admission_round': p['round'], 'quota': p['quota'],
+                'medical_field': medical_field(p), 'formula_source_url': p['formula_source_url'],
+                'formula_verified': bool(p['formula_id'] and p['formula_source_url']),
+                'score_scenario_count': len(scenarios),
+                'scenarios': [{'grade_profile': s['grade_profile'],
+                               'converted_score': s['converted_score'],
+                               'score_scale': s['score_scale'],
+                               'university_weights': s.get('university_weights'),
+                               'score_breakdown': s.get('score_breakdown')}
+                              for s in scenarios],
+                'cohort_count_band': cohort.get('participant_count_band'),
+                'cohort_score_p25': cohort.get('score_p25'),
+                'cohort_score_p50': cohort.get('score_p50'),
+                'cohort_score_p75': cohort.get('score_p75'),
+                'admission_probability': probability,
+                'status': ('validated_probability' if probability is not None else
+                           'cohort_available' if cohort else
+                           'converted_scenarios' if scenarios else
+                           'rule_verified_no_score_profiles' if p['formula_id'] else
+                           'formula_unavailable'),
+            })
+        write_json(data_dir / 'admissions-outlook-2027.json', {
+            'schema_version': '1.0', 'year': 2027, 'exam_type': 'september',
+            'program_count': len(overview),
+            'score_ready_count': sum(bool(p['scenarios']) for p in overview),
+            'probability_ready_count': sum(p['admission_probability'] is not None for p in overview),
+            'programs': overview,
+            'warning': '미등록 대학은 합격 불가능이 아닌 데이터 미확보 상태입니다. 등급 경계 시나리오는 합격 확률과 다릅니다.'
+        })
         write_json(data_dir / 'build-info.json', {
             'generated_at_utc': datetime.now(timezone.utc).isoformat(),
             'imported_public_csv_count': len(imported),

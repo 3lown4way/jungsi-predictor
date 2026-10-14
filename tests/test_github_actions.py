@@ -29,6 +29,12 @@ def test_static_export_no_raw_personal_outcomes(tmp_path):
     assert distribution['subject_count']==25
     assert len(distribution['subjects'])==25
     assert not (site/'static'/'outcomes_template.csv').exists()
+    outlook=json.loads((site/'data'/'admissions-outlook-2027.json').read_text())
+    assert outlook['year']==2027 and outlook['exam_type']=='september'
+    assert outlook['probability_ready_count']==0
+    assert isinstance(outlook['programs'],list)
+    assert 'score_ready_count' in outlook
+    assert not list(site.glob('data/admissions-outlook-202[2-6].json'))
     adjustment=json.loads((site/'data'/'score-adjustment.json').read_text())
     assert 'backtests' not in adjustment
     assert all('historical_pairs' not in row for row in adjustment['subjects'])

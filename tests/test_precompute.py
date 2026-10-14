@@ -75,6 +75,10 @@ def test_static_export_is_precomputed_reader_not_personal_form(tmp_path):
     assert 'id="score-form"' not in html
     assert 'localStorage' not in (target/'static'/'app.js').read_text(encoding='utf-8')
     assert 'id="subject-select"' in html
+    assert html.index('id="university"') < html.index('id="distribution"')
+    assert 'id="uni-search"' in html
+    assert 'id="uni-category"' in html
+    assert 'href="#university"' in html
     assert 'id="filter-year"' not in html
     summary=json.loads((target/'data'/'precomputed-summary.json').read_text(encoding='utf-8'))
     assert summary['year']==2027
