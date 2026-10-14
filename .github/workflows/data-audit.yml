@@ -19,6 +19,8 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Audit checked-in public data
         run: python -m scripts.audit --output audit-report.json
+      - name: Generate all-university historical completeness matrix
+        run: python -m scripts.historical_coverage_matrix --output historical-coverage.json
       - name: Publish step summary
         run: |
           python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
@@ -28,6 +30,14 @@ jobs:
           print(f"- 등록된 검증 공식 산식: **{d['verified_formula_count']}건**")
           print(f"- 공개 모집단위 CSV: **{len(d['public_csv_files'])}개**")
           print('- 공개용 스냅샷은 실제 지원자 개별 합불 정보를 포함하지 않습니다.')
+          matrix=json.load(open('historical-coverage.json'))
+          counts=matrix['summary']
+          print(f"- 20개 대학×5개년 자료: **{counts['university_year_pairs']}칸**")
+          print(f"- 공식 연도별 진입점: **{counts['source_link_found']}칸**")
+          print(f"- 국·수·영·탐 반영비 검수: **{counts['official_subject_weights_found']}칸**")
+          print(f"- 공식 탐구변표 전수: **{counts['full_inquiry_conversion_verified']}칸**")
+          print(f"- 실제 수능 계산 검증: **{counts['csat_calculation_validated']}칸**")
+          print(f"- 9평→합불 예측 검증: **{counts['publishable_probability']}칸**")
           print('- 이 작업은 공식 웹사이트에서 최신 모집요강을 자동 수집하지 않습니다.')
           PY
       - uses: actions/upload-artifact@v4
