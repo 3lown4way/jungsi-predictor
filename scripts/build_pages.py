@@ -162,6 +162,45 @@ def run(output: Path, api_base_url: str = ''):
             'probability_ready_count':0,'programs':overview,
             'warning':'공식 점수 기반 대학별 환산. 2027 예측확률 검증 전에는 퍼센트를 출력하지 않음.'
         })
+        # Only prevalidated aggregate curves from offline Actions. No private rows.
+        model_file=ROOT/'data'/'public'/'models'/'historical-2027.json'
+        if model_file.is_file():
+            hist=json.loads(model_file.read_text(encoding='utf-8'))
+            if (hist.get('target_year')!=2027 or hist.get('reference_exam')!='september'
+                or hist.get('min_history',0)<180 or hist.get('min_holdout_years',0)<2):
+                raise ValueError('invalid historical prediction provenance')
+            approved={p['program_key'] for p in overview if p['formula_verified']}
+            seen=set();curves=[]
+            for record in hist.get('curves',[]):
+                key=record['program_key']
+                if key not in approved or key in seen or record.get('year')!=2027 or record.get('exam_type')!='september':
+                    raise ValueError('historical forecast program or target is not authorized')
+                if record.get('backtested_years')!=[2025,2026] or len(record.get('curve',[]))<100:
+                    raise ValueError('historical forecast holdout not demonstrated')
+                years=record.get('training_years',[])
+                if len(set(years))<4 or not set(years).issubset(set(range(2022,2027))):
+                    raise ValueError('historical training-year contamination')
+                seen.add(key)
+                prior=-1;points=[]
+                for point in record['curve']:
+                    x=point['score_fraction'];prob=point['probability']
+                    if not (type(x) in (int,float) and type(prob) in (int,float)
+                            and 0<=prob<=1 and prior<x<=1.5):
+                        raise ValueError('invalid public probability curve')
+                    prior=x
+                    points.append({'score_fraction':x,'probability':prob})
+                # Explicit allowlist. Future private input fields cannot leak to Pages.
+                curves.append({'program_key':key,'year':2027,'exam_type':'september',
+                               'backtested_years':[2025,2026],
+                               'training_years':sorted(set(years)),'curve':points})
+            exported={'schema_version':'1.0','target_year':2027,'reference_exam':'september',
+                      'coverage':{'trained_programs':len(curves)},'curves':curves,
+                      'status':'trained' if curves else 'insufficient_verified_training'}
+        else:
+            exported={'schema_version':'1.0','target_year':2027,'reference_exam':'september',
+                      'coverage':{'trained_programs':0},'curves':[],
+                      'status':'insufficient_historical_formulas_and_verified_outcomes'}
+        write_json(data_dir/'historical-forecast-2027.json',exported)
         write_json(data_dir / 'build-info.json', {
             'generated_at_utc': datetime.now(timezone.utc).isoformat(),
             'imported_public_csv_count': len(imported),

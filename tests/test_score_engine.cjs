@@ -72,3 +72,17 @@ test('2027 separate grade penalties and percentile inquiry conversions are arith
  e.tables.pop();
  assert.equal(E.score(s,e).status,'missing_conversion');
 });
+
+
+test('precomputed historical prediction curve is consulted only within verified score support',()=>{
+ const weighted={status:'calculated',score:800,scale:1000};
+ const model={year:2027,exam_type:'september',program_key:'test-chem',
+  backtested_years:[2025,2026],
+  curve:Array.from({length:121},(_,i)=>({score_fraction:.7+i*.002,probability:.2+i*.005}))};
+ const p=E.lookupProbability(weighted,model,'test-chem');
+ assert.ok(p!==null&&p>.4&&p<.6);
+ assert.equal(E.lookupProbability({...weighted,score:500},model,'test-chem'),null);
+ assert.equal(E.lookupProbability(weighted,{...model,backtested_years:[2025]},'test-chem'),null);
+ assert.equal(E.lookupProbability(weighted,model,'wrong-major'),null);
+ assert.equal(E.lookupProbability({status:'rule_missing'},model,'test-chem'),null);
+});

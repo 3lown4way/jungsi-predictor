@@ -6,7 +6,7 @@ const fmt=n=>typeof n==='number'&&Number.isFinite(n)?n.toLocaleString('ko-KR',{m
 const getJSON=async name=>{const r=await fetch('./data/'+name,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);return r.json();};
 const showMsg=(el,message)=>{el.replaceChildren();const x=document.createElement('div');x.className='empty slim';x.textContent=message;el.append(x);};
 const shortName=name=>name.replace(/대학교$/,'대').replace(/여자대$/,'여대');
-let outlook=[],targets=[],groupLabels={},cohort=[],distributions=[],selectedDistribution=null,officialStudent=null,ruleMap=new Map();
+let outlook=[],targets=[],groupLabels={},cohort=[],distributions=[],selectedDistribution=null,officialStudent=null,ruleMap=new Map(),historicalCurves=new Map();
 const isMedical=p=>Boolean(p.medical_field);
 function matchSearch(p,term){if(!term)return true;const text=[p.university,shortName(p.university),p.department,p.campus].join(' ').toLocaleLowerCase();return text.includes(term);}
 function matchCategory(p,category){if(category==='all')return true;if(category==='general')return !isMedical(p);if(category==='medical')return isMedical(p);return p.medical_field===category;}
@@ -40,12 +40,14 @@ function renderPrograms(){
   const w=hasScore?'<div class="card-data-note">반영비율: 국어 '+fmt(s.weights.korean*100)+'% · 수학 '+fmt(s.weights.math*100)+'% · 영어 '+fmt(s.weights.english*100)+'% · 탐구 '+fmt(s.weights.inquiry*100)+'%</div>':'';
   const info=p.verified_partial_rule;
   const partial=info&&!hasScore?'<div class="card-data-note"><strong>공식 확인된 영역 반영</strong> · 국어 '+fmt(info.weights.korean*100)+'% · 수학 '+fmt(info.weights.math*100)+'% · 탐구 '+fmt(info.weights.inquiry*100)+'%<div class="muted-xs">영어·한국사는 별도 감점이며 탐구 변표·정밀 총점 산식 미확인. 현재 환산점수 계산 불가.</div></div>':'';
+  const probability=ScoreEngine.lookupProbability(s,historicalCurves.get(p.program_key),p.program_key);
   const hasCohort=typeof p.cohort_score_p50==='number';
   const cohortInfo=hasCohort?'<div class="card-data-note">9평 모의지원 중앙값 '+fmt(p.cohort_score_p50)+' · 가운데 50% 구간 '+fmt(p.cohort_score_p25)+'–'+fmt(p.cohort_score_p75)+'</div>':'';
   const why=hasScore?'2027학년도 검증 산식 기준 · 9평 원점수와 수능 환산 동일시 금지':esc(s.message);
   const source=p.formula_source_url?'<a class="score-source" href="'+esc(p.formula_source_url)+'" target="_blank" rel="noopener noreferrer">공식 전형자료 ↗</a>':'<span class="muted-xs">공식 자료 미등록</span>';
-  const odds='분석 준비 중'; // No score-dependent calibrated probability curve has been published.
-  return '<article class="admission-card"><div class="admission-card-top"><div><strong class="admission-card-title">'+esc(p.university)+' · '+esc(p.department)+'</strong><div class="muted-xs">'+esc(p.campus||'')+' · '+(p.admission_round?esc(p.admission_round)+'군':'모집군 확인 전')+' · '+(isMedical(p)?'매디컬':'일반대학')+'</div></div><span class="admission-status">'+(hasScore?'공식 환산점수 계산':'산식·자료 준비 중')+'</span></div><div class="admission-card-data"><div><span>나의 9평 대학별 환산점수</span><strong>'+esc(scoreLabel)+'</strong><small>'+why+'</small></div><div><span>합격 가능성</span><strong class="placeholder-text">'+odds+'</strong><small>0%가 아닌 검증된 모델 미등록</small></div></div>'+w+partial+breakdown+cohortInfo+'<div class="admission-card-footer">'+source+'</div></article>';
+  const odds=probability===null?'분석 준비 중':(probability*100).toFixed(1)+'%';
+  const oddsExplanation=probability===null?'0%가 아닌 과거 연도별 공식 반영비·실측 합불 자료 검증 대기':'당시 대학 반영비 계산 + 2025·2026 연도 순행 검증 · 표본 편향 가능';
+  return '<article class="admission-card"><div class="admission-card-top"><div><strong class="admission-card-title">'+esc(p.university)+' · '+esc(p.department)+'</strong><div class="muted-xs">'+esc(p.campus||'')+' · '+(p.admission_round?esc(p.admission_round)+'군':'모집군 확인 전')+' · '+(isMedical(p)?'매디컬':'일반대학')+'</div></div><span class="admission-status">'+(hasScore?'공식 환산점수 계산':'산식·자료 준비 중')+'</span></div><div class="admission-card-data"><div><span>나의 9평 대학별 환산점수</span><strong>'+esc(scoreLabel)+'</strong><small>'+why+'</small></div><div><span>합격 가능성</span><strong class="'+(probability===null?'placeholder-text':'probability-text')+'">'+odds+'</strong><small>'+oddsExplanation+'</small></div></div>'+w+partial+breakdown+cohortInfo+'<div class="admission-card-footer">'+source+'</div></article>';
  }).join('');
 }
 function renderTargets(){
@@ -64,12 +66,13 @@ function renderTargets(){
 }
 async function loadAdmissions(){
  try{
-  const [d,t,rulebook]=await Promise.all([getJSON('admissions-outlook-2027.json'),getJSON('targets-2027.json'),getJSON('scoring-rules-2027.json')]);
+  const [d,t,rulebook,history]=await Promise.all([getJSON('admissions-outlook-2027.json'),getJSON('targets-2027.json'),getJSON('scoring-rules-2027.json'),getJSON('historical-forecast-2027.json')]);
   outlook=d.programs||[];targets=t.universities||[];groupLabels=t.medical_fields||{};
   ruleMap=new Map((rulebook.rules||[]).map(r=>[r.program_key,r]));
+  historicalCurves=new Map((history.curves||[]).map(r=>[r.program_key,r]));
   $('#metric-programs').textContent=fmt(d.program_count);
   $('#metric-ready').textContent=fmt(d.score_ready_count);
-  $('#metric-probability').textContent=fmt(d.probability_ready_count);
+  $('#metric-probability').textContent=fmt(history.coverage?.trained_programs||0);
   renderPrograms();renderTargets();
  }catch(e){showMsg($('#university-results'),'대학별 사전 계산 데이터를 불러오지 못했습니다: '+e.message);}
 }

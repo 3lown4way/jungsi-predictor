@@ -22,6 +22,11 @@ def test_static_export_no_raw_personal_outcomes(tmp_path):
     assert (site/'static'/'config.js').exists()
     assert (site/'static'/'score-engine.js').exists()
     assert (site/'data'/'scoring-rules-2027.json').is_file()
+    history=json.loads((site/'data'/'historical-forecast-2027.json').read_text())
+    assert history['target_year']==2027 and history['reference_exam']=='september'
+    assert history['curves']==[]
+    assert 'applicant_hash' not in json.dumps(history)
+    assert 'student' not in json.dumps(history)
     rulebook=json.loads((site/'data'/'scoring-rules-2027.json').read_text())
     assert rulebook['year']==2027
     assert rulebook['formula_count']==len(rulebook['rules'])

@@ -110,5 +110,23 @@
   return {status:'calculated',score:round3(Object.values(breakdown).reduce((a,b)=>a+b,0)),
           scale:spec.score_scale,breakdown,weights};
  }
- return {validateOfficial,score};
+ function lookupProbability(scored,record,expectedKey){
+  if(!scored||scored.status!=='calculated'||!(scored.scale>0)||
+     !Number.isFinite(scored.score)||!record||record.program_key!==expectedKey||
+     record.year!==2027||record.exam_type!=='september'||
+     !Array.isArray(record.backtested_years)||record.backtested_years.join(',')!=='2025,2026'||
+     !Array.isArray(record.curve)||record.curve.length<100)return null;
+  const x=scored.score/scored.scale, list=record.curve;
+  if(x<list[0].score_fraction||x>list[list.length-1].score_fraction)return null;
+  for(let i=1;i<list.length;i++){
+   const a=list[i-1],b=list[i];
+   if(x<=b.score_fraction){
+    const t=(x-a.score_fraction)/(b.score_fraction-a.score_fraction);
+    const p=a.probability+t*(b.probability-a.probability);
+    return Number.isFinite(p)&&p>=0&&p<=1?p:null;
+   }
+  }
+  return null;
+ }
+ return {validateOfficial,score,lookupProbability};
 });
