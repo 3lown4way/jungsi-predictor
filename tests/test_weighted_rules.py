@@ -115,3 +115,17 @@ def test_duplicate_pct_conversion_table_rejected(tmp_path):
         writer.writeheader();writer.writerow(row);writer.writerow(row)
     with pytest.raises(ValueError,match='중복'):
         read_percentile_conversion_tables(tmp_path)
+
+
+def test_shared_2025_soongsil_social_science_conversion_table_complete():
+    from app.weighted_rules import read_percentile_conversion_tables
+    d=read_percentile_conversion_tables()
+    seq=[d[(2025,'숭실대학교','soongsil_2025_social_science','*',p)] for p in range(101)]
+    assert len(seq)==101
+    assert seq[100]==70
+    assert seq[99]==69.08
+    assert seq[91]==64.18
+    assert seq[88]==63.10
+    assert seq[83]==61.34
+    assert seq[0]==30.71
+    assert all(seq[p]<=seq[p+1] for p in range(100))

@@ -86,3 +86,15 @@ test('precomputed historical prediction curve is consulted only within verified 
  assert.equal(E.lookupProbability(weighted,model,'wrong-major'),null);
  assert.equal(E.lookupProbability({status:'rule_missing'},model,'test-chem'),null);
 });
+
+
+test('A combined official inquiry conversion applies only to social/science, not vocational',()=>{
+ const x=entry();
+ x.spec.components.inquiry={metric:'converted_pct',max_value:70,table_id:'normal',aggregation:'mean2'};
+ x.tables=[{table_id:'normal',subject:'*',percentile:97,converted_score:67.36},
+           {table_id:'normal',subject:'*',percentile:96,converted_score:66.69}];
+ const s=applicant();s.inquiries[0].pct=97;s.inquiries[1].pct=96;
+ assert.equal(E.score(s,x).status,'calculated');
+ s.inquiries[1].kind='vocational';
+ assert.equal(E.score(s,x).status,'ineligible'); // official program science-only
+});

@@ -173,7 +173,11 @@ def compute_weighted(student, program, *, tables=None, percentile_tables=None):
             return 100*float(val)/part['max_value']
         subject=(inquiry or {}).get('name') if inquiry is not None else area
         selected=percentile_tables if mode=='converted_pct' else tables
-        value=selected.get((program['year'],program['university'],part['table_id'],subject,int(val)))
+        key=(program['year'],program['university'],part['table_id'],subject,int(val))
+        value=selected.get(key)
+        if value is None and inquiry is not None and inquiry.get('kind') in ('social','science'):
+            # Official combined social/science conversion curve only; not vocational.
+            value=selected.get((program['year'],program['university'],part['table_id'],'*',int(val)))
         if value is None:
             return None
         points=part.get('kind_bonus_points',{}).get((inquiry or {}).get('kind'),0)

@@ -66,7 +66,10 @@
    if(mode==='std')return part.max_value>0?{value:100*value/part.max_value}:{status:'rule_missing',message:'표준점수 기준 만점 누락'};
    if(mode==='converted_std'||mode==='converted_pct'){
     const subject=inq?inq.name:area;
-    const row=(entry.tables||[]).find(t=>t.table_id===part.table_id&&t.subject===subject&&(mode==='converted_pct'?t.percentile===value:t.std_score===value));
+    const rows=(entry.tables||[]).filter(t=>t.table_id===part.table_id&&
+      (mode==='converted_pct'?t.percentile===value:t.std_score===value));
+    const row=rows.find(t=>t.subject===subject)||
+     ((inq&&['social','science'].includes(inq.kind))?rows.find(t=>t.subject==='*'):undefined);
     if(!row)return {status:'missing_conversion',message:subject+' '+(mode==='converted_pct'?'백분위':'표준점수')+' '+value+'의 공식 대학별 변환표준점수가 미등록입니다.'};
     const bonus=((part.kind_bonus_points||{})[inq?.kind]||0);
     return part.max_value>0?{value:100*(row.converted_score+bonus)/part.max_value}:{status:'rule_missing',message:'변환표 만점 누락'};
