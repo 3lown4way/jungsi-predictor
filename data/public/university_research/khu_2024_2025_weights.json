@@ -1,0 +1,86 @@
+[
+  {
+    "year": 2024,
+    "university": "경희대학교",
+    "group": "natural",
+    "weights": {
+      "korean": 0.2,
+      "math": 0.35,
+      "english": 0.15,
+      "inquiry": 0.3
+    },
+    "status": "official_weight_ratio_only_not_complete_scoring_formula",
+    "source_document": "2025학년도 경희대학교 정시 모집요강 (2024↔2025 정시 반영비 비교표)",
+    "source_url": "https://iphak.khu.ac.kr/file/download.do?ofn=2025+%EC%A0%95%EC%8B%9C%EB%AA%A8%EC%A7%91%EC%9A%94%EA%B0%95_fv.pdf&sfn=20240830052100850_2025+%EC%A0%95%EC%8B%9C%EB%AA%A8%EC%A7%91%EC%9A%94%EA%B0%95_fv.pdf",
+    "checked_on": "2026-10-14",
+    "missing_for_full_score": [
+      "해당 학년도 모집단위별 모집요강 최종 모집군/정원 검증",
+      "영어·한국사 등급별 환산표",
+      "해당 학년도 탐구 변환표준점수",
+      "공식 대학별 총점·가산점 및 반올림 검산"
+    ]
+  },
+  {
+    "year": 2024,
+    "university": "경희대학교",
+    "group": "oriental_medicine_humanities",
+    "weights": {
+      "korean": 0.25,
+      "math": 0.35,
+      "english": 0.15,
+      "inquiry": 0.25
+    },
+    "status": "official_weight_ratio_only_not_complete_scoring_formula",
+    "source_document": "2025학년도 경희대학교 정시 모집요강 (2024↔2025 정시 반영비 비교표)",
+    "source_url": "https://iphak.khu.ac.kr/file/download.do?ofn=2025+%EC%A0%95%EC%8B%9C%EB%AA%A8%EC%A7%91%EC%9A%94%EA%B0%95_fv.pdf&sfn=20240830052100850_2025+%EC%A0%95%EC%8B%9C%EB%AA%A8%EC%A7%91%EC%9A%94%EA%B0%95_fv.pdf",
+    "checked_on": "2026-10-14",
+    "missing_for_full_score": [
+      "해당 학년도 모집단위별 모집요강 최종 모집군/정원 검증",
+      "영어·한국사 등급별 환산표",
+      "해당 학년도 탐구 변환표준점수",
+      "공식 대학별 총점·가산점 및 반올림 검산"
+    ]
+  },
+  {
+    "year": 2025,
+    "university": "경희대학교",
+    "group": "natural",
+    "weights": {
+      "korean": 0.2,
+      "math": 0.35,
+      "english": 0.15,
+      "inquiry": 0.3
+    },
+    "status": "official_weight_ratio_only_not_complete_scoring_formula",
+    "source_document": "2025학년도 경희대학교 정시 모집요강 (2024↔2025 정시 반영비 비교표)",
+    "source_url": "https://iphak.khu.ac.kr/file/download.do?ofn=2025+%EC%A0%95%EC%8B%9C%EB%AA%A8%EC%A7%91%EC%9A%94%EA%B0%95_fv.pdf&sfn=20240830052100850_2025+%EC%A0%95%EC%8B%9C%EB%AA%A8%EC%A7%91%EC%9A%94%EA%B0%95_fv.pdf",
+    "checked_on": "2026-10-14",
+    "missing_for_full_score": [
+      "해당 학년도 모집단위별 모집요강 최종 모집군/정원 검증",
+      "영어·한국사 등급별 환산표",
+      "해당 학년도 탐구 변환표준점수",
+      "공식 대학별 총점·가산점 및 반올림 검산"
+    ]
+  },
+  {
+    "year": 2025,
+    "university": "경희대학교",
+    "group": "oriental_medicine_humanities",
+    "weights": {
+      "korean": 0.35,
+      "math": 0.2,
+      "english": 0.15,
+      "inquiry": 0.3
+    },
+    "status": "official_weight_ratio_only_not_complete_scoring_formula",
+    "source_document": "2025학년도 경희대학교 정시 모집요강 (2024↔2025 정시 반영비 비교표)",
+    "source_url": "https://iphak.khu.ac.kr/file/download.do?ofn=2025+%EC%A0%95%EC%8B%9C%EB%AA%A8%EC%A7%91%EC%9A%94%EA%B0%95_fv.pdf&sfn=20240830052100850_2025+%EC%A0%95%EC%8B%9C%EB%AA%A8%EC%A7%91%EC%9A%94%EA%B0%95_fv.pdf",
+    "checked_on": "2026-10-14",
+    "missing_for_full_score": [
+      "해당 학년도 모집단위별 모집요강 최종 모집군/정원 검증",
+      "영어·한국사 등급별 환산표",
+      "해당 학년도 탐구 변환표준점수",
+      "공식 대학별 총점·가산점 및 반올림 검산"
+    ]
+  }
+]
