@@ -93,10 +93,20 @@ def run():
         group_count+=len(items)
     with (rroot/'data/public/historical_admissions/konkuk_2025_70pct_cuts.json').open(encoding='utf-8') as f:
         ku=json.load(f)
-    if not all(x.get('probability_label_eligible') is False for x in ku):
+    with (rroot/'data/public/historical_admissions/soongsil_2025_70pct_cuts.json').open(encoding='utf-8') as f:
+        soongsil=json.load(f)
+    if not all(x.get('probability_label_eligible') is False for x in ku+soongsil):
         raise ValueError('final enrollee 70% cuts are NOT training labels')
+    from app.weighted_rules import read_percentile_conversion_tables
+    final_tables=read_percentile_conversion_tables()
+    if not all((2025,'숭실대학교','soongsil_2025_social_science','*',p) in final_tables
+               for p in range(101)):
+        raise ValueError('2025 Soongsil conversion table incomplete')
     report['historical_research_verified_partial_weight_groups']=group_count
-    report['historical_research_non_KHU_70pct_cut_count']=len(ku)
+    report['historical_research_non_KHU_70pct_cut_count']=len(ku)+len(soongsil)
+    report['historical_2025_soongsil_actual_conversion_percentiles']=101
+    report['historical_actual_csat_calculator_count']=1
+    report['historical_september_adjusted_calculator_count']=0
     from scripts.historical_sources import summary as historical_source_summary
     report['historical_official_research']=historical_source_summary()
     from scripts.precompute import load_boundaries
