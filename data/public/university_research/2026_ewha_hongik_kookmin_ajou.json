@@ -1,0 +1,245 @@
+{
+  "year": 2026,
+  "records": [
+    {
+      "year": 2026,
+      "university": "이화여자대학교",
+      "group": "일반 인문",
+      "weights": {
+        "korean": 0.3,
+        "math": 0.3,
+        "english": 0.2,
+        "inquiry": 0.2
+      },
+      "notes": "국수 표준점수, 탐구 백분위 기반 전용 변표 2과목 합. 영어 등급별 반영, 한국사 등급 가산",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000163",
+      "source_type": "official_2026_adiga_score_explanation",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "per-year complete inquiry transformation where relevant",
+        "final worked total-score validation and grouping",
+        "verified applicant admission outcomes"
+      ]
+    },
+    {
+      "year": 2026,
+      "university": "이화여자대학교",
+      "group": "일반 자연",
+      "weights": {
+        "korean": 0.25,
+        "math": 0.3,
+        "english": 0.2,
+        "inquiry": 0.25
+      },
+      "notes": "자연계 과탐 한 과목 당 해당 변환표준점수 6% 가산. 간호학부·미래산업약학전공 인문/자연 유리한 점수 선택",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000163",
+      "source_type": "official_2026_adiga_score_explanation",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "per-year complete inquiry transformation where relevant",
+        "final worked total-score validation and grouping",
+        "verified applicant admission outcomes"
+      ]
+    },
+    {
+      "year": 2026,
+      "university": "홍익대학교",
+      "group": "서울 인문계열·캠퍼스자율전공",
+      "weights": {
+        "korean": 0.3,
+        "math": 0.3,
+        "english": 0.15,
+        "inquiry": 0.25
+      },
+      "notes": "국어 수학 표준점수, 탐구 2과목 표준점수 합, 영어 등급환산. 한국사 별도 가산. 서울캠퍼스",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000212",
+      "source_type": "official_2026_adiga_score_explanation",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "per-year complete inquiry transformation where relevant",
+        "final worked total-score validation and grouping",
+        "verified applicant admission outcomes"
+      ]
+    },
+    {
+      "year": 2026,
+      "university": "홍익대학교",
+      "group": "서울 자연계열·캠퍼스자율전공",
+      "weights": {
+        "korean": 0.2,
+        "math": 0.35,
+        "english": 0.15,
+        "inquiry": 0.3
+      },
+      "notes": "국어 수학 표준점수, 탐구 2과목 표준점수 합, 영어 등급환산. 한국사 별도 가산. 서울캠퍼스",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000212",
+      "source_type": "official_2026_adiga_score_explanation",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "per-year complete inquiry transformation where relevant",
+        "final worked total-score validation and grouping",
+        "verified applicant admission outcomes"
+      ]
+    },
+    {
+      "year": 2026,
+      "university": "국민대학교",
+      "group": "일반 인문",
+      "weights": {
+        "korean": 0.3,
+        "math": 0.3,
+        "english": 0.2,
+        "inquiry": 0.2
+      },
+      "notes": "표준점수, 탐구 두 과목 표준점수 합, 수학 기하/미적분 및 과탐 보너스 일부 유형",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000078",
+      "source_type": "official_2026_adiga_score_explanation",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "per-year complete inquiry transformation where relevant",
+        "final worked total-score validation and grouping",
+        "verified applicant admission outcomes"
+      ]
+    },
+    {
+      "year": 2026,
+      "university": "국민대학교",
+      "group": "일반 자연",
+      "weights": {
+        "korean": 0.2,
+        "math": 0.3,
+        "english": 0.2,
+        "inquiry": 0.3
+      },
+      "notes": "2026 국민대 자연 미적분/기하 및 과탐 선택 시 각 과목 표준점수 3% 가산 (최종 산식 확인)",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000078",
+      "source_type": "official_2026_adiga_score_explanation",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "per-year complete inquiry transformation where relevant",
+        "final worked total-score validation and grouping",
+        "verified applicant admission outcomes"
+      ]
+    },
+    {
+      "year": 2026,
+      "university": "국민대학교",
+      "group": "자유전공 A",
+      "weights": {
+        "korean": 0.4,
+        "math": 0.3,
+        "english": 0.1,
+        "inquiry": 0.2
+      },
+      "notes": "A/B형 중 유리한 점수 적용, 선택과목 가산 조건 상이",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000078",
+      "source_type": "official_2026_adiga_score_explanation",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "per-year complete inquiry transformation where relevant",
+        "final worked total-score validation and grouping",
+        "verified applicant admission outcomes"
+      ]
+    },
+    {
+      "year": 2026,
+      "university": "국민대학교",
+      "group": "자유전공 B",
+      "weights": {
+        "korean": 0.3,
+        "math": 0.4,
+        "english": 0.1,
+        "inquiry": 0.2
+      },
+      "notes": "A/B형 중 유리한 점수 적용, 선택과목 가산 조건 상이",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000078",
+      "source_type": "official_2026_adiga_score_explanation",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "per-year complete inquiry transformation where relevant",
+        "final worked total-score validation and grouping",
+        "verified applicant admission outcomes"
+      ]
+    },
+    {
+      "year": 2026,
+      "university": "아주대학교",
+      "group": "자연Ⅰ(공대·약학)",
+      "weights": {
+        "korean": 0.2,
+        "math": 0.35,
+        "english": 0.15,
+        "inquiry": 0.3
+      },
+      "notes": "국수 표준점수, 탐구 백분위변표, 영어 등급 환산, 한국사 감점, 미적/기하·과탐 3% 가산",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000146",
+      "source_type": "official_2026_adiga_score_explanation",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "per-year complete inquiry transformation where relevant",
+        "final worked total-score validation and grouping",
+        "verified applicant admission outcomes"
+      ]
+    },
+    {
+      "year": 2026,
+      "university": "아주대학교",
+      "group": "자연Ⅱ(의학·국방디지털)",
+      "weights": {
+        "korean": 0.2,
+        "math": 0.4,
+        "english": 0.1,
+        "inquiry": 0.3
+      },
+      "notes": "의학과 최종 선발 수능 95%+면접 5%; 국수 표준점수, 탐구 변표, 한국사 감점",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000146",
+      "source_type": "official_2026_adiga_score_explanation",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "per-year complete inquiry transformation where relevant",
+        "final worked total-score validation and grouping",
+        "verified applicant admission outcomes"
+      ]
+    },
+    {
+      "year": 2026,
+      "university": "아주대학교",
+      "group": "인문Ⅰ(경영·간호)",
+      "weights": {
+        "korean": 0.25,
+        "math": 0.4,
+        "english": 0.15,
+        "inquiry": 0.2
+      },
+      "notes": "국수 표준점수, 탐구 백분위변표, 영어 등급 환산, 한국사 감점",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000146",
+      "source_type": "official_2026_adiga_score_explanation",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "per-year complete inquiry transformation where relevant",
+        "final worked total-score validation and grouping",
+        "verified applicant admission outcomes"
+      ]
+    },
+    {
+      "year": 2026,
+      "university": "아주대학교",
+      "group": "인문Ⅱ(인문·사회)",
+      "weights": {
+        "korean": 0.35,
+        "math": 0.25,
+        "english": 0.15,
+        "inquiry": 0.25
+      },
+      "notes": "국수 표준점수, 탐구 백분위변표, 영어 등급 환산, 한국사 감점",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000146",
+      "source_type": "official_2026_adiga_score_explanation",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "per-year complete inquiry transformation where relevant",
+        "final worked total-score validation and grouping",
+        "verified applicant admission outcomes"
+      ]
+    }
+  ]
+}
