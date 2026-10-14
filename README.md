@@ -231,3 +231,5 @@ python -m http.server 8080 --directory site
 - 경희대 자연계열 국어 25%·수학 40%·탐구 35%, 한의예(인문) 사회계열 국어 35%·수학 35%·탐구 30%, 영어·한국사 별도 감점, 과탐 가산점은 대입정보포털 2027학년도 전형자료를 출처로 `data/public/university_research/2027.json`에 등록했습니다.
 - 모집군·모집정원 및 최종 탐구 변환표준점수표는 확인 전이므로 비워둡니다. 위 정보는 **부분 검증**이며 대학별 환산점수나 확률 산출 가능 상태를 의미하지 않습니다.
 - 출처: [경희대 2027 어디가](https://m.adiga.kr/mob/ucp/uvt/uni/univDetailSelection.do?menuId=MOUVTINF1001&searchSyr=2027&unvCd=0000066), [서울대 2027 공식 입학전형 안내](https://admission.snu.ac.kr/undergraduate/notice?bbsidx=167069&md=v).
+
+- 서울대학교는 2026년 8월 28일 공식 [2027학년도 정시모집 ‘나’군 안내](https://admission.snu.ac.kr/undergraduate/regular/guide)를 게시하였으므로 위 3개 모집단위의 **모집군을 나군으로 확인**해 반영했습니다. <2027 정시 최종 안내>를 최우선 기준으로 이후 변동도 검수합니다.
