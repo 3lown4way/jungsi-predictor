@@ -15,7 +15,7 @@ from app.database import connect, init_database
 FIELDS=['year','program_key','university','campus','department','track','round',
         'quota','formula_id','formula_source_url','cutoff_70','cutoff_source_url',
         'cutoff_kind','last_verified']
-SUPPORTED_FORMULA={'sangmyung_pct_2025_2026','weighted_official_v1'}
+SUPPORTED_FORMULA={'sangmyung_pct_2025_2026','weighted_official_v1','soongsil_2025_csat_v1'}
 
 
 def run(path):
@@ -36,7 +36,7 @@ def run(path):
             if not formula and not (row['formula_source_url'] or '').startswith('https://'):
                 raise ValueError(f'{lineno}행 공식 모집단위 자료 출처 필요')
             if formula is not None:
-                if formula not in SUPPORTED_FORMULA or (formula=='sangmyung_pct_2025_2026' and year not in (2025,2026)):
+                if formula not in SUPPORTED_FORMULA or (formula=='sangmyung_pct_2025_2026' and year not in (2025,2026)) or (formula=='soongsil_2025_csat_v1' and (year!=2025 or row['university']!='숭실대학교')):
                     raise ValueError(f'{lineno}행: 아직 미검증 반영식을 사용하려는 시도')
                 if not row['formula_source_url'].startswith('https://'):
                     raise ValueError(f'{lineno}행: 산식의 공식 출처 주소 필요')

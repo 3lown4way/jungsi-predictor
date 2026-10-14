@@ -18,6 +18,9 @@ class ScoreResult:
 
 
 def compute(student: dict, program: dict) -> Optional[ScoreResult]:
+    if program.get('formula_id') == 'soongsil_2025_csat_v1':
+        from app.soongsil_2025 import compute_soongsil_2025_csat
+        return compute_soongsil_2025_csat(student,program)
     if program.get('formula_id') == 'weighted_official_v1':
         from app.weighted_rules import compute_weighted
         return compute_weighted(student,program)

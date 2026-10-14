@@ -1,0 +1,131 @@
+{
+  "year": 2025,
+  "university": "숭실대학교",
+  "mode": "2025 actual CSAT score components (NOT 2025 September / user-facing 2027 admission prediction)",
+  "source_2025_admission_rules": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2025&unvCd=0000143",
+  "source_2025_final_inquiry_conversions": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000143",
+  "source_2025_standard_score_maxima": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000143",
+  "formula_id": "soongsil_2025_csat_v1",
+  "data_table": "data/public/conversion_tables/pct-2025-soongsil-regular.csv",
+  "csat_maxima": {
+    "korean": 139,
+    "math": 140,
+    "inquiry_conversion": 70
+  },
+  "groups": [
+    {
+      "group": "humanities",
+      "weights": {
+        "korean": 0.35,
+        "math": 0.25,
+        "english": 0.2,
+        "inquiry": 0.2
+      }
+    },
+    {
+      "group": "business",
+      "weights": {
+        "korean": 0.25,
+        "math": 0.35,
+        "english": 0.2,
+        "inquiry": 0.2
+      }
+    },
+    {
+      "group": "free_humanities",
+      "weights": {
+        "korean": 0.3,
+        "math": 0.25,
+        "english": 0.2,
+        "inquiry": 0.25
+      },
+      "social_percentile_bonus_each": 0.025
+    },
+    {
+      "group": "natural1",
+      "weights": {
+        "korean": 0.2,
+        "math": 0.35,
+        "english": 0.2,
+        "inquiry": 0.25
+      },
+      "math_std_bonus": 0.07,
+      "science_percentile_bonus_each": 0.025
+    },
+    {
+      "group": "natural2",
+      "weights": {
+        "korean": 0.2,
+        "math": 0.35,
+        "english": 0.2,
+        "inquiry": 0.25
+      },
+      "math_std_bonus": 0.05,
+      "science_percentile_bonus_each": 0.025
+    },
+    {
+      "group": "free_natural",
+      "weights": {
+        "korean": 0.2,
+        "math": 0.35,
+        "english": 0.2,
+        "inquiry": 0.25
+      },
+      "math_std_bonus": 0.05,
+      "science_percentile_bonus_each": 0.025
+    }
+  ],
+  "english_grade_points": [
+    200,
+    194,
+    186,
+    173,
+    144,
+    116,
+    87,
+    44,
+    0
+  ],
+  "history_grade_additions": [
+    4,
+    3.5,
+    3,
+    2.5,
+    2,
+    1.5,
+    1,
+    0.5,
+    0
+  ],
+  "per_component_rounding": "truncate_at_three_decimals",
+  "official_worked_example": {
+    "natural1": {
+      "korean_std": 116,
+      "math_std": 123,
+      "english_grade": 3,
+      "history_grade": 4,
+      "inquiry_percentiles": [
+        91,
+        99
+      ],
+      "final": 914.23
+    },
+    "natural2": {
+      "korean_std": 116,
+      "math_std": 123,
+      "english_grade": 3,
+      "history_grade": 4,
+      "inquiry_percentiles": [
+        91,
+        99
+      ],
+      "final": 911.77
+    }
+  },
+  "availability_status": "CSAT_COMPONENT_FORMULA_REPRODUCED_SEPTEMBER_NOT_CALIBRATED",
+  "requires_before_historical_september_training": [
+    "2025 September official score distribution to 2025 CSAT-equivalent mapping",
+    "historical personal 9평 data with verified real application results",
+    "all program-specific school disciplinary and eligibility factors"
+  ]
+}
