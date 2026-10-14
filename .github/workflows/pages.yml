@@ -35,6 +35,8 @@ jobs:
         env:
           ADMISSION_DB: ${{ runner.temp }}/deploy-tests.sqlite3
         run: python -m pytest -q
+      - name: Test score entry and official arithmetic
+        run: node --test tests/test_score_engine.cjs
       - name: Audit public data
         run: python -m scripts.audit --output audit-report.json
       - name: Export static dashboard (no personal outcomes)

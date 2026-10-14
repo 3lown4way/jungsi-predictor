@@ -1,0 +1,52 @@
+const test=require('node:test');
+const assert=require('node:assert/strict');
+const E=require('../app/static/score-engine.js');
+const subject=(name,points)=>({subject:name,bins:points.map(score=>({score,count:1}))});
+const subjects=[subject('국어',[130,140]),subject('수학',[135,140]),
+subject('물리학Ⅰ',[65]),subject('화학Ⅰ',[66])];
+function applicant(){
+ return {korean_track:'language',korean_std:140,korean_pct:97,
+ math_track:'calculus',math_std:140,math_pct:96,english_grade:1,history_grade:1,
+ inquiries:[{name:'물리학Ⅰ',kind:'science',std:65,pct:97},{name:'화학Ⅰ',kind:'science',std:66,pct:96}]};
+}
+function entry(){
+ return {program_key:'test-chem',university:'시험대학교',source_url:'https://example.org/rule',
+ spec:{version:1,year:2027,program_key:'test-chem',university:'시험대학교',
+ score_scale:1000,weights:{korean:.2,math:.35,english:.1,inquiry:.35},
+ components:{korean:{metric:'std',max_value:200},
+ math:{metric:'std',max_value:200,track_bonus_pct:{calculus:.05}},
+ english:{metric:'grade',grades:{'1':100,'2':95}},
+ inquiry:{metric:'converted_std',max_value:75,table_id:'science_2027',aggregation:'mean2'}},
+ eligibility:{math_tracks:['calculus','geometry'],inquiry_kinds:['science'],required_inquiries:2},
+ history_bonus:{'1':10}},tables:[
+ {table_id:'science_2027',subject:'물리학Ⅰ',std_score:65,converted_score:68},
+ {table_id:'science_2027',subject:'화학Ⅰ',std_score:66,converted_score:70}]};
+}
+test('official score bins and subject identity checked, not grade patterns',()=>{
+ assert.equal(E.validateOfficial(applicant(),subjects).ok,true);
+ const wrong=applicant();wrong.inquiries[1].std=77;
+ assert.equal(E.validateOfficial(wrong,subjects).ok,false);
+ const duplicate=applicant();duplicate.inquiries[1].name='물리학Ⅰ';
+ assert.equal(E.validateOfficial(duplicate,subjects).ok,false);
+});
+test('2027 university-specific converted score matches official formula engine',()=>{
+ const r=E.score(applicant(),entry());
+ assert.equal(r.status,'calculated');assert.equal(r.score,829.25);
+ assert.equal(r.breakdown['탐구'],322);
+});
+test('cannot fill missing conversion score with guess',()=>{
+ const e=entry();e.tables.pop();
+ const r=E.score(applicant(),e);
+ assert.equal(r.status,'missing_conversion');assert.equal(r.score,undefined);
+});
+test('pct-required university cannot infer percentile from standard score',()=>{
+ const e=entry();e.spec.components.korean={metric:'pct'};
+ const s=applicant();s.korean_pct=null;
+ assert.equal(E.score(s,e).status,'needs_percentile');
+});
+test('math-option restrictions and mismatch in academic year fail closed',()=>{
+ const e=entry();const s=applicant();s.math_track='probability';
+ assert.equal(E.score(s,e).status,'ineligible');
+ e.spec.year=2026;
+ assert.equal(E.score(applicant(),e).status,'rule_missing');
+});
