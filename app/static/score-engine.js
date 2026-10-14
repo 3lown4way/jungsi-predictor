@@ -58,17 +58,18 @@
     const result=(part.grades||{})[String(grade)];
     return typeof result==='number'?{value:result}:{status:'rule_missing',message:area+' 등급 환산표 값 없음'};
    }
-   const key=inq?(mode==='pct'?'pct':'std'):area+'_'+(mode==='pct'?'pct':'std');
+   const key=inq?(mode==='pct'||mode==='converted_pct'?'pct':'std'):area+'_'+(mode==='pct'||mode==='converted_pct'?'pct':'std');
    const value=origin[key];
    if(value===null||value===undefined)
     return {status:'needs_percentile',message:area==='inquiry'?'탐구 백분위 입력 필요':area+' 공식 백분위 입력 필요'};
    if(mode==='pct')return {value};
    if(mode==='std')return part.max_value>0?{value:100*value/part.max_value}:{status:'rule_missing',message:'표준점수 기준 만점 누락'};
-   if(mode==='converted_std'){
+   if(mode==='converted_std'||mode==='converted_pct'){
     const subject=inq?inq.name:area;
-    const row=(entry.tables||[]).find(t=>t.table_id===part.table_id&&t.subject===subject&&t.std_score===value);
-    if(!row)return {status:'missing_conversion',message:subject+' 표준점수 '+value+'점의 공식 대학별 변환표준점수가 미등록입니다.'};
-    return part.max_value>0?{value:100*row.converted_score/part.max_value}:{status:'rule_missing',message:'변환표 만점 누락'};
+    const row=(entry.tables||[]).find(t=>t.table_id===part.table_id&&t.subject===subject&&(mode==='converted_pct'?t.percentile===value:t.std_score===value));
+    if(!row)return {status:'missing_conversion',message:subject+' '+(mode==='converted_pct'?'백분위':'표준점수')+' '+value+'의 공식 대학별 변환표준점수가 미등록입니다.'};
+    const bonus=((part.kind_bonus_points||{})[inq?.kind]||0);
+    return part.max_value>0?{value:100*(row.converted_score+bonus)/part.max_value}:{status:'rule_missing',message:'변환표 만점 누락'};
    }
    return {status:'rule_missing',message:'지원하지 않는 공식 산식'};
   }
@@ -97,6 +98,14 @@
    const bonus=spec.history_bonus[String(student.history_grade)];
    if(typeof bonus!=='number')return {status:'rule_missing',message:'한국사 등급별 가산표 값 없음'};
    breakdown['한국사']=bonus;
+  }
+  for(const area of ['english','history']){
+   const table=(spec.grade_point_adjustments||{})[area];
+   if(!table)continue;
+   const grade=area==='english'?student.english_grade:student.history_grade;
+   if(!Object.prototype.hasOwnProperty.call(table,String(grade)))
+    return {status:'rule_missing',message:'영어·한국사 등급별 감점표 누락'};
+   breakdown[area==='english'?'영어 감점':'한국사 감점']=table[String(grade)];
   }
   return {status:'calculated',score:round3(Object.values(breakdown).reduce((a,b)=>a+b,0)),
           scale:spec.score_scale,breakdown,weights};

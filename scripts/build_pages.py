@@ -53,11 +53,12 @@ def run(output: Path, api_base_url: str = ''):
             'status_note':'대상 대학 명단은 공식 반영식·합격확률 확보를 의미하지 않습니다.'})
         # No grade-boundary admission scenarios: individual report-card scores are the input.
         from app.database import connect
-        from app.weighted_rules import read_conversion_tables, validate_spec
+        from app.weighted_rules import read_conversion_tables, read_percentile_conversion_tables, validate_spec
         with connect() as con:
             programs=[dict(p) for p in con.execute('SELECT * FROM programs WHERE year=2027')]
         verified_rules=[]
         lookups=read_conversion_tables()
+        percentile_lookups=read_percentile_conversion_tables()
         for p in programs:
             if p['formula_id']!='weighted_official_v1' or not p.get('formula_config_json'):
                 continue
@@ -70,6 +71,10 @@ def run(output: Path, api_base_url: str = ''):
                      'converted_score':value}
                     for key,value in sorted(lookups.items())
                     if key[0]==2027 and key[1]==p['university'] and key[2] in table_ids]
+            tables.extend([{'table_id':key[2], 'subject':key[3], 'percentile':key[4],
+                            'converted_score':value}
+                           for key,value in sorted(percentile_lookups.items())
+                           if key[0]==2027 and key[1]==p['university'] and key[2] in table_ids])
             verified_rules.append({
                 'program_key':p['program_key'], 'university':p['university'],
                 'source_url':p['formula_source_url'],'spec':spec,'tables':tables

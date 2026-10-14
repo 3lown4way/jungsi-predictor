@@ -72,3 +72,46 @@ def test_table_reject_duplicate_bins(tmp_path):
         w.writeheader();w.writerow(row);w.writerow(row)
     with pytest.raises(ValueError,match="중복"):
         read_conversion_tables(tmp_path)
+
+
+
+def test_percentile_converted_with_point_bonus_and_grade_deductions():
+    r=sample_rule()
+    r['weights']={'korean':.25,'math':.4,'english':0,'inquiry':.35}
+    r['components']['math']={'metric':'std','max_value':200}
+    r['components']['english']={'metric':'grade','grades':{str(i):0 for i in range(1,10)}}
+    r['components']['inquiry']={'metric':'converted_pct','max_value':75,
+                                 'table_id':'example_2027','aggregation':'mean2',
+                                 'kind_bonus_points':{'science':4}}
+    r['history_bonus']=None
+    r['grade_point_adjustments']={
+        'english':{str(i):(0 if i<=2 else -2 if i==3 else -30) for i in range(1,10)},
+        'history':{str(i):(0 if i<=4 else -2 if i==5 else -20) for i in range(1,10)},
+    }
+    candidate=student()
+    candidate['english_grade']=3
+    candidate['history_grade']=5
+    candidate['inquiries'][0]['pct']=97
+    candidate['inquiries'][1]['pct']=96
+    percentile={(2027,'시험대학교','example_2027','물리학Ⅰ',97):68,
+                (2027,'시험대학교','example_2027','화학Ⅰ',96):70}
+    result=compute_weighted(candidate,program(r),tables={},percentile_tables=percentile)
+    assert result is not None
+    assert result.total==pytest.approx(791.667)
+    assert result.breakdown['영어 감점']==-2
+    assert result.breakdown['한국사 감점']==-2
+    del percentile[(2027,'시험대학교','example_2027','화학Ⅰ',96)]
+    assert compute_weighted(candidate,program(r),tables={},percentile_tables=percentile) is None
+
+
+def test_duplicate_pct_conversion_table_rejected(tmp_path):
+    from app.weighted_rules import read_percentile_conversion_tables
+    file=tmp_path/'pct-example.csv'
+    row={'year':2027,'university':'시험대학교','table_id':'example_2027',
+         'subject':'물리학Ⅰ','percentile':97,'converted_score':68,
+         'source_url':'https://example.org/research','last_verified':'2026-10-14'}
+    with file.open('w',encoding='utf-8',newline='') as output:
+        writer=csv.DictWriter(output,fieldnames=row.keys())
+        writer.writeheader();writer.writerow(row);writer.writerow(row)
+    with pytest.raises(ValueError,match='중복'):
+        read_percentile_conversion_tables(tmp_path)

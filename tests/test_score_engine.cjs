@@ -50,3 +50,25 @@ test('math-option restrictions and mismatch in academic year fail closed',()=>{
  e.spec.year=2026;
  assert.equal(E.score(applicant(),e).status,'rule_missing');
 });
+
+
+test('2027 separate grade penalties and percentile inquiry conversions are arithmetic, not admission probabilities',()=>{
+ const s=applicant();s.english_grade=3;s.history_grade=5;
+ const e=entry();
+ e.spec.weights={korean:.25,math:.4,english:0,inquiry:.35};
+ e.spec.components.math={metric:'std',max_value:200};
+ e.spec.components.english={metric:'grade',grades:{'3':0}};
+ e.spec.components.inquiry={metric:'converted_pct',max_value:75,table_id:'example_2027',
+ aggregation:'mean2',kind_bonus_points:{science:4}};
+ e.spec.history_bonus=undefined;
+ e.spec.grade_point_adjustments={
+  english:{'3':-2},history:{'5':-2}
+ };
+ e.tables=[{table_id:'example_2027',subject:'물리학Ⅰ',percentile:97,converted_score:68},
+ {table_id:'example_2027',subject:'화학Ⅰ',percentile:96,converted_score:70}];
+ const result=E.score(s,e);
+ assert.equal(result.status,'calculated');assert.equal(result.score,791.667);
+ assert.equal(result.breakdown['영어 감점'],-2);
+ e.tables.pop();
+ assert.equal(E.score(s,e).status,'missing_conversion');
+});
