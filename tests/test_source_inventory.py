@@ -11,8 +11,10 @@ def test_official_source_registry_complete():
         {(y,"september") for y in range(2022,2028)} |
         {(y,"csat") for y in range(2022,2027)})
     report=build_report()
-    assert report["imported_distribution_groups"]==0
-    assert all(not row["numeric_data_imported"] for row in report["entries"])
+    assert report["imported_distribution_groups"]==25
+    sep=[row for row in report["entries"] if (row["year"],row["exam_type"])==(2027,"september")]
+    assert sep[0]["numeric_data_imported"] is True
+    assert all(not row["numeric_data_imported"] for row in report["entries"] if (row["year"],row["exam_type"])!=(2027,"september"))
 
 def test_missing_release_rejected(tmp_path):
     rows=load_sources()[:-1]
@@ -37,3 +39,17 @@ def test_unapproved_score_bins_rejected(tmp_path):
     entry["expected_total_examinees"]=30
     file.write_text(json.dumps([entry],ensure_ascii=False))
     assert assert_approved_distributions(groups,file)==1
+
+
+def test_2027_september_25_complete_distributions():
+    from scripts.score_adjustment import read_frequencies,make_snapshot
+    groups,_=read_frequencies()
+    assert len(groups)==25
+    k=groups[(2027,"september","국어","all")]
+    m=groups[(2027,"september","수학","all")]
+    assert (k.total,k.frequencies[144])==(393751,75)
+    assert (m.total,m.frequencies[137])==(390456,2741)
+    snap=make_snapshot()
+    assert snap["distribution_count"]==25
+    assert snap["ready_subject_count"]==0
+    assert all(r["status"]=="insufficient_paired_years" and r["admission_probability"] is None for r in snap["subjects"])

@@ -72,7 +72,7 @@ def build_report(source_file=SOURCES, frequency_dir=FREQUENCIES):
             "xlsx_attachments_listed":sum(r["attachment_status"]=="listed_xlsx" for r in entries),
             "imported_distribution_groups":len(groups),"imported_frequency_csv_files":files,
             "entries":[dict(r,numeric_data_imported=((r["year"],r["exam_type"]) in available)) for r in entries],
-            "warning":"공식 보도자료 원문 위치 확인은 엑셀 수치 추출 또는 검증 완료와 다릅니다."}
+            "warning":"2027학년도 9평은 사용자 제공 엑셀의 누적·합계 구조를 검증했습니다. 교육부 게시 파일과 SHA-256을 직접 비교하지는 못했습니다. 다른 시험은 미수집입니다."}
 
 def main():
     ap=argparse.ArgumentParser()
