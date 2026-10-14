@@ -1,0 +1,246 @@
+[
+  {
+    "year": 2026,
+    "university": "동국대학교",
+    "campus": "서울",
+    "selection_type": "정시 일반전형",
+    "group": "인문계열",
+    "weights": {
+      "korean": 0.35,
+      "math": 0.25,
+      "english": 0.15,
+      "inquiry": 0.25
+    },
+    "metric_source": {
+      "korean": "표준점수",
+      "math": "표준점수",
+      "english": "등급별 환산표준점수",
+      "inquiry": "과목별 백분위→대학 변환표준점수",
+      "history": "등급별 감점"
+    },
+    "english_grade_points": [
+      200,
+      199,
+      197,
+      190,
+      180,
+      140,
+      90,
+      20,
+      0
+    ],
+    "source_url": "https://ipsi.dongguk.edu/upload/file/20251231114107FNEDJW.PDF",
+    "source_pages": [
+      35,
+      52,
+      53
+    ],
+    "complete_formula_approved": false,
+    "missing": [
+      "2026학년도 실제 탐구 백분위별 최종 변환표",
+      "계열·모집단위 유형 및 가산점 조건 전체 검산",
+      "총점 및 한국사 감점 계산 예시 검산"
+    ]
+  },
+  {
+    "year": 2026,
+    "university": "동국대학교",
+    "campus": "서울",
+    "selection_type": "정시 일반전형",
+    "group": "자연계열(일반)",
+    "weights": {
+      "korean": 0.25,
+      "math": 0.35,
+      "english": 0.15,
+      "inquiry": 0.25
+    },
+    "metric_source": {
+      "korean": "표준점수",
+      "math": "표준점수",
+      "english": "등급별 환산표준점수",
+      "inquiry": "과목별 백분위→대학 변환표준점수",
+      "history": "등급별 감점"
+    },
+    "source_url": "https://ipsi.dongguk.edu/upload/file/20251231114107FNEDJW.PDF",
+    "source_pages": [
+      35,
+      52,
+      53
+    ],
+    "math_bonus_notes": "유형① 미적분/기하 표준점수 3%, 유형③ 미적분/기하 표준점수 3%",
+    "science_bonus_notes": "유형②/③ 과학탐구 응시 과목별 변환표준점수 3%",
+    "complete_formula_approved": false,
+    "missing": [
+      "2026학년도 탐구 변환표",
+      "모집단위 유형별 산식 일치 검산"
+    ]
+  },
+  {
+    "year": 2026,
+    "university": "연세대학교",
+    "campus": "서울",
+    "selection_type": "정시 일반전형",
+    "group": "유형Ⅰ 인문계열(의예 제외)",
+    "component_points": {
+      "korean": 300,
+      "math": 200,
+      "english": 100,
+      "inquiry": 200
+    },
+    "csat_reflected_points": 950,
+    "total_score": 1000,
+    "student_record_component": 50,
+    "source_url": "https://admission.yonsei.ac.kr/seoul/upload/guide/20250901090921Q4G69H.PDF",
+    "source_pages": [
+      23,
+      24
+    ],
+    "subj_bonus": "사회탐구 응시 과목의 변환점수 3% 가산",
+    "english_grade_points": [
+      100,
+      95,
+      87.5,
+      75,
+      60,
+      40,
+      25,
+      12.5,
+      5
+    ],
+    "full_csat_score_formula": "(국어 수학 영어 탐구 환산점수 합계) * 950 / 800",
+    "complete_formula_approved": false,
+    "missing": [
+      "2026학년도 탐구 변표",
+      "학생부 50점 세부 환산/감점 검산"
+    ]
+  },
+  {
+    "year": 2026,
+    "university": "연세대학교",
+    "campus": "서울",
+    "selection_type": "정시 일반전형",
+    "group": "유형Ⅱ 자연계열(의예 제외)",
+    "component_points": {
+      "korean": 200,
+      "math": 300,
+      "english": 100,
+      "inquiry": 300
+    },
+    "csat_reflected_points": 950,
+    "total_score": 1000,
+    "student_record_component": 50,
+    "source_url": "https://admission.yonsei.ac.kr/seoul/upload/guide/20250901090921Q4G69H.PDF",
+    "source_pages": [
+      23,
+      24
+    ],
+    "subj_bonus": "과학탐구 응시 과목의 변환점수 3% 가산",
+    "full_csat_score_formula": "(국어 수학 영어 탐구 환산점수 합계) * 950 / 900",
+    "complete_formula_approved": false,
+    "missing": [
+      "2026학년도 탐구 변표",
+      "학생부 50점 세부 환산/감점 검산"
+    ]
+  },
+  {
+    "year": 2026,
+    "university": "연세대학교",
+    "campus": "서울",
+    "selection_type": "정시 일반전형",
+    "group": "유형Ⅱ 의예과",
+    "component_points": {
+      "korean": 200,
+      "math": 300,
+      "english": 100,
+      "inquiry": 300
+    },
+    "csat_reflected_points": 900,
+    "total_score": 1000,
+    "student_record_component": 50,
+    "interview_component": 50,
+    "source_url": "https://admission.yonsei.ac.kr/seoul/upload/guide/20250901090921Q4G69H.PDF",
+    "source_pages": [
+      24,
+      25
+    ],
+    "subj_bonus": "과학탐구 응시 과목의 변환점수 3% 가산",
+    "complete_formula_approved": false,
+    "missing": [
+      "2026학년도 탐구 변표",
+      "학생부/면접 평가점수 100점의 입력",
+      "의예과 단계별 선발 검산"
+    ]
+  },
+  {
+    "year": 2026,
+    "university": "고려대학교",
+    "campus": "서울",
+    "selection_type": "정시 일반전형",
+    "group": "자연계열(가정교육·간호 제외)",
+    "component_points": {
+      "korean": 200,
+      "math": 240,
+      "inquiry": 200
+    },
+    "csat_component_sum": 640,
+    "source_url": "https://oku.korea.ac.kr/attach/202512/1764720171846_0.pdf",
+    "source_pages": [
+      36,
+      37
+    ],
+    "inquiry": "백분위 기반 대학 자체 변환점수",
+    "science_bonus": "자연계열 과학탐구 각 과목 변환점수 3% 가산",
+    "english_grade_deduction": [
+      0,
+      3,
+      6,
+      9,
+      12,
+      15,
+      18,
+      21,
+      24
+    ],
+    "complete_formula_approved": false,
+    "missing": [
+      "해당 학년도 변환점수표",
+      "한국사 감점표 원문 검산",
+      "다른 전형(교과우수)과 일반전형 구별 검산"
+    ]
+  },
+  {
+    "year": 2026,
+    "university": "고려대학교",
+    "campus": "서울",
+    "selection_type": "정시 일반전형",
+    "group": "인문계열",
+    "component_points": {
+      "korean": 200,
+      "math": 200,
+      "inquiry": 160
+    },
+    "csat_component_sum": 560,
+    "source_url": "https://oku.korea.ac.kr/attach/202512/1764720171846_0.pdf",
+    "source_pages": [
+      36,
+      37
+    ],
+    "english_grade_deduction": [
+      0,
+      3,
+      6,
+      9,
+      12,
+      15,
+      18,
+      21,
+      24
+    ],
+    "complete_formula_approved": false,
+    "missing": [
+      "해당 학년도 탐구 변표",
+      "한국사 감점표 원문 검산",
+      "최종 총점 계산 검산"
+    ]
+  }
+]

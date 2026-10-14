@@ -63,6 +63,13 @@ def run():
         report['verified_historical_model_major_count']=model.get('coverage',{}).get('trained_programs',0)
     else:
         report['verified_historical_model_major_count']=0
+    from pathlib import Path as _Path
+    verified_partial=_Path(__file__).resolve().parents[1]/'data/public/university_research/2026_verified_partial_formulas.json'
+    if verified_partial.exists():
+        partial=json.loads(verified_partial.read_text(encoding='utf-8'))
+        if any(row.get('complete_formula_approved') is not False or not row.get('source_url') for row in partial):
+            raise ValueError('Partial ratio list must never masquerade as complete scoring formula')
+        report['verified_2026_partial_weight_groups']=len(partial)
     from scripts.national_research_scope import summary as national_research_summary
     report['national_research_scope']=national_research_summary()
     from scripts.historical_sources import summary as historical_source_summary
