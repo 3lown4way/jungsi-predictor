@@ -6,7 +6,7 @@ def test_top20_all_2022_to_2026_slots_without_fabricated_urls():
     assert len(rows)==100
     assert {(r['university'],r['year']) for r in rows}=={
       (r['university'],year) for year in range(2022,2027) for r in rows if r['year']==2026}
-    assert sum(r['official_guide_url'] is None for r in rows)==4
+    assert sum(r['official_guide_url'] is None for r in rows)==3
     assert sum(r['guide_status']=='official_university_archive_lists_exact_2022_2023_guides' for r in rows)==4
     assert sum(r['guide_status']=='official_adiga_year_profile_selector_not_downloaded_pdf' for r in rows)>=30
     assert all(r['complete_formula_approved'] is False for r in rows)

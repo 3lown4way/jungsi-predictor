@@ -300,3 +300,8 @@ python -m http.server 8080 --directory site
 데이터 위치: `data/public/historical_admissions/top20_research_2022_2026.json`,
 `data/public/historical_admissions/top20_adiga_university_ids.json`,
 `data/public/university_research/2026_sogang_inha_hufs_partial.json`.
+
+
+## 2023 서강대 원문 수능 산식
+
+[서강대 2023학년도 공식 정시모집요강](https://admission.sogang.ac.kr/upload/file/20220901164811PJ3M5Z.PDF) 24~25쪽에서 전계열 국어표준점수×1.1 + 수학표준점수×1.3 + (탐구 2과목 **대학 변환표준점수 합**)×0.6 + 영어/한국사 등급 가산점을 확인했습니다. 영어 가산 100~92, 한국사 10~7.5. 요강의 임의 탐구 변표 예시(64.3,67.4)를 사용한 총점 490.52는 공식 예제 검증에만 사용하고 해당 연도 변표 원본으로 오인하지 않습니다. 학년도별 실제 탐구 변표는 **미확보**이므로 해당 모집단위 실전 점수 계산은 미완료 상태입니다.

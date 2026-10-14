@@ -12,7 +12,7 @@ STATUSES={
 'year_listed_in_official_guide_archive',
 'year_listed_in_official_admissions_notices',
 'official_2026_full_guide_pdf','official_2025_full_guide_pdf',
-'official_2024_full_guide_pdf',
+'official_2024_full_guide_pdf','official_2023_full_guide_pdf',
 'official_2026_guide_notice_with_attachment',
 'official_year_guide_from_prior_research',
 'official_archive_listing_from_prior_research',
