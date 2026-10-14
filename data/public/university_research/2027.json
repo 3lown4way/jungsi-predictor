@@ -1,0 +1,212 @@
+[
+  {
+    "year": 2027,
+    "program_key": "khu-medicine",
+    "university": "경희대학교",
+    "rule_group": "natural",
+    "weights": {
+      "korean": 0.25,
+      "math": 0.4,
+      "inquiry": 0.35
+    },
+    "english_grade_penalties": {
+      "1": 0,
+      "2": 0,
+      "3": -2,
+      "4": -4,
+      "5": -8,
+      "6": -12,
+      "7": -18,
+      "8": -24,
+      "9": -30
+    },
+    "history_grade_penalties": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": -2,
+      "6": -4,
+      "7": -8,
+      "8": -14,
+      "9": -20
+    },
+    "science_bonus_rule": "자연계열 과탐 응시자는 탐구영역 백분위 변환표준점수 성적에 과목당 4점 가산",
+    "missing_information": [
+      "최종 탐구 변환표준점수표",
+      "모집단위별 최종 모집군 및 모집인원",
+      "총점 산식·세부 반올림 검산"
+    ],
+    "source_url": "https://m.adiga.kr/mob/ucp/uvt/uni/univDetailSelection.do?menuId=MOUVTINF1001&searchSyr=2027&unvCd=0000066",
+    "status": "partially_verified_not_score_computable",
+    "reviewed_on": "2026-10-14"
+  },
+  {
+    "year": 2027,
+    "program_key": "khu-dentistry",
+    "university": "경희대학교",
+    "rule_group": "natural",
+    "weights": {
+      "korean": 0.25,
+      "math": 0.4,
+      "inquiry": 0.35
+    },
+    "english_grade_penalties": {
+      "1": 0,
+      "2": 0,
+      "3": -2,
+      "4": -4,
+      "5": -8,
+      "6": -12,
+      "7": -18,
+      "8": -24,
+      "9": -30
+    },
+    "history_grade_penalties": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": -2,
+      "6": -4,
+      "7": -8,
+      "8": -14,
+      "9": -20
+    },
+    "science_bonus_rule": "자연계열 과탐 응시자는 탐구영역 백분위 변환표준점수 성적에 과목당 4점 가산",
+    "missing_information": [
+      "최종 탐구 변환표준점수표",
+      "모집단위별 최종 모집군 및 모집인원",
+      "총점 산식·세부 반올림 검산"
+    ],
+    "source_url": "https://m.adiga.kr/mob/ucp/uvt/uni/univDetailSelection.do?menuId=MOUVTINF1001&searchSyr=2027&unvCd=0000066",
+    "status": "partially_verified_not_score_computable",
+    "reviewed_on": "2026-10-14"
+  },
+  {
+    "year": 2027,
+    "program_key": "khu-pharmacy",
+    "university": "경희대학교",
+    "rule_group": "natural",
+    "weights": {
+      "korean": 0.25,
+      "math": 0.4,
+      "inquiry": 0.35
+    },
+    "english_grade_penalties": {
+      "1": 0,
+      "2": 0,
+      "3": -2,
+      "4": -4,
+      "5": -8,
+      "6": -12,
+      "7": -18,
+      "8": -24,
+      "9": -30
+    },
+    "history_grade_penalties": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": -2,
+      "6": -4,
+      "7": -8,
+      "8": -14,
+      "9": -20
+    },
+    "science_bonus_rule": "자연계열 과탐 응시자는 탐구영역 백분위 변환표준점수 성적에 과목당 4점 가산",
+    "missing_information": [
+      "최종 탐구 변환표준점수표",
+      "모집단위별 최종 모집군 및 모집인원",
+      "총점 산식·세부 반올림 검산"
+    ],
+    "source_url": "https://m.adiga.kr/mob/ucp/uvt/uni/univDetailSelection.do?menuId=MOUVTINF1001&searchSyr=2027&unvCd=0000066",
+    "status": "partially_verified_not_score_computable",
+    "reviewed_on": "2026-10-14"
+  },
+  {
+    "year": 2027,
+    "program_key": "khu-oriental-nat",
+    "university": "경희대학교",
+    "rule_group": "natural",
+    "weights": {
+      "korean": 0.25,
+      "math": 0.4,
+      "inquiry": 0.35
+    },
+    "english_grade_penalties": {
+      "1": 0,
+      "2": 0,
+      "3": -2,
+      "4": -4,
+      "5": -8,
+      "6": -12,
+      "7": -18,
+      "8": -24,
+      "9": -30
+    },
+    "history_grade_penalties": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": -2,
+      "6": -4,
+      "7": -8,
+      "8": -14,
+      "9": -20
+    },
+    "science_bonus_rule": "자연계열 과탐 응시자는 탐구영역 백분위 변환표준점수 성적에 과목당 4점 가산",
+    "missing_information": [
+      "최종 탐구 변환표준점수표",
+      "모집단위별 최종 모집군 및 모집인원",
+      "총점 산식·세부 반올림 검산"
+    ],
+    "source_url": "https://m.adiga.kr/mob/ucp/uvt/uni/univDetailSelection.do?menuId=MOUVTINF1001&searchSyr=2027&unvCd=0000066",
+    "status": "partially_verified_not_score_computable",
+    "reviewed_on": "2026-10-14"
+  },
+  {
+    "year": 2027,
+    "program_key": "khu-oriental-hum",
+    "university": "경희대학교",
+    "rule_group": "social",
+    "weights": {
+      "korean": 0.35,
+      "math": 0.35,
+      "inquiry": 0.3
+    },
+    "english_grade_penalties": {
+      "1": 0,
+      "2": 0,
+      "3": -2,
+      "4": -4,
+      "5": -8,
+      "6": -12,
+      "7": -18,
+      "8": -24,
+      "9": -30
+    },
+    "history_grade_penalties": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": -2,
+      "6": -4,
+      "7": -8,
+      "8": -14,
+      "9": -20
+    },
+    "science_bonus_rule": "자연계열 과탐 응시자는 탐구영역 백분위 변환표준점수 성적에 과목당 4점 가산",
+    "missing_information": [
+      "최종 탐구 변환표준점수표",
+      "모집단위별 최종 모집군 및 모집인원",
+      "총점 산식·세부 반올림 검산"
+    ],
+    "source_url": "https://m.adiga.kr/mob/ucp/uvt/uni/univDetailSelection.do?menuId=MOUVTINF1001&searchSyr=2027&unvCd=0000066",
+    "status": "partially_verified_not_score_computable",
+    "reviewed_on": "2026-10-14"
+  }
+]

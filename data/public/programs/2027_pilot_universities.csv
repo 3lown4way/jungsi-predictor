@@ -1,0 +1,9 @@
+year,program_key,university,campus,department,track,round,quota,formula_id,formula_source_url,cutoff_70,cutoff_source_url,cutoff_kind,last_verified
+2027,khu-medicine,경희대학교,서울,의예과,natural,,,,https://m.adiga.kr/mob/ucp/uvt/uni/univDetailSelection.do?menuId=MOUVTINF1001&searchSyr=2027&unvCd=0000066,,,,2026-10-14
+2027,khu-dentistry,경희대학교,서울,치의예과,natural,,,,https://m.adiga.kr/mob/ucp/uvt/uni/univDetailSelection.do?menuId=MOUVTINF1001&searchSyr=2027&unvCd=0000066,,,,2026-10-14
+2027,khu-pharmacy,경희대학교,서울,약학과,natural,,,,https://m.adiga.kr/mob/ucp/uvt/uni/univDetailSelection.do?menuId=MOUVTINF1001&searchSyr=2027&unvCd=0000066,,,,2026-10-14
+2027,khu-oriental-nat,경희대학교,서울,한의예과(자연),natural,,,,https://m.adiga.kr/mob/ucp/uvt/uni/univDetailSelection.do?menuId=MOUVTINF1001&searchSyr=2027&unvCd=0000066,,,,2026-10-14
+2027,khu-oriental-hum,경희대학교,서울,한의예과(인문),humanities,,,,https://m.adiga.kr/mob/ucp/uvt/uni/univDetailSelection.do?menuId=MOUVTINF1001&searchSyr=2027&unvCd=0000066,,,,2026-10-14
+2027,snu-materials,서울대학교,서울,재료공학부,natural,,36,,https://admission.snu.ac.kr/undergraduate/notice?bbsidx=167069&md=v,,,,2026-10-14
+2027,snu-chem-bio,서울대학교,서울,화학생물공학부,natural,,31,,https://admission.snu.ac.kr/undergraduate/notice?bbsidx=167069&md=v,,,,2026-10-14
+2027,snu-biosystems,서울대학교,서울,바이오시스템·소재학부,natural,,18,,https://admission.snu.ac.kr/undergraduate/notice?bbsidx=167069&md=v,,,,2026-10-14

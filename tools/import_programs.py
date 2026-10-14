@@ -29,8 +29,12 @@ def run(path):
             year=int(row['year'])
             if year not in range(2022,2028):raise ValueError(f'{lineno}행 학년도 오류')
             if row['track'] not in ('natural','humanities'):raise ValueError(f'{lineno}행 지원하지 않는 계열')
-            if row['round'] not in ('가','나','다'):raise ValueError(f'{lineno}행 모집군 오류')
+            if row['round'] not in ('가','나','다',''):raise ValueError(f'{lineno}행 모집군 오류')
             formula=row['formula_id'] or None
+            if formula and not row['round']:
+                raise ValueError(f'{lineno}행 산식 등록 때에는 모집군 검증 필요')
+            if not formula and not (row['formula_source_url'] or '').startswith('https://'):
+                raise ValueError(f'{lineno}행 공식 모집단위 자료 출처 필요')
             if formula is not None:
                 if formula not in SUPPORTED_FORMULA or (formula=='sangmyung_pct_2025_2026' and year not in (2025,2026)):
                     raise ValueError(f'{lineno}행: 아직 미검증 반영식을 사용하려는 시도')

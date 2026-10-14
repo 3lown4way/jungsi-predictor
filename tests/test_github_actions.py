@@ -38,6 +38,9 @@ def test_static_export_no_raw_personal_outcomes(tmp_path):
     outlook=json.loads((site/'data'/'admissions-outlook-2027.json').read_text())
     assert outlook['year']==2027 and outlook['exam_type']=='september'
     assert outlook['probability_ready_count']==0
+    assert outlook['program_count']==8
+    assert outlook['score_ready_count']==0
+    assert sum(bool(p.get('verified_partial_rule')) for p in outlook['programs'])==5
     assert isinstance(outlook['programs'],list)
     assert 'score_ready_count' in outlook
     assert not list(site.glob('data/admissions-outlook-202[2-6].json'))

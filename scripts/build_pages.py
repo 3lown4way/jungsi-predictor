@@ -120,6 +120,10 @@ def run(output: Path, api_base_url: str = ''):
                 'snapshot_mode': 'offline_github_actions', 'published_programs': 0,
                 'predictions': [], 'message': 'No published cohort snapshot yet'
             })
+        # Partially verified rules are metadata, not complete score calculators.
+        partial_path=ROOT/'data'/'public'/'university_research'/'2027.json'
+        partial_registry=json.loads(partial_path.read_text(encoding='utf-8')) if partial_path.exists() else []
+        partial_by_key={r['program_key']:r for r in partial_registry}
         # The individual inputs are entered locally by the user. No grade-level profiles.
         # Only trained and calibrated curves could provide a probability for that score,
         # and none is currently available. Never publish a single unconditional probability.
@@ -137,6 +141,7 @@ def run(output: Path, api_base_url: str = ''):
                 'campus':p['campus'],'track':p['track'],'admission_round':p['round'],
                 'quota':p['quota'],'medical_field':medical_field(p),
                 'formula_source_url':p['formula_source_url'],
+                'verified_partial_rule':partial_by_key.get(p['program_key']),
                 'formula_verified':p['program_key'] in approved_keys,
                 'cohort_count_band':cohort.get('participant_count_band'),
                 'cohort_score_p25':cohort.get('score_p25'),

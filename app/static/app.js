@@ -38,12 +38,14 @@ function renderPrograms(){
   const scoreLabel=hasScore?fmt(s.score)+' / '+fmt(s.scale):'미산출';
   const breakdown=hasScore?'<div class="card-data-note">영역별 반영: '+Object.entries(s.breakdown).map(([k,v])=>esc(k)+' '+fmt(v)).join(' · ')+'</div>':'';
   const w=hasScore?'<div class="card-data-note">반영비율: 국어 '+fmt(s.weights.korean*100)+'% · 수학 '+fmt(s.weights.math*100)+'% · 영어 '+fmt(s.weights.english*100)+'% · 탐구 '+fmt(s.weights.inquiry*100)+'%</div>':'';
+  const info=p.verified_partial_rule;
+  const partial=info&&!hasScore?'<div class="card-data-note"><strong>공식 확인된 영역 반영</strong> · 국어 '+fmt(info.weights.korean*100)+'% · 수학 '+fmt(info.weights.math*100)+'% · 탐구 '+fmt(info.weights.inquiry*100)+'%<div class="muted-xs">영어·한국사는 별도 감점이며 탐구 변표·정밀 총점 산식 미확인. 현재 환산점수 계산 불가.</div></div>':'';
   const hasCohort=typeof p.cohort_score_p50==='number';
   const cohortInfo=hasCohort?'<div class="card-data-note">9평 모의지원 중앙값 '+fmt(p.cohort_score_p50)+' · 가운데 50% 구간 '+fmt(p.cohort_score_p25)+'–'+fmt(p.cohort_score_p75)+'</div>':'';
   const why=hasScore?'2027학년도 검증 산식 기준 · 9평 원점수와 수능 환산 동일시 금지':esc(s.message);
-  const source=p.formula_source_url?'<a class="score-source" href="'+esc(p.formula_source_url)+'" target="_blank" rel="noopener noreferrer">대학 산식 원문 ↗</a>':'<span class="muted-xs">공식 산식 미등록</span>';
+  const source=p.formula_source_url?'<a class="score-source" href="'+esc(p.formula_source_url)+'" target="_blank" rel="noopener noreferrer">공식 전형자료 ↗</a>':'<span class="muted-xs">공식 자료 미등록</span>';
   const odds='분석 준비 중'; // No score-dependent calibrated probability curve has been published.
-  return '<article class="admission-card"><div class="admission-card-top"><div><strong class="admission-card-title">'+esc(p.university)+' · '+esc(p.department)+'</strong><div class="muted-xs">'+esc(p.campus||'')+' · '+esc(p.admission_round||'모집군 확인 전')+'군 · '+(isMedical(p)?'매디컬':'일반대학')+'</div></div><span class="admission-status">'+(hasScore?'공식 환산점수 계산':'산식·자료 준비 중')+'</span></div><div class="admission-card-data"><div><span>나의 9평 대학별 환산점수</span><strong>'+esc(scoreLabel)+'</strong><small>'+why+'</small></div><div><span>합격 가능성</span><strong class="placeholder-text">'+odds+'</strong><small>0%가 아닌 검증된 모델 미등록</small></div></div>'+w+breakdown+cohortInfo+'<div class="admission-card-footer">'+source+'</div></article>';
+  return '<article class="admission-card"><div class="admission-card-top"><div><strong class="admission-card-title">'+esc(p.university)+' · '+esc(p.department)+'</strong><div class="muted-xs">'+esc(p.campus||'')+' · '+(p.admission_round?esc(p.admission_round)+'군':'모집군 확인 전')+' · '+(isMedical(p)?'매디컬':'일반대학')+'</div></div><span class="admission-status">'+(hasScore?'공식 환산점수 계산':'산식·자료 준비 중')+'</span></div><div class="admission-card-data"><div><span>나의 9평 대학별 환산점수</span><strong>'+esc(scoreLabel)+'</strong><small>'+why+'</small></div><div><span>합격 가능성</span><strong class="placeholder-text">'+odds+'</strong><small>0%가 아닌 검증된 모델 미등록</small></div></div>'+w+partial+breakdown+cohortInfo+'<div class="admission-card-footer">'+source+'</div></article>';
  }).join('');
 }
 function renderTargets(){
