@@ -25,23 +25,21 @@ def programme(y,key="test-medicine"):
 
 
 def example(y,i):
-    pct=59+(i%60)
-    if pct>100:pct=100
-    # Both classes occur in every 80-person synthetic year
-    pct=65+(i%48)
-    pct=min(100,pct)
-    score=72+(i%50)*.5
-    p=min(100,round(score,1))
+    index=i%80
+    # Every subject has a different reported percentile: annual weights alter totals.
+    # Monotonic synthetic 9평 score supports a strict forward-holdout unit test.
+    k=round(68+index*.30,2)
+    m=round(62+index*.40,2)
+    inquiry=round(66+index*.36,2)
     return {
         "year":y,"exam_type":"september","program_key":"test-medicine",
         "applicant_hash":f"opaque_verified_hash_{y}_{i:04}",
-        "admitted":int(i%80>=40),"applied":True,"verified":True,"consented":True,
-        "student":{"korean_pct":p,"math_pct":p,"english_grade":1 if i>=40 else 3,
+        "admitted":int(index>=40),"applied":True,"verified":True,"consented":True,
+        "student":{"korean_pct":k,"math_pct":m,"english_grade":1 if index>=40 else 3,
           "history_grade":1,"math_track":"calculus",
-          "inquiries":[{"name":"사회·문화","kind":"social","pct":p},
-                       {"name":"생활과 윤리","kind":"social","pct":p}]}
+          "inquiries":[{"name":"사회·문화","kind":"social","pct":inquiry},
+                       {"name":"생활과 윤리","kind":"social","pct":inquiry}]}
     }
-
 
 def sample():
     return [example(y,i) for y in range(2022,2027) for i in range(80)]
