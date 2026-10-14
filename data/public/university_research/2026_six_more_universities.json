@@ -1,0 +1,469 @@
+{
+  "year": 2026,
+  "groups_count": 23,
+  "records": [
+    {
+      "year": 2026,
+      "university": "한양대학교",
+      "group": "자연계열",
+      "component": {
+        "korean": 0.25,
+        "math": 0.4,
+        "inquiry": 0.25,
+        "english": 0.1
+      },
+      "weight_representation": "official_subject_percentage",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000203",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "final inquiry conversion table",
+        "rounding and full final-score worked examples",
+        "individual verified outcomes"
+      ],
+      "other_selection_component": "final composite is CSAT 90% + school-record holistic 10%"
+    },
+    {
+      "year": 2026,
+      "university": "한양대학교",
+      "group": "인문계열",
+      "component": {
+        "korean": 0.35,
+        "math": 0.3,
+        "inquiry": 0.25,
+        "english": 0.1
+      },
+      "weight_representation": "official_subject_percentage",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000203",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "final inquiry conversion table",
+        "rounding and full final-score worked examples",
+        "individual verified outcomes"
+      ],
+      "other_selection_component": "final composite is CSAT 90% + school-record holistic 10%"
+    },
+    {
+      "year": 2026,
+      "university": "한양대학교",
+      "group": "상경·한양인터칼리지",
+      "component": {
+        "korean": 0.35,
+        "math": 0.35,
+        "inquiry": 0.2,
+        "english": 0.1
+      },
+      "weight_representation": "official_subject_percentage",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000203",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "final inquiry conversion table",
+        "rounding and full final-score worked examples",
+        "individual verified outcomes"
+      ],
+      "other_selection_component": "final composite is CSAT 90% + school-record holistic 10%"
+    },
+    {
+      "year": 2026,
+      "university": "중앙대학교",
+      "group": "인문대·사범대",
+      "component": {
+        "korean": 0.35,
+        "math": 0.3,
+        "inquiry": 0.35
+      },
+      "weight_representation": "official_subject_percentage",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000175",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "final inquiry conversion table",
+        "rounding and full final-score worked examples",
+        "individual verified outcomes"
+      ],
+      "other_selection_component": "English and Korean history are separate grade bonus points, not included in three weights"
+    },
+    {
+      "year": 2026,
+      "university": "중앙대학교",
+      "group": "사회과학·경영경제",
+      "component": {
+        "korean": 0.3,
+        "math": 0.4,
+        "inquiry": 0.3
+      },
+      "weight_representation": "official_subject_percentage",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000175",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "final inquiry conversion table",
+        "rounding and full final-score worked examples",
+        "individual verified outcomes"
+      ],
+      "other_selection_component": "English and Korean history are separate grade bonus points, not included in three weights"
+    },
+    {
+      "year": 2026,
+      "university": "중앙대학교",
+      "group": "자연계열",
+      "component": {
+        "korean": 0.3,
+        "math": 0.35,
+        "inquiry": 0.35
+      },
+      "weight_representation": "official_subject_percentage",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000175",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "final inquiry conversion table",
+        "rounding and full final-score worked examples",
+        "individual verified outcomes"
+      ],
+      "other_selection_component": "English and Korean history are separate grade bonus points, not included in three weights"
+    },
+    {
+      "year": 2026,
+      "university": "서울시립대학교",
+      "group": "인문Ⅰ",
+      "component": {
+        "korean": 0.35,
+        "math": 0.35,
+        "inquiry": 0.15,
+        "english": 0.15
+      },
+      "weight_representation": "official_subject_percentage",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000040",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "final inquiry conversion table",
+        "rounding and full final-score worked examples",
+        "individual verified outcomes"
+      ],
+      "inquiry_bonus_note": "social-2/humanities or science-2/natural uses 3% bonus on converted inquiry values"
+    },
+    {
+      "year": 2026,
+      "university": "서울시립대학교",
+      "group": "인문Ⅱ",
+      "component": {
+        "korean": 0.35,
+        "math": 0.25,
+        "inquiry": 0.2,
+        "english": 0.2
+      },
+      "weight_representation": "official_subject_percentage",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000040",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "final inquiry conversion table",
+        "rounding and full final-score worked examples",
+        "individual verified outcomes"
+      ],
+      "inquiry_bonus_note": "social-2/humanities or science-2/natural uses 3% bonus on converted inquiry values"
+    },
+    {
+      "year": 2026,
+      "university": "서울시립대학교",
+      "group": "자연Ⅰ",
+      "component": {
+        "korean": 0.3,
+        "math": 0.4,
+        "inquiry": 0.2,
+        "english": 0.1
+      },
+      "weight_representation": "official_subject_percentage",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000040",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "final inquiry conversion table",
+        "rounding and full final-score worked examples",
+        "individual verified outcomes"
+      ],
+      "inquiry_bonus_note": "social-2/humanities or science-2/natural uses 3% bonus on converted inquiry values"
+    },
+    {
+      "year": 2026,
+      "university": "서울시립대학교",
+      "group": "자연Ⅱ",
+      "component": {
+        "korean": 0.3,
+        "math": 0.35,
+        "inquiry": 0.25,
+        "english": 0.1
+      },
+      "weight_representation": "official_subject_percentage",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000040",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "final inquiry conversion table",
+        "rounding and full final-score worked examples",
+        "individual verified outcomes"
+      ],
+      "inquiry_bonus_note": "social-2/humanities or science-2/natural uses 3% bonus on converted inquiry values"
+    },
+    {
+      "year": 2026,
+      "university": "숙명여자대학교",
+      "group": "인문",
+      "component": {
+        "korean": 0.35,
+        "math": 0.25,
+        "inquiry": 0.25,
+        "english": 0.15
+      },
+      "weight_representation": "official_subject_percentage",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000141",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "final inquiry conversion table",
+        "rounding and full final-score worked examples",
+        "individual verified outcomes"
+      ],
+      "inquiry_bonus_note": "Social inquiry humanities, science inquiry natural: each converted score +3%, not general case"
+    },
+    {
+      "year": 2026,
+      "university": "숙명여자대학교",
+      "group": "자연",
+      "component": {
+        "korean": 0.25,
+        "math": 0.35,
+        "inquiry": 0.25,
+        "english": 0.15
+      },
+      "weight_representation": "official_subject_percentage",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000141",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "final inquiry conversion table",
+        "rounding and full final-score worked examples",
+        "individual verified outcomes"
+      ],
+      "inquiry_bonus_note": "Social inquiry humanities, science inquiry natural: each converted score +3%, not general case"
+    },
+    {
+      "year": 2026,
+      "university": "숙명여자대학교",
+      "group": "자유전공",
+      "component": {
+        "korean": 0.3,
+        "math": 0.3,
+        "inquiry": 0.25,
+        "english": 0.15
+      },
+      "weight_representation": "official_subject_percentage",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000141",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "final inquiry conversion table",
+        "rounding and full final-score worked examples",
+        "individual verified outcomes"
+      ],
+      "inquiry_bonus_note": "Social inquiry humanities, science inquiry natural: each converted score +3%, not general case"
+    },
+    {
+      "year": 2026,
+      "university": "숭실대학교",
+      "group": "인문",
+      "component": {
+        "korean": 0.35,
+        "math": 0.2,
+        "inquiry": 0.25,
+        "english": 0.2
+      },
+      "weight_representation": "official_subject_percentage",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000143",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "final inquiry conversion table",
+        "rounding and full final-score worked examples",
+        "individual verified outcomes"
+      ],
+      "math_bonus_ambiguous": "Adiga text 7% but worked example 5%; must verify final PDF before formula registration"
+    },
+    {
+      "year": 2026,
+      "university": "숭실대학교",
+      "group": "경상",
+      "component": {
+        "korean": 0.25,
+        "math": 0.3,
+        "inquiry": 0.25,
+        "english": 0.2
+      },
+      "weight_representation": "official_subject_percentage",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000143",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "final inquiry conversion table",
+        "rounding and full final-score worked examples",
+        "individual verified outcomes"
+      ],
+      "math_bonus_ambiguous": "Adiga text 7% but worked example 5%; must verify final PDF before formula registration"
+    },
+    {
+      "year": 2026,
+      "university": "숭실대학교",
+      "group": "자유전공(인문)",
+      "component": {
+        "korean": 0.3,
+        "math": 0.25,
+        "inquiry": 0.25,
+        "english": 0.2
+      },
+      "weight_representation": "official_subject_percentage",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000143",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "final inquiry conversion table",
+        "rounding and full final-score worked examples",
+        "individual verified outcomes"
+      ],
+      "math_bonus_ambiguous": "Adiga text 7% but worked example 5%; must verify final PDF before formula registration"
+    },
+    {
+      "year": 2026,
+      "university": "숭실대학교",
+      "group": "자연",
+      "component": {
+        "korean": 0.2,
+        "math": 0.35,
+        "inquiry": 0.25,
+        "english": 0.2
+      },
+      "weight_representation": "official_subject_percentage",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000143",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "final inquiry conversion table",
+        "rounding and full final-score worked examples",
+        "individual verified outcomes"
+      ],
+      "math_bonus_ambiguous": "Adiga text 7% but worked example 5%; must verify final PDF before formula registration"
+    },
+    {
+      "year": 2026,
+      "university": "성균관대학교",
+      "group": "가군 인문 A",
+      "component": {
+        "korean": 2,
+        "math": 1.5,
+        "english": 0.5,
+        "inquiry": 1
+      },
+      "weight_representation": "raw_multipliers_NOT_percentages",
+      "inquiry_aggregation": "sum2",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000133",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "actual converted inquiry table",
+        "year-specific group and selection validation",
+        "school total score and rounding consistency",
+        "verified applicant outcomes"
+      ]
+    },
+    {
+      "year": 2026,
+      "university": "성균관대학교",
+      "group": "가군 인문 B",
+      "component": {
+        "korean": 1.5,
+        "math": 2,
+        "english": 0.5,
+        "inquiry": 1
+      },
+      "weight_representation": "raw_multipliers_NOT_percentages",
+      "inquiry_aggregation": "sum2",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000133",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "actual converted inquiry table",
+        "year-specific group and selection validation",
+        "school total score and rounding consistency",
+        "verified applicant outcomes"
+      ]
+    },
+    {
+      "year": 2026,
+      "university": "성균관대학교",
+      "group": "가군 자연 A",
+      "component": {
+        "korean": 1,
+        "math": 2,
+        "english": 0.5,
+        "inquiry": 1.5
+      },
+      "weight_representation": "raw_multipliers_NOT_percentages",
+      "inquiry_aggregation": "sum2",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000133",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "actual converted inquiry table",
+        "year-specific group and selection validation",
+        "school total score and rounding consistency",
+        "verified applicant outcomes"
+      ]
+    },
+    {
+      "year": 2026,
+      "university": "성균관대학교",
+      "group": "가군 자연 B",
+      "component": {
+        "korean": 1.5,
+        "math": 2,
+        "english": 0.5,
+        "inquiry": 1
+      },
+      "weight_representation": "raw_multipliers_NOT_percentages",
+      "inquiry_aggregation": "sum2",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000133",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "actual converted inquiry table",
+        "year-specific group and selection validation",
+        "school total score and rounding consistency",
+        "verified applicant outcomes"
+      ]
+    },
+    {
+      "year": 2026,
+      "university": "성균관대학교",
+      "group": "다군 글로벌바이오/첨단 A",
+      "component": {
+        "korean": 1,
+        "math": 2,
+        "english": 0.5,
+        "inquiry": 3
+      },
+      "weight_representation": "raw_multipliers_NOT_percentages",
+      "inquiry_aggregation": "best1",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000133",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "actual converted inquiry table",
+        "year-specific group and selection validation",
+        "school total score and rounding consistency",
+        "verified applicant outcomes"
+      ]
+    },
+    {
+      "year": 2026,
+      "university": "성균관대학교",
+      "group": "다군 글로벌바이오/첨단 B",
+      "component": {
+        "korean": 1.5,
+        "math": 2,
+        "english": 0.5,
+        "inquiry": 2
+      },
+      "weight_representation": "raw_multipliers_NOT_percentages",
+      "inquiry_aggregation": "best1",
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000133",
+      "fully_verified_conversion_formula": false,
+      "missing": [
+        "actual converted inquiry table",
+        "year-specific group and selection validation",
+        "school total score and rounding consistency",
+        "verified applicant outcomes"
+      ]
+    }
+  ]
+}
