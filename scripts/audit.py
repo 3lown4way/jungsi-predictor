@@ -50,6 +50,19 @@ def run():
             'yearly_coverage':coverage['program_coverage'],
             'actual_outcomes_in_public_snapshot':0,
             'note':'입시 자료의 최신화 여부를 네트워크에서 검증한 것은 아닙니다.'}
+    # Report 2022-26 yearly university-formula coverage separately from current-year forecast.
+    report['historical_formula_coverage']={
+        str(record['year']):record['program_count']
+        for record in report['yearly_coverage'] if 2022<=record['year']<=2026}
+    report['2027_verified_formula_count']=next(
+        record['program_count'] for record in report['yearly_coverage'] if record['year']==2027)
+    model_path=ROOT/'data'/'public'/'models'/'historical-2027.json'
+    report['verified_historical_model_published']=model_path.is_file()
+    if model_path.is_file():
+        model=json.loads(model_path.read_text(encoding='utf-8'))
+        report['verified_historical_model_major_count']=model.get('coverage',{}).get('trained_programs',0)
+    else:
+        report['verified_historical_model_major_count']=0
     from scripts.precompute import load_boundaries
     bundles, boundary_files = load_boundaries()
     report['grade_cut_bundle_count'] = len(bundles)
