@@ -1,0 +1,327 @@
+{
+  "year": 2026,
+  "group_count": 11,
+  "notes": "공식 반영비/점수 가중치만. 일부 모집단위는 A/B형 중 유리한 점수를 채택; 최종 탐구 변환표 미입력. 과거 연도에 2026 규칙 복사 금지.",
+  "groups": [
+    {
+      "year": 2026,
+      "university": "서강대학교",
+      "selection_type": "정시 일반전형",
+      "group": "전 계열 수능 A형",
+      "raw_multipliers": {
+        "korean": 1.1,
+        "math": 1.3,
+        "inquiry_each": 0.6
+      },
+      "normalized_relative_weights": {
+        "korean": 0.3666666666666667,
+        "math": 0.43333333333333335,
+        "inquiry": 0.19999999999999998
+      },
+      "english_grade_bonus": [
+        100,
+        99.5,
+        98.5,
+        97,
+        95,
+        92.5,
+        89.5,
+        86,
+        82
+      ],
+      "history_grade_bonus": [
+        10,
+        10,
+        10,
+        10,
+        9.5,
+        9,
+        8.5,
+        8,
+        7.5
+      ],
+      "best_of_types": true,
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000120",
+      "fully_computable": false,
+      "status": "official_partial_formula_without_final_inquiry_conversions",
+      "missing": [
+        "2026학년도 탐구 변표",
+        "합계 반올림 및 전 모집단위 원문 검수"
+      ]
+    },
+    {
+      "year": 2026,
+      "university": "서강대학교",
+      "selection_type": "정시 일반전형",
+      "group": "전 계열 수능 B형",
+      "raw_multipliers": {
+        "korean": 1.3,
+        "math": 1.1,
+        "inquiry_each": 0.6
+      },
+      "normalized_relative_weights": {
+        "korean": 0.43333333333333335,
+        "math": 0.3666666666666667,
+        "inquiry": 0.19999999999999998
+      },
+      "english_grade_bonus": [
+        100,
+        99.5,
+        98.5,
+        97,
+        95,
+        92.5,
+        89.5,
+        86,
+        82
+      ],
+      "history_grade_bonus": [
+        10,
+        10,
+        10,
+        10,
+        9.5,
+        9,
+        8.5,
+        8,
+        7.5
+      ],
+      "best_of_types": true,
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000120",
+      "fully_computable": false,
+      "status": "official_partial_formula_without_final_inquiry_conversions",
+      "missing": [
+        "2026학년도 탐구 변표",
+        "합계 반올림 및 전 모집단위 원문 검수"
+      ]
+    },
+    {
+      "year": 2026,
+      "university": "인하대학교",
+      "selection_type": "정시 일반전형",
+      "group": "일반 인문계열",
+      "weights": {
+        "korean": 0.35,
+        "math": 0.25,
+        "english": 0.15,
+        "inquiry": 0.25
+      },
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000169",
+      "source_kind": "대입정보포털(어디가) 2026 정시 일반전형 산출 방식",
+      "status": "official_partial_formula_without_final_inquiry_conversions",
+      "fully_computable": false,
+      "missing": [
+        "2026학년도 공식 탐구 백분위별 최종 변환표준점수",
+        "공식 입학처 최종 모집요강의 총점·반올림·과목별 가산 검산",
+        "해당 대학·모집단위 개별 합불 학습자료"
+      ],
+      "bonus_rules": [
+        "수학 미적분·기하 3% 가산 해당 계열",
+        "과탐 응시 시 탐구 과목별 변환표준점수 3% 가산 해당 계열"
+      ]
+    },
+    {
+      "year": 2026,
+      "university": "인하대학교",
+      "selection_type": "정시 일반전형",
+      "group": "일반 자연계열",
+      "weights": {
+        "korean": 0.25,
+        "math": 0.35,
+        "english": 0.1,
+        "inquiry": 0.3
+      },
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000169",
+      "source_kind": "대입정보포털(어디가) 2026 정시 일반전형 산출 방식",
+      "status": "official_partial_formula_without_final_inquiry_conversions",
+      "fully_computable": false,
+      "missing": [
+        "2026학년도 공식 탐구 백분위별 최종 변환표준점수",
+        "공식 입학처 최종 모집요강의 총점·반올림·과목별 가산 검산",
+        "해당 대학·모집단위 개별 합불 학습자료"
+      ],
+      "bonus_rules": [
+        "수학 미적분·기하 3% 가산 해당 계열",
+        "과탐 응시 시 탐구 과목별 변환표준점수 3% 가산 해당 계열"
+      ]
+    },
+    {
+      "year": 2026,
+      "university": "인하대학교",
+      "selection_type": "정시 일반전형",
+      "group": "인문융합학부 유형 A",
+      "weights": {
+        "korean": 0.35,
+        "math": 0.3,
+        "english": 0.1,
+        "inquiry": 0.25
+      },
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000169",
+      "source_kind": "대입정보포털(어디가) 2026 정시 일반전형 산출 방식",
+      "status": "official_partial_formula_without_final_inquiry_conversions",
+      "fully_computable": false,
+      "missing": [
+        "2026학년도 공식 탐구 백분위별 최종 변환표준점수",
+        "공식 입학처 최종 모집요강의 총점·반올림·과목별 가산 검산",
+        "해당 대학·모집단위 개별 합불 학습자료"
+      ],
+      "bonus_rules": [
+        "수학 미적분·기하 3% 가산 해당 계열",
+        "과탐 응시 시 탐구 과목별 변환표준점수 3% 가산 해당 계열"
+      ]
+    },
+    {
+      "year": 2026,
+      "university": "인하대학교",
+      "selection_type": "정시 일반전형",
+      "group": "인문융합학부 유형 B",
+      "weights": {
+        "korean": 0.3,
+        "math": 0.3,
+        "english": 0.1,
+        "inquiry": 0.3
+      },
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000169",
+      "source_kind": "대입정보포털(어디가) 2026 정시 일반전형 산출 방식",
+      "status": "official_partial_formula_without_final_inquiry_conversions",
+      "fully_computable": false,
+      "missing": [
+        "2026학년도 공식 탐구 백분위별 최종 변환표준점수",
+        "공식 입학처 최종 모집요강의 총점·반올림·과목별 가산 검산",
+        "해당 대학·모집단위 개별 합불 학습자료"
+      ],
+      "bonus_rules": [
+        "수학 미적분·기하 3% 가산 해당 계열",
+        "과탐 응시 시 탐구 과목별 변환표준점수 3% 가산 해당 계열"
+      ]
+    },
+    {
+      "year": 2026,
+      "university": "인하대학교",
+      "selection_type": "정시 일반전형",
+      "group": "공학융합·자연과학융합학부 유형 A",
+      "weights": {
+        "korean": 0.25,
+        "math": 0.4,
+        "english": 0.1,
+        "inquiry": 0.25
+      },
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000169",
+      "source_kind": "대입정보포털(어디가) 2026 정시 일반전형 산출 방식",
+      "status": "official_partial_formula_without_final_inquiry_conversions",
+      "fully_computable": false,
+      "missing": [
+        "2026학년도 공식 탐구 백분위별 최종 변환표준점수",
+        "공식 입학처 최종 모집요강의 총점·반올림·과목별 가산 검산",
+        "해당 대학·모집단위 개별 합불 학습자료"
+      ],
+      "bonus_rules": [
+        "수학 미적분·기하 3% 가산 해당 계열",
+        "과탐 응시 시 탐구 과목별 변환표준점수 3% 가산 해당 계열"
+      ]
+    },
+    {
+      "year": 2026,
+      "university": "인하대학교",
+      "selection_type": "정시 일반전형",
+      "group": "공학융합·자연과학융합학부 유형 B",
+      "weights": {
+        "korean": 0.25,
+        "math": 0.35,
+        "english": 0.1,
+        "inquiry": 0.3
+      },
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000169",
+      "source_kind": "대입정보포털(어디가) 2026 정시 일반전형 산출 방식",
+      "status": "official_partial_formula_without_final_inquiry_conversions",
+      "fully_computable": false,
+      "missing": [
+        "2026학년도 공식 탐구 백분위별 최종 변환표준점수",
+        "공식 입학처 최종 모집요강의 총점·반올림·과목별 가산 검산",
+        "해당 대학·모집단위 개별 합불 학습자료"
+      ],
+      "bonus_rules": [
+        "수학 미적분·기하 3% 가산 해당 계열",
+        "과탐 응시 시 탐구 과목별 변환표준점수 3% 가산 해당 계열"
+      ]
+    },
+    {
+      "year": 2026,
+      "university": "한국외국어대학교",
+      "selection_type": "정시 일반전형",
+      "group": "일반 인문 A",
+      "weights": {
+        "korean": 0.3,
+        "math": 0.3,
+        "english": 0.2,
+        "inquiry": 0.2
+      },
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000192",
+      "source_kind": "대입정보포털(어디가) 2026 정시 일반전형 산출 방식",
+      "status": "official_partial_formula_without_final_inquiry_conversions",
+      "fully_computable": false,
+      "missing": [
+        "2026학년도 공식 탐구 백분위별 최종 변환표준점수",
+        "공식 입학처 최종 모집요강의 총점·반올림·과목별 가산 검산",
+        "해당 대학·모집단위 개별 합불 학습자료"
+      ],
+      "total_csat_points": 700,
+      "math_indicator": "표준점수",
+      "korean_indicator": "표준점수",
+      "inquiry_indicator": "2과목 백분위 변환표준점수",
+      "english_indicator": "등급별 환산점수"
+    },
+    {
+      "year": 2026,
+      "university": "한국외국어대학교",
+      "selection_type": "정시 일반전형",
+      "group": "일반 인문 B",
+      "weights": {
+        "korean": 0.3,
+        "math": 0.35,
+        "english": 0.15,
+        "inquiry": 0.2
+      },
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000192",
+      "source_kind": "대입정보포털(어디가) 2026 정시 일반전형 산출 방식",
+      "status": "official_partial_formula_without_final_inquiry_conversions",
+      "fully_computable": false,
+      "missing": [
+        "2026학년도 공식 탐구 백분위별 최종 변환표준점수",
+        "공식 입학처 최종 모집요강의 총점·반올림·과목별 가산 검산",
+        "해당 대학·모집단위 개별 합불 학습자료"
+      ],
+      "total_csat_points": 700,
+      "math_indicator": "표준점수",
+      "korean_indicator": "표준점수",
+      "inquiry_indicator": "2과목 백분위 변환표준점수",
+      "english_indicator": "등급별 환산점수"
+    },
+    {
+      "year": 2026,
+      "university": "한국외국어대학교",
+      "selection_type": "정시 일반전형",
+      "group": "일반 자연",
+      "weights": {
+        "korean": 0.2,
+        "math": 0.35,
+        "english": 0.15,
+        "inquiry": 0.3
+      },
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000192",
+      "source_kind": "대입정보포털(어디가) 2026 정시 일반전형 산출 방식",
+      "status": "official_partial_formula_without_final_inquiry_conversions",
+      "fully_computable": false,
+      "missing": [
+        "2026학년도 공식 탐구 백분위별 최종 변환표준점수",
+        "공식 입학처 최종 모집요강의 총점·반올림·과목별 가산 검산",
+        "해당 대학·모집단위 개별 합불 학습자료"
+      ],
+      "total_csat_points": 700,
+      "math_indicator": "표준점수",
+      "korean_indicator": "표준점수",
+      "inquiry_indicator": "2과목 백분위 변환표준점수",
+      "english_indicator": "등급별 환산점수"
+    }
+  ]
+}
