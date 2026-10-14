@@ -17,7 +17,8 @@ STATUSES={
 'official_year_guide_from_prior_research',
 'official_archive_listing_from_prior_research',
 'year_selectable_adiga_university_profile',
-'official_adiga_year_profile_selector_not_downloaded_pdf'
+'official_adiga_year_profile_selector_not_downloaded_pdf',
+'official_university_archive_lists_exact_2022_2023_guides'
 }
 
 def read_research():
