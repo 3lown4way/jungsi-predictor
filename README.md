@@ -259,3 +259,13 @@ python -m http.server 8080 --directory site
 - 2026학년도 경희대는 입시결과 원문 위치는 확인했으나 정량 점수를 추출·재검증하지 않았으므로 **수치 누락을 그대로 유지**합니다.
 - 2022~2026학년도 연도별 공식 반영비는 2027용 산식으로 자동 치환하지 않습니다. 서울대 2023~2026 정시 일반전형 영역별 상대 반영비율은 국어 100, 수학 120, 탐구 80임을 원문에 확인했으나 교과평가·면접 등 최종전형 총점 산식이 불완전한 상태에서는 학습용 확정 환산식으로 인정하지 않습니다.
 - 통계의 70% 컷은 최종등록자 참고 점수이며 개별 합격/불합격 레이블로 사용하지 않습니다. 코드에서 임의 개인 합격자료로 전환 시도시 검사 실패.
+
+
+## v1.4 · 20개 주요 일반대학 × 2022~2026 자료 조사 범위 확대
+
+- `data/public/historical_admissions/top20_research_2022_2026.json`에 **20개 대학 × 5학년도 = 100개 학년도-대학 조사 항목**을 전수 생성했습니다. 실제 대학 공식 모집요강/자료실에서 주소를 확인한 항목만 링크를 넣고, 아직 찾지 못한 연도는 `null`입니다.
+- 공식 문서 링크 ≠ 해당 학년도·모집단위·계열별 **전체 환산식 검증 완료**. `weights_verified:false`, `complete_formula_approved:false`로 엄격히 분리합니다.
+- 출처 검증 사례: [한양대 정시 학년도별 모집요강](https://go.hanyang.ac.kr/web/mojib/mojib.do?m_type=JEONGSI&m_year=2026), [중앙대 2024~2026 정시요강](https://admission.cau.ac.kr/submenu.do?categoryid=24&menuurl=fpotGuatDnhsqjCnl16KOw%3D%3D), [성균관대 2024~2026 정시 공지](https://admission.skku.edu/admission/html/ipsi/notice.html), [연세대 서울 2026 정시 PDF](https://admission.yonsei.ac.kr/seoul/upload/guide/20250901090921Q4G69H.PDF), [고려대 서울 2026 정시 PDF](https://oku.korea.ac.kr/attach/202512/1764720171846_0.pdf), [동국대 서울 2025·2026 정시 PDF](https://ipsi.dongguk.edu/upload/file/20251231114107FNEDJW.PDF).
+- `data/public/historical_admissions/national_medical_research.json`은 의과대학·의학전문대학원 **40개 학사조직 조사 후보**와 [수의과대학 10개교 공식 소개](https://kvmsa.or.kr/32)를 별도 목록으로 관리합니다. 의전원/별도 캠퍼스가 포함되므로 학사조직 명단을 2027학년도 정시 의예과 선발대학 숫자로 사용하지 않습니다.
+- 치과·한의과·약학 면허직결 모집단위는 전국 전형 기준별 명단 재확인까지 `incomplete_rosters`로 표시합니다. **전국 의료계열 전수 수집 완료가 아님**을 명시합니다.
+- 상기 명단과 URL은 **2027 사용자 합격률/학습 완료 자료를 생성하지 않습니다**. 전체 전형 산식, 공식 변표, 검증된 합불 기록이 갖춰질 때만 모델 학습합니다.

@@ -1,0 +1,479 @@
+{
+  "faculty_candidates": {
+    "medicine": [
+      {
+        "university": "가천대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "가톨릭대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "가톨릭관동대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "강원대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "건국대학교(글로컬)",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "건양대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "경북대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "경상국립대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "경희대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "계명대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "고려대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "고신대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "단국대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "대구가톨릭대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "동국대학교(WISE)",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "동아대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "부산대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "서울대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "성균관대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "순천향대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "아주대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "연세대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "연세대학교(미래)",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "영남대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "울산대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "원광대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "을지대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "이화여자대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "인제대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "인하대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "전남대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "전북대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "제주대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "조선대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "중앙대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "차의과학대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "충남대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "충북대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "한림대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "한양대학교",
+        "medical_field": "medicine",
+        "type": "faculty_research_candidate_not_admission_unit",
+        "list_source_url": "https://www.youtube.com/watch?v=diFeKb2DJ6o",
+        "source_scope": "2020 한국의과대학·의학전문대학원협회 40개 교/원 명단. 의학전문대학원/분교 포함, 실제 2027 학부 정시모집 여부 반드시 확인",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      }
+    ],
+    "veterinary": [
+      {
+        "university": "강원대학교",
+        "medical_field": "veterinary",
+        "type": "university_research_candidate",
+        "list_source_url": "https://kvmsa.or.kr/32",
+        "source_scope": "대한수의과대학학생협회 전국 10개 수의대 명단",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "건국대학교",
+        "medical_field": "veterinary",
+        "type": "university_research_candidate",
+        "list_source_url": "https://kvmsa.or.kr/32",
+        "source_scope": "대한수의과대학학생협회 전국 10개 수의대 명단",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "경북대학교",
+        "medical_field": "veterinary",
+        "type": "university_research_candidate",
+        "list_source_url": "https://kvmsa.or.kr/32",
+        "source_scope": "대한수의과대학학생협회 전국 10개 수의대 명단",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "경상국립대학교",
+        "medical_field": "veterinary",
+        "type": "university_research_candidate",
+        "list_source_url": "https://kvmsa.or.kr/32",
+        "source_scope": "대한수의과대학학생협회 전국 10개 수의대 명단",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "서울대학교",
+        "medical_field": "veterinary",
+        "type": "university_research_candidate",
+        "list_source_url": "https://kvmsa.or.kr/32",
+        "source_scope": "대한수의과대학학생협회 전국 10개 수의대 명단",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "전남대학교",
+        "medical_field": "veterinary",
+        "type": "university_research_candidate",
+        "list_source_url": "https://kvmsa.or.kr/32",
+        "source_scope": "대한수의과대학학생협회 전국 10개 수의대 명단",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "전북대학교",
+        "medical_field": "veterinary",
+        "type": "university_research_candidate",
+        "list_source_url": "https://kvmsa.or.kr/32",
+        "source_scope": "대한수의과대학학생협회 전국 10개 수의대 명단",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "제주대학교",
+        "medical_field": "veterinary",
+        "type": "university_research_candidate",
+        "list_source_url": "https://kvmsa.or.kr/32",
+        "source_scope": "대한수의과대학학생협회 전국 10개 수의대 명단",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "충남대학교",
+        "medical_field": "veterinary",
+        "type": "university_research_candidate",
+        "list_source_url": "https://kvmsa.or.kr/32",
+        "source_scope": "대한수의과대학학생협회 전국 10개 수의대 명단",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      },
+      {
+        "university": "충북대학교",
+        "medical_field": "veterinary",
+        "type": "university_research_candidate",
+        "list_source_url": "https://kvmsa.or.kr/32",
+        "source_scope": "대한수의과대학학생협회 전국 10개 수의대 명단",
+        "verified_2027_regular_admission": false,
+        "year_specific_2022_2026_guides_loaded": false
+      }
+    ]
+  },
+  "incomplete_rosters": {
+    "dentistry": {
+      "medical_field": "dentistry",
+      "status": "institution_roster_incomplete",
+      "note": "전국 치과대학 연도별 목록·전형 확인 필요",
+      "source_url": "https://www.adiga.kr/uct/acd/adc/characteristicsView.do?menuId=PCUCTACD1100"
+    },
+    "oriental_medicine": {
+      "medical_field": "oriental_medicine",
+      "status": "institution_roster_incomplete",
+      "note": "전국 한의과대학 및 한의학전문대학원 전형 확인 필요",
+      "source_url": "https://www.akom.org/Home/AkomArticleNews/1150717?NewsType=2"
+    },
+    "pharmacy": {
+      "medical_field": "pharmacy",
+      "status": "institution_roster_incomplete",
+      "note": "전국 약학대학 면허직결 학과 연도별 확인 필요",
+      "source_url": "https://www.adiga.kr/uct/acd/adc/characteristicsView.do?menuId=PCUCTACD1100"
+    }
+  },
+  "caveat": "nationwide university faculty roster only; not verified 2027 regular-admission licensing majors and not admission formula data"
+}

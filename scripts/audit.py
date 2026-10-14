@@ -63,6 +63,8 @@ def run():
         report['verified_historical_model_major_count']=model.get('coverage',{}).get('trained_programs',0)
     else:
         report['verified_historical_model_major_count']=0
+    from scripts.national_research_scope import summary as national_research_summary
+    report['national_research_scope']=national_research_summary()
     from scripts.historical_sources import summary as historical_source_summary
     report['historical_official_research']=historical_source_summary()
     from scripts.precompute import load_boundaries
