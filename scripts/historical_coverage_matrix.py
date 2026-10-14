@@ -43,8 +43,11 @@ def extract_entries(source):
     doc=json.loads(source.read_text(encoding="utf-8"))
     if isinstance(doc,list):return doc
     if "records" in doc:return doc["records"]
+    if "year" in doc and "university" in doc:
+        # Some precisely documented annual calculators contain a "groups"
+        # array without repeating the university/year in each group.
+        return [doc]
     if "groups" in doc and isinstance(doc["groups"],list):return doc["groups"]
-    if "year" in doc and "university" in doc:return [doc]
     raise ValueError(f"Cannot infer input records: {source}")
 
 

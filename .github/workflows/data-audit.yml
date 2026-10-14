@@ -43,4 +43,6 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: weekly-data-audit
-          path: audit-report.json
+          path: |
+            audit-report.json
+            historical-coverage.json
