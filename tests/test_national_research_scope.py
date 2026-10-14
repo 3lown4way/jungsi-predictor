@@ -7,6 +7,8 @@ def test_top20_all_2022_to_2026_slots_without_fabricated_urls():
     assert {(r['university'],r['year']) for r in rows}=={
       (r['university'],year) for year in range(2022,2027) for r in rows if r['year']==2026}
     assert any(r['official_guide_url'] is None for r in rows)
+    assert len([r for r in rows if r['university']=='서울대학교' and r['official_guide_url']])==5
+    assert sum(r['guide_status']=='year_selectable_adiga_university_profile' for r in rows)==6
     assert all(not r['weights_verified'] and not r['complete_formula_approved'] for r in rows)
     assert sum(r['official_guide_url'] is not None for r in rows)==summary()['historical_year_links_found']
 

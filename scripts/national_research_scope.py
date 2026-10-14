@@ -15,7 +15,8 @@ STATUSES={
 'official_2024_full_guide_pdf',
 'official_2026_guide_notice_with_attachment',
 'official_year_guide_from_prior_research',
-'official_archive_listing_from_prior_research'
+'official_archive_listing_from_prior_research',
+'year_selectable_adiga_university_profile'
 }
 
 def read_research():
