@@ -73,6 +73,8 @@ def test_static_export_is_precomputed_reader_not_personal_form(tmp_path):
     run(target)
     html=(target/'index.html').read_text(encoding='utf-8')
     assert 'id="official-score-form"' in html
+    for field in ('korean_std','math_std','inquiry1_std','inquiry2_std','english_grade','history_grade'):
+        assert 'name="'+field+'"' in html
     assert 'id="grade-profile"' not in html
     assert 'localStorage' not in (target/'static'/'app.js').read_text(encoding='utf-8')
     assert 'id="subject-select"' in html
