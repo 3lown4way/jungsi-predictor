@@ -51,3 +51,73 @@ async function loadCohortSnapshot(){
  }catch(err){el.textContent='배치 결과 조회 실패: '+err.message;}
 }
 loadCohortSnapshot();
+
+
+// Offline score-frequency adjustment: no individual records.
+async function loadScoreAdjustment() {
+  const el = document.querySelector('#score-adjustment-results');
+  if (!el) return;
+  try {
+    const r = await fetch('./data/score-adjustment.json');
+    if (!r.ok) throw Error('HTTP ' + r.status);
+    const d = await r.json();
+    if (!d.ready_subject_count) {
+      el.textContent = '공식 표준점수별 인원 분포가 등록되지 않았거나 동일 과목의 과거 9평·수능 자료가 3개 학년도 미만입니다. 임의 보정값을 표시하지 않습니다.';
+      return;
+    }
+    el.replaceChildren();
+    const header = document.createElement('p');
+    header.className = 'form-msg';
+    header.textContent = '2027학년도 보정 가능 과목 ' + d.ready_subject_count + '개 · 과거 동일 분위 표준점수 분포 변화에 기반';
+    el.append(header);
+    for (const group of d.subjects || []) {
+      const detail = document.createElement('details');
+      detail.className = 'result-row';
+      detail.open = group.status === 'ready';
+      const summary = document.createElement('summary');
+      summary.textContent = group.subject + (group.option_name === 'all' ? ' (전체)' : ' · ' + group.option_name)
+        + ' · ' + (group.status === 'ready' ? group.historical_pairs.length + '개 학년도 비교' : '과거 자료 쌍 부족');
+      detail.append(summary);
+      if (group.status === 'ready') {
+        const wrapper = document.createElement('div');
+        wrapper.style.overflowX = 'auto';
+        const table = document.createElement('table');
+        table.style.cssText = 'width:100%;margin-top:12px;text-align:right;font-size:12px;border-collapse:collapse';
+        const headerRow = document.createElement('tr');
+        for (const label of ['전국 누적위치', '9평 표준점수', '예상 수능 표준점수', '과거 이동폭 최소~최대']) {
+          const th = document.createElement('th');
+          th.textContent = label;
+          headerRow.append(th);
+        }
+        table.append(headerRow);
+        for (const q of group.quantiles || []) {
+          if (![50, 80, 90, 95, 99].includes(q.cumulative_percentile)) continue;
+          const tr = document.createElement('tr');
+          for (const value of [q.cumulative_percentile + '%', q.september_std_score,
+            q.projected_csat_std_score, q.historical_shift_min + ' ~ ' + q.historical_shift_max]) {
+            const td = document.createElement('td');
+            td.style.padding = '7px 4px';
+            td.textContent = String(value);
+            tr.append(td);
+          }
+          table.append(tr);
+        }
+        wrapper.append(table);
+        detail.append(wrapper);
+      }
+      if (group.reference_sources && group.reference_sources.length) {
+        const anchor = document.createElement('a');
+        anchor.className = 'score-source';
+        anchor.href = group.reference_sources[0];
+        anchor.target = '_blank';
+        anchor.rel = 'noopener noreferrer';
+        anchor.textContent = '공식 도수분포 출처 ↗';
+        detail.append(anchor);
+      }
+      el.append(detail);
+    }
+  } catch (error) {
+    el.textContent = '표준점수 보정자료를 불러오지 못했습니다: ' + error.message;
+  }
+}
+loadScoreAdjustment();

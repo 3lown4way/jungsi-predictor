@@ -64,6 +64,9 @@ def run(output: Path, api_base_url: str = ''):
         for year, records in by_year.items():
             write_json(data_dir / f'precomputed-{year}.json', records)
         write_json(data_dir / 'precomputed-summary.json', summary)
+        # National score-frequency curves only; never student-level records.
+        from scripts.score_adjustment import make_snapshot
+        write_json(data_dir / 'score-adjustment.json', make_snapshot())
         # Publish only already privacy-gated, non-identifying aggregate snapshots.
         snapshot_file = ROOT / 'data' / 'public' / 'snapshots' / '2027-september.json'
         if snapshot_file.is_file():
