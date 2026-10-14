@@ -1,0 +1,59 @@
+name: Train 2027 admission model from verified historical university weights
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  historical-batch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Validate source calculations
+        run: python -m pytest -q tests/test_historical_forecast.py tests/test_weighted_rules.py
+      - name: Fetch 2022-2026 verified 9평 plus admission outcomes privately
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          test -n "$SUPABASE_URL" || { echo "SUPABASE_URL secret is not set"; exit 1; }
+          test -n "$SUPABASE_SERVICE_ROLE_KEY" || { echo "SUPABASE_SERVICE_ROLE_KEY secret is not set"; exit 1; }
+          python -m scripts.supabase_historical --output "$RUNNER_TEMP/private_historical.jsonl"
+      - name: Run annual-rule scoring and forward holdout calibration
+        env:
+          ADMISSION_DB: ${{ runner.temp }}/historical-training.sqlite3
+        run: |
+          python -m scripts.historical_forecast --private-input "$RUNNER_TEMP/private_historical.jsonl" --output data/public/models/historical-2027.json
+          rm -f "$RUNNER_TEMP/private_historical.jsonl"
+      - name: Require actually validated programmes before publishing
+        run: |
+          python - <<'PY'
+          import json
+          s=json.load(open('data/public/models/historical-2027.json',encoding='utf-8'))
+          n=s['coverage']['trained_programs']
+          print('Validated programme-level curves:',n)
+          if n==0:
+              raise SystemExit('No validated curves. Nothing will be published.')
+          PY
+      - name: Verify only aggregate, privacy-gated output enters Pages
+        env:
+          ADMISSION_DB: ${{ runner.temp }}/historical-validation.sqlite3
+        run: |
+          python -m scripts.build_pages --output "$RUNNER_TEMP/historical-site"
+          python -m pytest -q tests/test_github_actions.py
+          node --test tests/test_score_engine.cjs
+      - name: Commit and deploy only the approved aggregate model snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/public/models/historical-2027.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Publish validated 2027 historical weighted admission forecast"
+          git push
