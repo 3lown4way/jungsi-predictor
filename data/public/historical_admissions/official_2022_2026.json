@@ -1,0 +1,163 @@
+[
+  {
+    "university": "서울대학교",
+    "year": 2022,
+    "selection_type": "정시 일반전형",
+    "official_guide_url": "https://admission.snu.ac.kr/webdata/admission/files/2022jungsi.pdf",
+    "guide_status": "published_official_pdf_located",
+    "actual_results_url": "https://admission.snu.ac.kr/materials/downloads/press?bbsidx=135801&md=v",
+    "actual_results_status": "official_press_notice_located",
+    "relative_weights": null,
+    "relative_weights_scope": "not_reviewed",
+    "relative_weights_status": "unverified",
+    "complete_formula_approved": false,
+    "verified_70pct_cut_count": 0,
+    "source_note": "서울대 일반전형은 교과평가 등 수능 외 요소 존재. 상대 반영비율은 전체 최종합격점수 환산식이 아님."
+  },
+  {
+    "university": "경희대학교",
+    "year": 2022,
+    "selection_type": "정시 일반전형",
+    "official_guide_url": "https://iphak.khu.ac.kr/file/pdfDown.pdf?ofn=0901+%EC%A0%95%EC%8B%9C+%EC%8B%A0%EC%9E%85%EC%83%9D+%EB%AA%A8%EC%A7%91%EC%9A%94%EA%B0%95_%EC%B5%9C%EC%A2%85.pdf&sfn=20210902042007287_0901+%EC%A0%95%EC%8B%9C+%EC%8B%A0%EC%9E%85%EC%83%9D+%EB%AA%A8%EC%A7%91%EC%9A%94%EA%B0%95_%EC%B5%9C%EC%A2%85.pdf",
+    "guide_status": "published_official_guide_located",
+    "actual_results_url": "https://iphak.khu.ac.kr/detail.do?board_seq=4814&categoryid=38",
+    "actual_results_status": "official_admissions_statistics_publication_located",
+    "relative_weights": null,
+    "relative_weights_status": "separate_department_and_track_research",
+    "complete_formula_approved": false,
+    "verified_70pct_cut_count": 5,
+    "source_note": "대학별/연도별 한국사·영어·탐구 가산 및 변표 반드시 원문 확인. 70% cut는 실측 개인 합불 레이블 아님."
+  },
+  {
+    "university": "서울대학교",
+    "year": 2023,
+    "selection_type": "정시 일반전형",
+    "official_guide_url": "https://admission.snu.ac.kr/webdata/admission/files/2023jungsi.pdf",
+    "guide_status": "published_official_pdf_located",
+    "actual_results_url": null,
+    "actual_results_status": "not_yet_located",
+    "relative_weights": {
+      "korean": 100,
+      "math": 120,
+      "inquiry": 80
+    },
+    "relative_weights_scope": "일반전형 예체능 제외 영역별 상대 반영비율",
+    "relative_weights_status": "source_confirmed_not_full_final_admission_score",
+    "complete_formula_approved": false,
+    "verified_70pct_cut_count": 0,
+    "source_note": "서울대 일반전형은 교과평가 등 수능 외 요소 존재. 상대 반영비율은 전체 최종합격점수 환산식이 아님."
+  },
+  {
+    "university": "경희대학교",
+    "year": 2023,
+    "selection_type": "정시 일반전형",
+    "official_guide_url": "https://iphak.khu.ac.kr/submenu.do?boardid=3&categoryid=8&menuurl=bmyV1ovIAzYtqDXLjUSVtw%3D%3D&pageNo=1",
+    "guide_status": "official_archive_listing_located",
+    "actual_results_url": "https://iphak.khu.ac.kr/detail.do?board_seq=8141&categoryid=38",
+    "actual_results_status": "official_admissions_statistics_publication_located",
+    "relative_weights": null,
+    "relative_weights_status": "separate_department_and_track_research",
+    "complete_formula_approved": false,
+    "verified_70pct_cut_count": 0,
+    "source_note": "대학별/연도별 한국사·영어·탐구 가산 및 변표 반드시 원문 확인. 70% cut는 실측 개인 합불 레이블 아님."
+  },
+  {
+    "university": "서울대학교",
+    "year": 2024,
+    "selection_type": "정시 일반전형",
+    "official_guide_url": "https://admission.snu.ac.kr/webdata/admission/files/2024jungsi.pdf",
+    "guide_status": "published_official_pdf_located",
+    "actual_results_url": null,
+    "actual_results_status": "not_yet_located",
+    "relative_weights": {
+      "korean": 100,
+      "math": 120,
+      "inquiry": 80
+    },
+    "relative_weights_scope": "일반전형 예체능 제외 영역별 상대 반영비율",
+    "relative_weights_status": "source_confirmed_not_full_final_admission_score",
+    "complete_formula_approved": false,
+    "verified_70pct_cut_count": 0,
+    "source_note": "서울대 일반전형은 교과평가 등 수능 외 요소 존재. 상대 반영비율은 전체 최종합격점수 환산식이 아님."
+  },
+  {
+    "university": "경희대학교",
+    "year": 2024,
+    "selection_type": "정시 일반전형",
+    "official_guide_url": "https://kr.object.gov-ncloudstorage.com/khuiphakstorage/upload/20240111111330082_2024%20jungsi%200901.pdf",
+    "guide_status": "published_official_guide_located",
+    "actual_results_url": "https://iphak.khu.ac.kr/detail.do?board_seq=11047&categoryid=38",
+    "actual_results_status": "official_admissions_statistics_publication_located",
+    "relative_weights": null,
+    "relative_weights_status": "separate_department_and_track_research",
+    "complete_formula_approved": false,
+    "verified_70pct_cut_count": 5,
+    "source_note": "대학별/연도별 한국사·영어·탐구 가산 및 변표 반드시 원문 확인. 70% cut는 실측 개인 합불 레이블 아님."
+  },
+  {
+    "university": "서울대학교",
+    "year": 2025,
+    "selection_type": "정시 일반전형",
+    "official_guide_url": "https://admission.snu.ac.kr/webdata/admission/files/2025jungsi.pdf",
+    "guide_status": "published_official_pdf_located",
+    "actual_results_url": "https://admission.snu.ac.kr/materials/downloads/press?bbsidx=152366&md=v",
+    "actual_results_status": "official_press_notice_located",
+    "relative_weights": {
+      "korean": 100,
+      "math": 120,
+      "inquiry": 80
+    },
+    "relative_weights_scope": "일반전형 예체능 제외 영역별 상대 반영비율",
+    "relative_weights_status": "source_confirmed_not_full_final_admission_score",
+    "complete_formula_approved": false,
+    "verified_70pct_cut_count": 0,
+    "source_note": "서울대 일반전형은 교과평가 등 수능 외 요소 존재. 상대 반영비율은 전체 최종합격점수 환산식이 아님."
+  },
+  {
+    "university": "경희대학교",
+    "year": 2025,
+    "selection_type": "정시 일반전형",
+    "official_guide_url": "https://iphak.khu.ac.kr/detail.do?board_seq=13022&categoryid=2",
+    "guide_status": "published_official_guide_located",
+    "actual_results_url": "https://iphak.khu.ac.kr/detail.do?board_seq=14161&categoryid=38",
+    "actual_results_status": "official_admissions_statistics_publication_located",
+    "relative_weights": null,
+    "relative_weights_status": "separate_department_and_track_research",
+    "complete_formula_approved": false,
+    "verified_70pct_cut_count": 5,
+    "source_note": "대학별/연도별 한국사·영어·탐구 가산 및 변표 반드시 원문 확인. 70% cut는 실측 개인 합불 레이블 아님."
+  },
+  {
+    "university": "서울대학교",
+    "year": 2026,
+    "selection_type": "정시 일반전형",
+    "official_guide_url": "https://admission.snu.ac.kr/webdata/admission/files/2026jungsi.pdf",
+    "guide_status": "published_official_pdf_located",
+    "actual_results_url": null,
+    "actual_results_status": "not_yet_located",
+    "relative_weights": {
+      "korean": 100,
+      "math": 120,
+      "inquiry": 80
+    },
+    "relative_weights_scope": "일반전형 예체능 제외 영역별 상대 반영비율",
+    "relative_weights_status": "source_confirmed_not_full_final_admission_score",
+    "complete_formula_approved": false,
+    "verified_70pct_cut_count": 0,
+    "source_note": "서울대 일반전형은 교과평가 등 수능 외 요소 존재. 상대 반영비율은 전체 최종합격점수 환산식이 아님."
+  },
+  {
+    "university": "경희대학교",
+    "year": 2026,
+    "selection_type": "정시 일반전형",
+    "official_guide_url": "https://iphak.khu.ac.kr/detail.do?board_seq=16468&categoryid=2",
+    "guide_status": "published_official_guide_located",
+    "actual_results_url": "https://iphak.khu.ac.kr/submenu.do?menuurl=CQ%2BtdVujMr8ZrNNooONqJw%3D%3D",
+    "actual_results_status": "official_admissions_statistics_publication_located",
+    "relative_weights": null,
+    "relative_weights_status": "separate_department_and_track_research",
+    "complete_formula_approved": false,
+    "verified_70pct_cut_count": 0,
+    "source_note": "대학별/연도별 한국사·영어·탐구 가산 및 변표 반드시 원문 확인. 70% cut는 실측 개인 합불 레이블 아님."
+  }
+]
