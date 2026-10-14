@@ -64,6 +64,19 @@ def run(output: Path, api_base_url: str = ''):
         for year, records in by_year.items():
             write_json(data_dir / f'precomputed-{year}.json', records)
         write_json(data_dir / 'precomputed-summary.json', summary)
+        # Publish only already privacy-gated, non-identifying aggregate snapshots.
+        snapshot_file = ROOT / 'data' / 'public' / 'snapshots' / '2027-september.json'
+        if snapshot_file.is_file():
+            snapshot = json.loads(snapshot_file.read_text(encoding='utf-8'))
+            if snapshot.get('privacy_threshold', 0) < 30 or snapshot.get('year') != 2027:
+                raise ValueError('invalid public cohort privacy gate')
+            write_json(data_dir / 'cohort-snapshot.json', snapshot)
+        else:
+            write_json(data_dir / 'cohort-snapshot.json', {
+                'schema_version': '1.0', 'year': 2027, 'exam_type': 'september',
+                'snapshot_mode': 'offline_github_actions', 'published_programs': 0,
+                'predictions': [], 'message': 'No published cohort snapshot yet'
+            })
         write_json(data_dir / 'build-info.json', {
             'generated_at_utc': datetime.now(timezone.utc).isoformat(),
             'imported_public_csv_count': len(imported),

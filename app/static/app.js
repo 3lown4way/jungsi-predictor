@@ -30,3 +30,24 @@ $('#filter-year').addEventListener('change',loadYear);
 for(const id of ['filter-exam','filter-search','filter-grade'])$(id).addEventListener(id==='filter-search'?'input':'change',()=>results());
 $('#more-results').addEventListener('click',()=>results(false));
 init();
+
+// Read the GitHub Actions privacy-gated snapshot. Never run online ML inference.
+async function loadCohortSnapshot(){
+ const el=$('#cohort-snapshot-results');
+ try {
+  const res=await fetch('./data/cohort-snapshot.json');
+  if(!res.ok)throw Error('HTTP '+res.status);
+  const data=await res.json();
+  const groups=data.predictions||[];
+  if(!groups.length){el.innerHTML='<div class="empty slim">아직 공개 가능한 모의지원 배치 결과가 없습니다. 비공개 성적 수집 서비스와 2027학년도 공식 환산식 검증이 필요합니다.</div>';return;}
+  const date=data.generated_at_utc?new Date(data.generated_at_utc).toLocaleString('ko-KR'):'날짜 미상';
+  let html='<p class="form-msg">생성일: '+esc(date)+' · 공개 가능 모집단위 '+num(groups.length)+'개 · 9평 모의지원자의 환산점수 분위값</p>';
+  for(const p of groups){
+    html+='<div class="result-row"><div class="result-top"><strong>'+esc(p.university)+' '+esc(p.department)+'</strong><small>표본 '+esc(p.participant_count_band)+'명</small></div>';
+    html+='<div class="formula-bits">환산점수 하위25% '+num(p.score_p25)+' · 중앙값 '+num(p.score_p50)+' · 상위25% '+num(p.score_p75)+' / '+num(p.score_scale)+'</div>';
+    html+='<div class="result-meta"><span class="chip">자발적 모의지원 표본</span><span class="chip warn">검증된 합격 확률 미산출</span></div></div>';
+  }
+  el.innerHTML=html;
+ }catch(err){el.textContent='배치 결과 조회 실패: '+err.message;}
+}
+loadCohortSnapshot();
