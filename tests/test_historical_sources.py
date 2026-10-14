@@ -14,14 +14,17 @@ def test_2022_2026_official_sources_are_specific_to_year_and_university():
 
 def test_verified_medical_70pct_cuts_not_confused_with_labeled_admissions():
     cuts=read_historical_cuts()
-    assert len(cuts)==15
-    assert {row['year'] for row in cuts}=={2022,2024,2025}
+    assert len(cuts)==20
+    assert {row['year'] for row in cuts}=={2022,2023,2024,2025}
     assert all(row['score_scale']==800 and not row['probability_label_eligible'] for row in cuts)
     def score(y,d):return next(r['final_enrollee_70pct_converted_score'] for r in cuts if r['year']==y and r['department']==d)
     assert score(2022,'의예과')==609.74
+    assert score(2023,'의예과')==589.70
+    assert score(2023,'한의예과(인문)')==578.9
     assert score(2024,'의예과')==600.80
     assert score(2025,'의예과')==595.35
     assert next(r['admission_round'] for r in cuts if r['year']==2025 and r['department']=='한의예과(인문)')=='나'
+    assert all(x['admission_round']=='나' for x in cuts if x['year']==2023)
     assert summary()['cutoffs_usable_as_individual_outcomes']==0
 
 def test_missing_year_does_not_get_filled_in(tmp_path):
