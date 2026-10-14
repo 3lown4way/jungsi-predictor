@@ -21,6 +21,7 @@ def test_verified_medical_70pct_cuts_not_confused_with_labeled_admissions():
     assert score(2022,'의예과')==609.74
     assert score(2024,'의예과')==600.80
     assert score(2025,'의예과')==595.35
+    assert next(r['admission_round'] for r in cuts if r['year']==2025 and r['department']=='한의예과(인문)')=='나'
     assert summary()['cutoffs_usable_as_individual_outcomes']==0
 
 def test_missing_year_does_not_get_filled_in(tmp_path):
