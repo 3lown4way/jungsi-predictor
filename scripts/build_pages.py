@@ -33,6 +33,7 @@ def run(output: Path, api_base_url: str = ''):
         imported = load()
         output.mkdir(parents=True, exist_ok=True)
         shutil.copytree(ROOT / 'app' / 'static', output / 'static', dirs_exist_ok=True)
+        (output / 'static' / 'outcomes_template.csv').unlink(missing_ok=True)
         page = (ROOT / 'app' / 'static' / 'index.html').read_text(encoding='utf-8')
         page = page.replace('/static/', './static/')
         page = page.replace('RESEARCH BUILD · v0.4', 'GITHUB ACTIONS · v0.4')
@@ -43,32 +44,55 @@ def run(output: Path, api_base_url: str = ''):
         (output / 'static' / 'config.js').write_text('window.ADMISSION_SITE_CONFIG = '+json.dumps(config, ensure_ascii=False)+';\n', encoding='utf-8')
         data_dir = output / 'data'; data_dir.mkdir(exist_ok=True)
         with TestClient(app) as client:
-            endpoints = {'meta': '/api/meta', 'scope': '/api/scope', 'backtest': '/api/backtest'}
-            for name, path in endpoints.items():
-                response = client.get(path); response.raise_for_status()
-                result = response.json()
-                if name == 'backtest':
-                    # 정적 GitHub Pages 공개 화면에는 개인정보 기반 모형 결과 미출력.
-                    assert result['count'] == 0
-                write_json(data_dir / f'{name}.json', result)
-            for year in range(2022, 2028):
-                response=client.get('/api/programs', params={'year': year})
-                response.raise_for_status()
-                write_json(data_dir / f'programs-{year}.json', response.json())
+            response = client.get('/api/programs', params={'year': 2027})
+            response.raise_for_status()
+            write_json(data_dir / 'programs-2027.json', response.json())
+        from app.scope import TOP_20, MEDICAL_FIELDS
+        write_json(data_dir / 'targets-2027.json', {'year':2027,
+            'universities':list(TOP_20), 'medical_fields':MEDICAL_FIELDS,
+            'status_note':'대상 대학 명단은 공식 반영식·합격확률 확보를 의미하지 않습니다.'})
         # Official grade-boundary profile x verified university formula precomputation.
         from scripts.precompute import build_dataset
         from app.database import connect
         with connect() as con:
             programs = [dict(p) for p in con.execute('SELECT * FROM programs')]
         by_year, summary = build_dataset(programs)
-        for year, records in by_year.items():
-            write_json(data_dir / f'precomputed-{year}.json', records)
-        write_json(data_dir / 'precomputed-summary.json', summary)
-        # National score-frequency curves only; never student-level records.
-        from scripts.score_adjustment import make_snapshot
-        write_json(data_dir / 'score-adjustment.json', make_snapshot())
+        # 2022~2026 are internal training/validation years; NEVER export their result datasets.
+        write_json(data_dir / 'precomputed-2027.json', by_year[2027])
+        write_json(data_dir / 'precomputed-summary.json', {
+            'year':2027, 'record_count':len(by_year[2027]),
+            'grade_boundary_scenarios':'최종 수능 성적이나 합격확률이 아닌 확정 경계값 조합',
+            'status':'available' if by_year[2027] else 'official_2027_formula_and_boundary_missing',
+        })
+        from scripts.score_adjustment import make_snapshot, read_frequencies
+        snapshot=make_snapshot()
+        # Publish 2027 reference curves only, not historical score distributions or backtests.
+        write_json(data_dir / 'score-adjustment.json', {
+            'reference_year':2027, 'ready_subject_count':snapshot['ready_subject_count'],
+            'subjects':[{k:v for k,v in row.items() if k not in ('historical_pairs',)}
+                        for row in snapshot['subjects']],
+            'note':'2022~2026학년도 자료는 학습·검증에만 사용하며 별도 공개하지 않습니다.'
+        })
+        distributions,_=read_frequencies()
+        subjects=[]
+        for (year,exam,subject,option),dist in sorted(distributions.items()):
+            if (year,exam)!=(2027,'september'):
+                continue
+            bins=[{'score':s,'count':n} for s,n in sorted(dist.frequencies.items())]
+            subjects.append({'subject':subject,'option_name':option,'total':dist.total,
+                'max_score':max(dist.frequencies),'max_score_count':dist.frequencies[max(dist.frequencies)],
+                'bins':bins,'source_url':dist.source_urls[0]})
+        write_json(data_dir / 'score-distribution-2027.json', {'year':2027,
+            'exam_type':'september','subject_count':len(subjects),'subjects':subjects,
+            'note':'2027학년도 9월 모의평가 표준점수별 응시 인원 공식 도수분포'})
         from scripts.source_inventory import build_report
-        write_json(data_dir / 'official-source-status.json', build_report())
+        report=build_report()
+        current=next(r for r in report['entries'] if r['year']==2027 and r['exam_type']=='september')
+        write_json(data_dir / 'official-source-status.json', {
+            'year':2027,'exam_type':'september','source_page':current['source_page'],
+            'subject_count':len(subjects),'numeric_data_imported':current['numeric_data_imported'],
+            'warning':'사용자 제공 엑셀의 누적·합계 검사 완료. 교육부 첨부 파일과 바이트 동일성 미확인.'
+        })
         # Publish only already privacy-gated, non-identifying aggregate snapshots.
         snapshot_file = ROOT / 'data' / 'public' / 'snapshots' / '2027-september.json'
         if snapshot_file.is_file():

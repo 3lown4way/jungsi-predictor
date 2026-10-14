@@ -20,10 +20,18 @@ def test_static_export_no_raw_personal_outcomes(tmp_path):
     assert 'src="./static/app.js"' in html
     assert 'href="/static/' not in html
     assert (site/'static'/'config.js').exists()
-    meta=json.loads((site/'data'/'meta.json').read_text())
-    assert meta['application_outcomes']==0
-    for entry in (site/'data').glob('programs-*.json'):
-        assert isinstance(json.loads(entry.read_text()),list)
+    assert not (site/'data'/'meta.json').exists()
+    assert not (site/'data'/'backtest.json').exists()
+    assert (site/'data'/'programs-2027.json').is_file()
+    assert not list(site.glob('data/programs-202[2-6].json'))
+    assert not list(site.glob('data/precomputed-202[2-6].json'))
+    distribution=json.loads((site/'data'/'score-distribution-2027.json').read_text())
+    assert distribution['subject_count']==25
+    assert len(distribution['subjects'])==25
+    assert not (site/'static'/'outcomes_template.csv').exists()
+    adjustment=json.loads((site/'data'/'score-adjustment.json').read_text())
+    assert 'backtests' not in adjustment
+    assert all('historical_pairs' not in row for row in adjustment['subjects'])
     assert not list(site.rglob('*.sqlite3'))
     assert not list(site.rglob('actual_applications.csv'))
 

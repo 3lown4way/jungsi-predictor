@@ -1,18 +1,77 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101a2a"><title>정시렌즈 | 확정 점수 기반 사전계산 데이터셋</title><link rel="stylesheet" href="/static/styles.css"></head><body>
-<div class="shell"><aside class="sidebar"><div class="brand"><span class="brandmark">◎</span><span>정시<span class="brand-accent">렌즈</span><small>PRECOMPUTED ADMISSIONS DATA</small></span></div>
-<div class="navlabel">연도별 확정 데이터셋</div><div class="nav active"><span>▣</span> 사전 계산 결과</div><div class="nav"><span>◷</span> 과거 입결 사후 대조</div><div class="nav"><span>◎</span> 주요 20교 + 전국 매디컬</div>
-<div class="side-bottom"><span class="status-light"></span> 원문 확인 기반 데이터셋<p>2022–2027학년도 · 정시 일반전형</p><p class="tiny">개인 성적 입력·저장 기능 없음. 빈 칸은 데이터 미확보를 뜻합니다.</p></div></aside>
-<main class="main"><div class="topbar"><span>GitHub Actions 오프라인 데이터셋 조회</span><span class="build">BATCH DATASET · v0.6</span></div>
-<section class="page active"><div class="hero"><div><div class="eyebrow">YEAR-AWARE PRECOMPUTED SCORE MATRIX</div><h1>개인 성적 입력 없이,<br><em>확정 등급 경계값으로 계산한 결과</em>를 조회합니다.</h1><p>시험별 점수 분포와 학년도별 대학 환산식을 분리합니다. 계산값·사후 입결 비교·실제 합격 검증을 구별합니다.</p></div><div class="hero-figure"><b>2022 <span>→</span> 2027</b><small>확정 컷 / 공식 산식 / 합불은 분리</small></div></div>
-<div class="metrics"><div class="metric"><small>생성된 사전 계산 행</small><strong id="metric-count">—</strong><p>실제 검증 입력자료가 있어야 생성</p></div><div class="metric"><small>확정 등급컷 입력 묶음</small><strong id="metric-bundles">—</strong><p>시험·과목 조합 별도 관리</p></div><div class="metric"><small>실제 합불 라벨</small><strong>0<span>건 공개</span></strong><p>70%컷을 합격 라벨로 바꾸지 않음</p></div></div>
-<div class="panel"><div class="panel-head"><div><div class="eyebrow">SCORE DISTRIBUTION NORMALIZATION · OFFLINE</div><h2>2027학년도 9평 → 예상 수능 표준점수 보정</h2></div><span class="tag">확정 도수분포 기반</span></div><p class="form-msg">과거 2022~2026학년도 9월 모의평가와 수능의 동일 전국 누적백분위에서 발생한 표준점수 이동폭을 비교합니다. 학생별 성적 DB를 사용하지 않습니다. 2025·2026학년도는 과거 연도만 활용해 검증합니다.</p><div id="score-adjustment-results"><div class="empty slim">과거 표준점수 분포와 보정 결과를 불러오는 중입니다.</div></div><div class="notice"><strong>주의</strong> 동일한 전국 위치 유지 가정의 시험 분포 예측입니다. 개인별 성적 향상·하락과 합격확률을 추정한 결과는 아닙니다. 공식 점수별 도수분포가 없으면 추정하지 않습니다.</div></div>
-<div class="panel"><div class="panel-head"><div><div class="eyebrow">OFFLINE SEPTEMBER COHORT</div><h2>2027학년도 9평 모의지원 표본 분석</h2></div><span class="tag">Actions 배치 결과</span></div><p class="form-msg">동의받아 비공개 수집한 9평 성적과 희망 모집단위를 Actions에서 일괄 계산합니다. 모집단위당 30명 이상만 익명 통계로 공개합니다. 과거 합불 기반 머신러닝 검증을 완료하기 전에는 합격확률을 표시하지 않습니다.</p><div id="cohort-snapshot-results"><div class="empty slim">최신 배치 결과 확인 중…</div></div></div>
-<div class="panel"><div class="panel-head"><div><div class="eyebrow">DATASET EXPLORER</div><h2>연도·시험·모집단위별 계산 결과</h2></div><span class="tag">조회 전용</span></div><div class="input-pair"><label>학년도<select id="filter-year"><option value="2026">2026학년도</option><option value="2025">2025학년도</option><option value="2024">2024학년도</option><option value="2023">2023학년도</option><option value="2022">2022학년도</option><option value="2027">2027학년도</option></select></label><label>시험 유형<select id="filter-exam"><option value="csat">수능</option><option value="june">6월 모의평가</option><option value="september">9월 모의평가</option><option value="all">전체 시험</option></select></label></div>
-<div class="input-pair" style="margin-top:12px"><label>대학·학과 검색<input id="filter-search" type="search" placeholder="예: 약학, 연세대, 의예" autocomplete="off"></label><label>등급 경계값 패턴<select id="filter-grade"><option value="all">전체 패턴</option></select></label></div>
-<p class="form-msg">등급 패턴은 <b>국어-수학-영어-탐구1-탐구2</b> 순서입니다. 예: 1-1-1-1-1은 각 과목 1등급 <b>하한 경계값</b>을 사용한 계산으로, 1등급 학생 전체를 대표하지 않습니다.</p><div class="actions"><a class="primary" id="dataset-download" href="#" download="precomputed.json" style="text-align:center;text-decoration:none">선택 학년도 JSON 다운로드 ↗</a></div><p id="data-status" class="form-msg" role="status">데이터셋 확인 중…</p>
-<div id="dataset-results" style="margin-top:20px"><div class="empty slim">데이터셋을 불러오는 중입니다.</div></div><div class="actions"><button type="button" class="secondary" id="more-results" style="display:none">다음 100개 보기</button></div></div>
-<div class="panel"><div class="panel-head"><div><div class="eyebrow">OFFICIAL RELEASE INVENTORY</div><h2>2022~2027 시험별 자료 수집 현황</h2></div><span class="tag">검증 단계 표시</span></div><p class="form-msg">공식 발표 위치와 실제 도수분포 수치 검증은 별개입니다. 원본을 대조·승인한 값만 예측에 사용합니다.</p><div id="official-source-status"><div class="empty slim">공식 발표 위치 확인 중...</div></div></div>
-<div class="panel"><div class="panel-head"><div><div class="eyebrow">COVERAGE & PROVENANCE</div><h2>학년도별 자료 확보 상태</h2></div></div><div id="coverage" class="coverage-grid"></div><div class="notice"><strong>구분 기준</strong> ‘환산점수’는 해당 학년도 공인 산식을 입력한 시나리오 계산값입니다. ‘70% 컷과 차이’는 수능 후 공개된 등록자 자료와의 <b>사후 대조</b>이며 합격/불합격 판정이나 검증된 합격 확률이 아닙니다.</div></div>
-<footer>정시렌즈 · 주요 일반대학 20개교 + 전국 의·치·한·약·수 · 공식 채점·전형 원문 대조 후 데이터 추가. 2027 실제 수능은 시행 전이므로 현재 확정 컷이 없습니다.</footer>
-</section></main></div><script src="/static/config.js"></script><script src="/static/app.js" defer></script></body></html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101a2a">
+<title>정시렌즈 | 2027학년도 정시 합격 전망</title>
+<meta name="description" content="2027학년도 9월 모의평가 표준점수 분포와 정시 대학별 환산·지원 전망 대시보드">
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<div class="shell">
+<aside class="sidebar">
+  <div class="brand"><span class="brandmark">◎</span><span>정시<span class="brand-accent">렌즈</span><small>2027 ADMISSION OUTLOOK</small></span></div>
+  <div class="navlabel">2027학년도 정시</div>
+  <a class="nav active" href="#distribution"><span>▣</span> 9월 모의평가 분석</a>
+  <a class="nav" href="#forecast"><span>◷</span> 수능 점수 전망</a>
+  <a class="nav" href="#university"><span>◎</span> 대학별 지원 전망</a>
+  <div class="side-bottom"><span class="status-light"></span> 2027 9평 확정 통계
+    <p>주요 20개 대학 + 전국 의·치·한·약·수</p>
+    <p class="tiny">2022~2026학년도 데이터는 학습·백테스트에만 사용하고 화면에는 노출하지 않습니다.</p>
+  </div>
+</aside>
+<main class="main">
+ <div class="topbar"><span>2027학년도 정시 분석</span><span class="build">BATCH REPORT · v0.8</span></div>
+ <section class="page active">
+  <div class="hero">
+   <div><div class="eyebrow">2027 UNIVERSITY ADMISSIONS INTELLIGENCE</div>
+    <h1>2027 정시 합격 전망<br><em>확정된 데이터부터 정확하게.</em></h1>
+    <p>9월 모의평가 공식 표준점수 분포를 읽기 쉬운 차트로 확인하고, 대학별 환산식·모의지원 분석이 검증되는 대로 결과를 제공합니다.</p>
+   </div><div class="hero-figure"><b>2027 <span>9월</span></b><small>2027학년도 정시 기준</small></div>
+  </div>
+  <div class="metrics" id="overview">
+   <div class="metric"><small>검증된 표준점수 분포</small><strong id="metric-subjects">—</strong><p>과목·영역별 분포</p></div>
+   <div class="metric"><small>국어 응시 인원</small><strong id="metric-korean">—</strong><p>2027학년도 9월 모의평가</p></div>
+   <div class="metric"><small>수학 응시 인원</small><strong id="metric-math">—</strong><p>2027학년도 9월 모의평가</p></div>
+  </div>
+  <section class="panel dashboard-panel" id="distribution">
+   <div class="panel-head"><div><div class="eyebrow">OFFICIAL SEPTEMBER DISTRIBUTION</div><h2>표준점수별 전국 응시 인원</h2></div><span class="tag">공식 도수분포</span></div>
+   <p class="form-msg">과목을 선택하면 표준점수 분포 그래프와 인원 표가 바뀝니다. 그래프의 막대를 누르면 정확한 해당 점수 인원을 확인할 수 있습니다.</p>
+   <div class="control-strip">
+    <label>과목·영역 선택<select id="subject-select" aria-label="과목 선택"><option>불러오는 중…</option></select></label>
+    <label>그래프 종류<select id="distribution-mode"><option value="count">표준점수별 응시 인원</option><option value="cumulative">해당 점수 이상 누적 인원</option></select></label>
+   </div>
+   <div class="distribution-kpis">
+    <div><small>선택 과목 전체 응시 인원</small><strong id="subject-total">—</strong></div>
+    <div><small>최고 표준점수</small><strong id="subject-highest">—</strong></div>
+    <div><small>최고점 인원</small><strong id="subject-high-count">—</strong></div>
+   </div>
+   <div id="distribution-chart" class="chart-stage" role="group" aria-label="표준점수별 인원 분포 그래프"><div class="empty slim">차트를 불러오는 중입니다.</div></div>
+   <div class="chart-footer"><span id="selected-score">막대를 누르면 해당 점수 인원을 볼 수 있습니다.</span><span>표준점수 →</span></div>
+   <details class="data-details"><summary>표준점수별 인원 표 펼쳐보기</summary><div id="score-frequency-table" class="frequency-table"></div></details>
+   <p class="data-source">자료: <a id="official-score-link" href="#" target="_blank" rel="noopener noreferrer">교육부·한국교육과정평가원 채점 결과 ↗</a></p>
+  </section>
+  <section class="panel" id="forecast">
+   <div class="panel-head"><div><div class="eyebrow">OFFLINE FORECAST · GITHUB ACTIONS</div><h2>2027 수능 표준점수 전망</h2></div><span class="tag">시험 간 난이도 보정</span></div>
+   <div id="forecast-results" aria-live="polite"><div class="empty slim">보정 모델 결과 확인 중입니다.</div></div>
+   <p class="form-msg">2022~2026학년도 9평·수능은 화면에 표시하지 않고 학습 및 예측 오차 검증에만 사용합니다. 분포 보정은 개인 성적 상승·하락이나 실제 합격을 보장하지 않습니다.</p>
+  </section>
+  <section class="panel" id="university">
+   <div class="panel-head"><div><div class="eyebrow">UNIVERSITY-SPECIFIC ADMISSIONS</div><h2>2027 대학·모집단위별 지원 전망</h2></div><span class="tag">공식 환산식 우선</span></div>
+   <div class="filter-strip"><label>대학·학과 검색<input id="uni-search" type="search" placeholder="예: 연세대, 약학, 의예" autocomplete="off"></label><label>계열 선택<select id="uni-track"><option value="all">전체</option><option value="natural">자연</option><option value="humanities">인문</option></select></label><label>등급 경계값 패턴<input id="grade-search" type="search" placeholder="예: 1-1-1-1-1"></label></div>
+   <div class="rule-explanation"><strong>대학마다 계산법이 다릅니다.</strong> 국어·수학·영어·탐구 반영비율, 탐구 변환표준점수, 선택과목 가산점, 영어·한국사 환산표를 해당 대학의 2027학년도 공식 모집요강과 비교해 계산합니다.</div>
+   <div id="university-results"><div class="empty slim">대학별 공식 환산식과 계산 결과 확인 중입니다.</div></div>
+   <div id="university-targets" class="target-strip"></div>
+   <p class="form-msg">합격확률(%)은 실제 합불 데이터로 보정·검증된 모델이 완성된 모집단위에만 표시합니다. 변환표가 없는 모집단위는 예측값을 임의 생성하지 않습니다.</p>
+  </section>
+  <section class="panel" id="cohort">
+   <div class="panel-head"><div><div class="eyebrow">MOCK APPLICATION COHORT · BATCH ONLY</div><h2>모의지원 표본 분포</h2></div><span class="tag">사전 계산 결과</span></div>
+   <div id="cohort-results" class="empty slim">모의지원 집계 상태를 확인하고 있습니다.</div>
+  </section>
+  <footer>정시렌즈 · 2027학년도 데이터 대시보드 · 정시 일반전형 중심. 대학 지원 전 공식 모집요강을 반드시 확인하세요.</footer>
+ </section>
+</main>
+</div>
+<script src="/static/config.js"></script>
+<script src="/static/app.js" defer></script>
+</body></html>

@@ -9,3 +9,39 @@
 .med-tile b{font-size:12px;color:#155650}.medical-marker{display:grid;place-items:center;border-radius:9px;background:#e1f2ed;color:#21836d;width:36px;height:36px;font-weight:800;font-size:16px}
 @media(max-width:1100px){.university-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.medical-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:680px){.university-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.medical-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+
+/* 2027-only public results: accessible charts instead of raw JSON */
+.sidebar a.nav{text-decoration:none;display:block}
+.dashboard-panel{margin-top:20px}
+.control-strip,.filter-strip{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:18px;margin-bottom:19px}
+.filter-strip{grid-template-columns:2fr 1fr 1fr}
+.control-strip label,.filter-strip label{min-width:0}
+.distribution-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.distribution-kpis>div{border:1px solid #e7edf1;background:#f7fafb;border-radius:12px;padding:15px}
+.distribution-kpis small{font-size:11px;color:#788b9b;display:block}
+.distribution-kpis strong{display:block;font-size:22px;margin-top:6px;color:#183347}
+.chart-stage{margin-top:16px;background:#fff;border:1px solid #e8edf0;border-radius:13px;padding:14px 7px;min-height:255px}
+.frequency-svg{display:block;width:100%;height:auto;max-height:340px;overflow:visible}
+.chart-bar{fill:#188f86;opacity:.78;cursor:pointer;transition:opacity .16s,fill .16s}
+.chart-bar:hover,.chart-bar.picked{fill:#e8aa53;opacity:1}
+.chart-footer{display:flex;justify-content:space-between;gap:12px;color:#627e91;font-size:11px;margin:10px 6px 16px}
+.data-details,.forecast-details{margin-top:10px;border:1px solid #e6edf0;border-radius:10px;padding:13px 15px;background:#fcfdfd}
+.data-details summary,.forecast-details summary{cursor:pointer;color:#2b5368;font-weight:700}
+.frequency-table{max-height:320px;overflow:auto;margin-top:10px}
+.frequency-table table{width:100%;border-collapse:collapse;font-size:12px}
+.frequency-table th{text-align:right;background:#f2f6f8;position:sticky;top:0;color:#597181}
+.frequency-table td{text-align:right;color:#344c5c}
+.frequency-table td,.frequency-table th{padding:9px 12px;border-bottom:1px solid #edf2f5}
+.data-source{color:#81909e;font-size:11px;margin:15px 0 0}
+.rule-explanation{background:#f6f9fb;border-left:3px solid #168c80;padding:14px 15px;border-radius:7px;font-size:12px;color:#667b8b;line-height:1.7;margin-bottom:14px}
+.rule-explanation strong{color:#1a625e}
+.university-result{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid #edf1f3;padding:16px 2px}
+.university-result>div:first-child{flex:1}
+.university-result a{font-size:11px;white-space:nowrap}
+.muted-xs{font-size:11px;color:#8a9eae;margin-top:5px;line-height:1.6}
+.result-score small{font-weight:400;font-size:11px;color:#8fa0ad}
+.target-strip{margin-top:22px}
+.target-grid{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.target-pill{padding:7px 9px;background:#f1f6f6;border:1px solid #e1edec;border-radius:8px;font-size:11px;color:#536f7b}
+@media(max-width:720px){.control-strip,.filter-strip{grid-template-columns:1fr 1fr}.filter-strip label:first-child{grid-column:1/3}.distribution-kpis strong{font-size:16px}.distribution-kpis>div{padding:10px}.university-result{align-items:flex-start;flex-wrap:wrap}.chart-footer{display:block}}
