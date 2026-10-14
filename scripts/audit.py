@@ -72,6 +72,28 @@ def run():
         report['verified_2026_partial_weight_groups']=len(partial)
     from scripts.national_research_scope import summary as national_research_summary
     report['national_research_scope']=national_research_summary()
+    # Aggregate research counts are private-training coverage, never public 2027 outcomes.
+    from pathlib import Path as _P
+    rroot=_P(__file__).resolve().parents[1]
+    weights=[
+      'data/public/university_research/khu_2024_2025_weights.json',
+      'data/public/university_research/2026_verified_partial_formulas.json',
+      'data/public/university_research/2026_konkuk_sejong_partial.json',
+      'data/public/university_research/2026_sogang_inha_hufs_partial.json'
+    ]
+    group_count=0
+    for relative in weights:
+        entry=json.loads((rroot/relative).read_text(encoding='utf-8'))
+        items=entry if isinstance(entry,list) else entry['records'] if 'records' in entry else entry['groups']
+        if not all(x.get('year') in range(2022,2027) and x.get('source_url','').startswith('https://') for x in items):
+            raise ValueError('unreviewed historical partial weight row')
+        group_count+=len(items)
+    with (rroot/'data/public/historical_admissions/konkuk_2025_70pct_cuts.json').open(encoding='utf-8') as f:
+        ku=json.load(f)
+    if not all(x.get('probability_label_eligible') is False for x in ku):
+        raise ValueError('final enrollee 70% cuts are NOT training labels')
+    report['historical_research_verified_partial_weight_groups']=group_count
+    report['historical_research_non_KHU_70pct_cut_count']=len(ku)
     from scripts.historical_sources import summary as historical_source_summary
     report['historical_official_research']=historical_source_summary()
     from scripts.precompute import load_boundaries
