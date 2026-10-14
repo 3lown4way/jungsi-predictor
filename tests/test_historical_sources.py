@@ -25,6 +25,11 @@ def test_verified_medical_70pct_cuts_not_confused_with_labeled_admissions():
     assert score(2025,'의예과')==595.35
     assert next(r['admission_round'] for r in cuts if r['year']==2025 and r['department']=='한의예과(인문)')=='나'
     assert all(x['admission_round']=='나' for x in cuts if x['year']==2023)
+    expected_rounds={2022: {'의예과':'나','한의예과(자연)':'나','치의예과':'나','약학과':'가','한의예과(인문)':'나'},
+                     2023: {'의예과':'나','한의예과(자연)':'나','치의예과':'나','약학과':'나','한의예과(인문)':'나'},
+                     2024: {'의예과':'나','한의예과(자연)':'나','치의예과':'나','약학과':'나','한의예과(인문)':'나'},
+                     2025: {'의예과':'가','한의예과(자연)':'가','치의예과':'가','약학과':'가','한의예과(인문)':'나'}}
+    assert all(r['admission_round']==expected_rounds[r['year']][r['department']] for r in cuts)
     assert summary()['cutoffs_usable_as_individual_outcomes']==0
 
 def test_missing_year_does_not_get_filled_in(tmp_path):
