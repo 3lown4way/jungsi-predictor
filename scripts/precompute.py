@@ -5,6 +5,7 @@ This pipeline never turns a historical 70%-enrollee cutoff into an admission lab
 """
 import csv
 import itertools
+import json
 from collections import Counter, defaultdict
 from datetime import date
 from pathlib import Path
@@ -116,9 +117,12 @@ def build_dataset(programs, boundary_dir=CUT_DIR, grades=GRADE_LEVELS):
                 # Strictly EX-POST, same-exam year; not a true decision boundary or pass label.
                 cutoff = program.get('cutoff_70') if exam == 'csat' and program.get('cutoff_source_url') else None
                 margin = round(score.total - float(cutoff), 3) if cutoff is not None else None
+                rule = json.loads(program['formula_config_json']) if program.get('formula_config_json') else {}
                 output[year].append({
                     'year': year, 'exam_type': exam, 'university': program['university'],
                     'department': program['department'], 'program_key': program['program_key'],
+                    'track': program['track'], 'round': program.get('round'),
+                    'score_breakdown': score.breakdown, 'university_weights': rule.get('weights'),
                     'bundle_id': bundle_id, 'grade_profile': f'{kg}-{mg}-{eg}-{i1g}-{i2g}',
                     'grades': {'korean': kg, 'math': mg, 'english': eg, 'inquiry1': i1g, 'inquiry2': i2g},
                     'subjects': {area: samples[area]['subject'] for area in AREAS},

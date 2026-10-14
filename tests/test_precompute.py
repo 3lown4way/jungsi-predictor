@@ -46,6 +46,8 @@ def test_boundary_lattice_and_no_fabricated_admission_outcomes(tmp_path, monkeyp
     assert summary['bundle_count'] == 1
     top=next(p for p in by_year[2025] if p['grade_profile']=='1-1-1-1-1')
     assert top['converted_score'] > 0
+    assert top['track']=='natural'
+    assert top['score_breakdown']['국어']>0
     assert top['retrospective_margin'] == round(top['converted_score']-903.4,3)
     assert top['assessment'] == 'retrospective_70pct_comparison'
     assert top['admitted'] is None and top['admission_probability'] is None

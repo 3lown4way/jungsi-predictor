@@ -77,7 +77,9 @@ function renderPredictions(){
  if(!filtered.length){showMsg(container,'조건에 맞는 대학별 계산 결과가 없습니다. 2027학년도 해당 모집단위의 공식 반영비율·변환표준점수 및 확정 성적 경계값이 검증되어야 결과가 생성됩니다.');return;}
  container.innerHTML='<p class="form-msg">2027학년도 검증된 사전 계산 시나리오 '+fmt(filtered.length)+'건 · 처음 40건 표시</p>'+filtered.slice(0,40).map(r=>{
  const p=(r.admission_probability!==null && Number.isFinite(r.admission_probability))?(100*r.admission_probability).toFixed(1)+'%':'검증 전';
- return '<div class="university-result"><div><strong>'+escapeHTML(r.university)+' · '+escapeHTML(r.department)+'</strong><div class="muted-xs">등급 경계 '+escapeHTML(r.grade_profile)+' · '+escapeHTML(r.exam_type==='september'?'9월 모의평가':'시험')+'</div></div><div><strong class="result-score">'+fmt(r.converted_score)+' <small>/ '+fmt(r.score_scale)+'</small></strong><div class="muted-xs">합격확률 '+p+'</div></div><a href="'+escapeHTML(r.formula_source_url)+'" target="_blank" rel="noopener noreferrer">산식 원문 ↗</a></div>';
+ const weightInfo=r.university_weights?'<div class="muted-xs">반영비율 · 국어 '+fmt(100*r.university_weights.korean)+'% · 수학 '+fmt(100*r.university_weights.math)+'% · 영어 '+fmt(100*r.university_weights.english)+'% · 탐구 '+fmt(100*r.university_weights.inquiry)+'%</div>':'';
+ const scoreInfo=r.score_breakdown?'<div class="muted-xs">'+Object.entries(r.score_breakdown).map(([k,v])=>escapeHTML(k)+' '+(typeof v==='number'?fmt(v):escapeHTML(v))).join(' · ')+'</div>':'';
+ return '<div class="university-result"><div><strong>'+escapeHTML(r.university)+' · '+escapeHTML(r.department)+'</strong><div class="muted-xs">등급 경계 '+escapeHTML(r.grade_profile)+' · '+escapeHTML(r.exam_type==='september'?'9월 모의평가':'시험')+'</div>'+weightInfo+scoreInfo+'</div><div><strong class="result-score">'+fmt(r.converted_score)+' <small>/ '+fmt(r.score_scale)+'</small></strong><div class="muted-xs">합격확률 '+p+'</div></div><a href="'+escapeHTML(r.formula_source_url)+'" target="_blank" rel="noopener noreferrer">산식 원문 ↗</a></div>';
  }).join('');
 }
 async function loadUniversities(){

@@ -198,3 +198,10 @@ python -m http.server 8080 --directory site
 - \`data/public/score_frequencies/approved_distributions.json\`: 과목·학년도·시험별 공식 응시인원 합계, 원본 XLSX SHA-256, 검수자, 날짜를 기록. CSV 숫자의 합계가 일치하지 않거나 승인이 없으면 GitHub Pages 빌드 실패.
 - \`python -m scripts.source_inventory --output official-source-status.json\`로 공개용 수집 현황 생성.
 - 현재 발표 위치 11건은 확인했지만 XLSX 원본의 개별 수치가 아직 등록되지 않았으므로 수능 표준점수 보정값을 임의로 표시하지 않음.
+
+
+## v0.8 사용자 경험 / 대학별 환산식
+
+이용자 화면은 2027학년도 9월 모의평가 공식 표준점수 분포와 올해 모집단위 예측만 제공합니다. 2022~2026학년도는 내부 학습·검증에 사용하며 해당 학년도별 결과 JSON은 공개 Pages에 생성하지 않습니다. JSON 다운로드 버튼 대신 차트와 표를 제공합니다.
+
+2027학년도 대학별 정시 환산식은 `app/weighted_rules.py`에서 독립된 연도·대학·모집단위의 국어·수학·영어·탐구 반영비율, 탐구 변환표준점수표, 과목별 가산점, 등급별 환산표를 처리할 수 있도록 했습니다. 해당 대학 공식 자료가 없는 경우 환산점수와 합격확률을 생성하지 않습니다. 대학별 점수·영역별 내역은 공식 자료 등록 후 카드 화면에 나타납니다. `tests/test_weighted_rules.py`의 가상 대학은 엔진 검증용이지 실제 대학 환산 규정이 아닙니다.
