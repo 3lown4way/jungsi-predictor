@@ -1,105 +1,118 @@
-/* 2027 only: GitHub Actions precomputes, browser renders vetted public snapshots. */
+/* 2027 university-major predictions are precomputed by Actions. No browser-side ML. */
 'use strict';
 const $=s=>document.querySelector(s);
-const escapeHTML=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const fmt=x=>typeof x==='number'?x.toLocaleString('ko-KR',{maximumFractionDigits:3}):'—';
-const dataUrl=name=>'./data/'+name;
-async function getJSON(name){const r=await fetch(dataUrl(name),{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);return r.json();}
-let distributions=[],selectedDistribution=null,predictions=[],targets=[];
-function showMsg(el,text){el.replaceChildren();const n=document.createElement('div');n.className='empty slim';n.textContent=text;el.append(n);}
-function subjectKey(s){return s.subject+(s.option_name==='all'?'':' · '+s.option_name);}
-function setMetric(id,value){const e=$(id);if(e)e.textContent=fmt(value);}
-function drawDistribution(){
- const d=selectedDistribution,stage=$('#distribution-chart');if(!d)return;
- setMetric('#subject-total',d.total);setMetric('#subject-highest',d.max_score);setMetric('#subject-high-count',d.max_score_count);
- $('#official-score-link').href=d.source_url;
- const mode=$('#distribution-mode').value;
- const bins=[...d.bins].sort((a,b)=>a.score-b.score);
- if(!bins.length){showMsg(stage,'도수분포가 등록되지 않았습니다.');return;}
- let cumulative=0;
- const points=[...bins].reverse().map(b=>{cumulative+=b.count;return {...b,cumulative}}).reverse();
- const maximum=Math.max(...points.map(p=>mode==='count'?p.count:p.cumulative),1);
- const width=960,height=264,left=57,right=14,top=20,bottom=38;
- const plotW=width-left-right,plotH=height-top-bottom,spacing=plotW/points.length;
- const minScore=points[0].score,maxScore=points.at(-1).score;
- const yValue=v=>top+plotH*(1-v/maximum);
- let markup='<svg viewBox="0 0 960 264" class="frequency-svg" role="img" aria-label="'+escapeHTML(subjectKey(d))+' 표준점수 도수분포">';
- for(let i=0;i<=4;i++){const v=maximum*i/4;const y=yValue(v);markup+='<line x1="'+left+'" y1="'+y+'" x2="'+(width-right)+'" y2="'+y+'" stroke="#e6eef2"/><text x="'+(left-10)+'" y="'+(y+4)+'" text-anchor="end" font-size="11" fill="#80909f">'+escapeHTML(Math.round(v).toLocaleString('ko-KR'))+'</text>';}
- for(const p of points){const index=p.score===undefined?0:points.indexOf(p);const val=mode==='count'?p.count:p.cumulative,x=left+index*spacing+0.4,yy=yValue(val);
-   markup+='<rect class="chart-bar" data-score="'+p.score+'" x="'+x.toFixed(2)+'" y="'+yy.toFixed(2)+'" width="'+Math.max(.9,spacing-1).toFixed(2)+'" height="'+Math.max(.8,top+plotH-yy).toFixed(2)+'" rx="1"><title>표준점수 '+p.score+' · '+fmt(val)+'명</title></rect>';
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=n=>typeof n==='number'&&Number.isFinite(n)?n.toLocaleString('ko-KR',{maximumFractionDigits:3}):'—';
+const getJSON=async name=>{const r=await fetch('./data/'+name,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);return r.json();};
+const showMsg=(el,message)=>{el.replaceChildren();const x=document.createElement('div');x.className='empty slim';x.textContent=message;el.append(x);};
+const shortName=name=>name.replace(/대학교$/,'대').replace(/여자대$/,'여대');
+let outlook=[],targets=[],groupLabels={},selectedProfile='all',cohort=[],distributions=[],selectedDistribution=null;
+const isMedical=p=>Boolean(p.medical_field);
+function matchSearch(p,term){if(!term)return true;const text=[p.university,shortName(p.university),p.department,p.campus].join(' ').toLocaleLowerCase();return text.includes(term);}
+function matchCategory(p,category){if(category==='all')return true;if(category==='general')return !isMedical(p);if(category==='medical')return isMedical(p);return p.medical_field===category;}
+function renderPrograms(){
+ const text=$('#uni-search').value.trim().toLocaleLowerCase(),category=$('#uni-category').value,track=$('#uni-track').value,profile=$('#grade-profile').value;
+ const rows=outlook.filter(p=>matchSearch(p,text)&&matchCategory(p,category)&&(track==='all'||p.track===track)&&(profile==='all'||p.scenarios?.some(s=>s.grade_profile===profile)));
+ const area=$('#university-results');
+ if(!rows.length){
+  showMsg(area,text||category!=='all'||track!=='all'||profile!=='all'?
+   '현재 검색조건에 검증 등록된 모집단위가 없습니다. 검색한 학교의 입학 불가능을 뜻하지 않으며, 공식 모집요강과 모의지원 자료 등록이 필요합니다.':
+   '아직 2027학년도 공식 환산식이 검수·등록된 모집단위가 없습니다. 아래 대상 대학 목록은 지원 추천이나 합격 판정이 아닌 조사 범위입니다.');
+  return;
  }
- for(let i=0;i<5;i++){const v=minScore+(maxScore-minScore)*i/4,ix=Math.round(i*(points.length-1));markup+='<text x="'+(left+ix*spacing+spacing/2)+'" y="'+(height-11)+'" text-anchor="middle" font-size="12" fill="#66798a">'+Math.round(v)+'</text>';}
- markup+='</svg>';
- stage.innerHTML=markup;
- stage.querySelector('svg').addEventListener('click',e=>{const bar=e.target.closest('[data-score]');if(!bar)return;
-  const score=Number(bar.dataset.score),point=points.find(p=>p.score===score);if(!point)return;
-  const atOrAbove=point.cumulative,share=100*atOrAbove/d.total;
-  $('#selected-score').textContent='표준점수 '+score+'점 · 해당 점수 '+fmt(point.count)+'명 · '+score+'점 이상 '+fmt(atOrAbove)+'명 ('+share.toFixed(2)+'%)';
-  stage.querySelectorAll('.chart-bar').forEach(x=>x.classList.toggle('picked',x===bar));
- });
- const table=$('#score-frequency-table');
- table.innerHTML='<table><thead><tr><th>표준점수</th><th>해당 인원</th><th>해당 점수 이상 누적</th></tr></thead><tbody>'+[...points].reverse().map(x=>'<tr><td>'+x.score+'</td><td>'+fmt(x.count)+'명</td><td>'+fmt(x.cumulative)+'명</td></tr>').join('')+'</tbody></table>';
- $('#selected-score').textContent='그래프 막대를 선택하면 점수별 인원과 누적 비율을 표시합니다.';
-}
-async function loadDistributions(){
- const stage=$('#distribution-chart');
- try{
-  const data=await getJSON('score-distribution-2027.json');
-  distributions=data.subjects||[];if(!distributions.length){showMsg(stage,'2027학년도 공식 도수분포 검증 대기 중입니다.');return;}
-  setMetric('#metric-subjects',distributions.length);
-  setMetric('#metric-korean',distributions.find(s=>s.subject==='국어')?.total);
-  setMetric('#metric-math',distributions.find(s=>s.subject==='수학')?.total);
-  $('#subject-select').innerHTML=distributions.map((s,i)=>'<option value="'+i+'">'+escapeHTML(subjectKey(s))+'</option>').join('');
-  selectedDistribution=distributions.find(s=>s.subject==='국어')||distributions[0];
-  $('#subject-select').value=String(distributions.indexOf(selectedDistribution));
-  drawDistribution();
- }catch(e){showMsg(stage,'점수 분포를 불러오지 못했습니다: '+e.message);}
-}
-$('#subject-select').addEventListener('change',e=>{selectedDistribution=distributions[Number(e.target.value)];drawDistribution();});
-$('#distribution-mode').addEventListener('change',drawDistribution);
-async function loadForecast(){
- const el=$('#forecast-results');
- try{
-  const data=await getJSON('score-adjustment.json');
-  const ready=(data.subjects||[]).filter(x=>x.status==='ready');
-  if(!ready.length){showMsg(el,'2027학년도 9평의 확정 분포는 등록됐습니다. 다만 과거 9평·수능의 대응 분포가 아직 충분하지 않아 보정 점수는 계산하지 않습니다.');return;}
-  el.innerHTML='<p class="form-msg">전국 누적 분위 기준 예상 수능 표준점수입니다. 합격확률이 아닙니다.</p>'+ready.map(s=>{
-    const qs=(s.quantiles||[]).filter(q=>[90,95,99].includes(q.cumulative_percentile));
-    return '<details class="forecast-details"><summary>'+escapeHTML(s.subject)+' · '+fmt(qs.length)+'개 대표 분위 확인</summary><div class="frequency-table"><table><thead><tr><th>누적 분위</th><th>9평 점수</th><th>예상 수능 점수</th></tr></thead><tbody>'+qs.map(q=>'<tr><td>'+q.cumulative_percentile+'%</td><td>'+fmt(q.september_std_score)+'</td><td>'+fmt(q.projected_csat_std_score)+'</td></tr>').join('')+'</tbody></table></div></details>';
-  }).join('');
- }catch(e){showMsg(el,'수능 점수 전망을 불러오지 못했습니다: '+e.message);}
-}
-function renderPredictions(){
- const container=$('#university-results');
- const term=$('#uni-search').value.trim().toLocaleLowerCase(),track=$('#uni-track').value,
-       profile=$('#grade-search').value.trim();
- const filtered=predictions.filter(r=>(!term||(r.university+' '+r.department).toLocaleLowerCase().includes(term))&&(track==='all'||r.track===track)&&(!profile||r.grade_profile.includes(profile)));
- if(!filtered.length){showMsg(container,'조건에 맞는 대학별 계산 결과가 없습니다. 2027학년도 해당 모집단위의 공식 반영비율·변환표준점수 및 확정 성적 경계값이 검증되어야 결과가 생성됩니다.');return;}
- container.innerHTML='<p class="form-msg">2027학년도 검증된 사전 계산 시나리오 '+fmt(filtered.length)+'건 · 처음 40건 표시</p>'+filtered.slice(0,40).map(r=>{
- const p=(r.admission_probability!==null && Number.isFinite(r.admission_probability))?(100*r.admission_probability).toFixed(1)+'%':'검증 전';
- const weightInfo=r.university_weights?'<div class="muted-xs">반영비율 · 국어 '+fmt(100*r.university_weights.korean)+'% · 수학 '+fmt(100*r.university_weights.math)+'% · 영어 '+fmt(100*r.university_weights.english)+'% · 탐구 '+fmt(100*r.university_weights.inquiry)+'%</div>':'';
- const scoreInfo=r.score_breakdown?'<div class="muted-xs">'+Object.entries(r.score_breakdown).map(([k,v])=>escapeHTML(k)+' '+(typeof v==='number'?fmt(v):escapeHTML(v))).join(' · ')+'</div>':'';
- return '<div class="university-result"><div><strong>'+escapeHTML(r.university)+' · '+escapeHTML(r.department)+'</strong><div class="muted-xs">등급 경계 '+escapeHTML(r.grade_profile)+' · '+escapeHTML(r.exam_type==='september'?'9월 모의평가':'시험')+'</div>'+weightInfo+scoreInfo+'</div><div><strong class="result-score">'+fmt(r.converted_score)+' <small>/ '+fmt(r.score_scale)+'</small></strong><div class="muted-xs">합격확률 '+p+'</div></div><a href="'+escapeHTML(r.formula_source_url)+'" target="_blank" rel="noopener noreferrer">산식 원문 ↗</a></div>';
+ const ordered=[...rows].sort((a,b)=>(b.admission_probability!==null)-(a.admission_probability!==null)||
+ (b.score_scenario_count>0)-(a.score_scenario_count>0)||a.university.localeCompare(b.university,'ko')||a.department.localeCompare(b.department,'ko'));
+ const visible=ordered.slice(0,60);
+ area.innerHTML='<p class="form-msg">등록된 2027 모집단위 '+fmt(rows.length)+'개 · '+fmt(visible.length)+'개 표시</p>'+
+ visible.map(p=>{
+   const predicted=typeof p.admission_probability==='number'&&p.admission_probability>=0&&p.admission_probability<=1;
+   const scenario=p.scenarios?.find(s=>profile!=='all'&&s.grade_profile===profile) || (profile==='all' ? p.scenarios?.[0] : null);
+   const hasCohort=typeof p.cohort_score_p50==='number';
+   const showScore=scenario?'<strong>'+fmt(scenario.converted_score)+'</strong> / '+fmt(scenario.score_scale):'계산 대기';
+   const scoreExplanation=scenario?'<small>등급 경계값 '+esc(scenario.grade_profile)+' 시나리오 · 합격선 아님</small>':'<small>해당 시험 점수 조합·공식 산식 확인 필요</small>';
+   const scoreBand=hasCohort?'<div class="card-data-note">모의지원 환산점수 중앙값 '+fmt(p.cohort_score_p50)+' · 가운데 50% '+fmt(p.cohort_score_p25)+'–'+fmt(p.cohort_score_p75)+'</div>':'';
+   const weights=scenario?.university_weights?'<div class="card-data-note">반영비율: 국어 '+fmt(100*scenario.university_weights.korean)+'% · 수학 '+fmt(100*scenario.university_weights.math)+'% · 영어 '+fmt(100*scenario.university_weights.english)+'% · 탐구 '+fmt(100*scenario.university_weights.inquiry)+'%</div>':'';
+   const proba=predicted?(100*p.admission_probability).toFixed(1)+'%':'분석 준비 중';
+   const badge=predicted?'예측 검증 완료':hasCohort?'모의지원 표본 등록':scenario?'환산점수 시나리오':'공식 자료 등록 중';
+   const source=p.formula_source_url?'<a href="'+esc(p.formula_source_url)+'" target="_blank" rel="noopener noreferrer" class="score-source">2027학년도 공식 산식 ↗</a>':'<span class="muted-xs">모집단위별 공식 반영식 검수 대기</span>';
+   return '<article class="admission-card"><div class="admission-card-top"><div><strong class="admission-card-title">'+esc(p.university)+' · '+esc(p.department)+'</strong><div class="muted-xs">'+esc(p.campus||'')+' · '+esc(p.admission_round||'모집군 확인 전')+'군 · '+(isMedical(p)?'매디컬':'일반대학')+'</div></div><span class="admission-status">'+badge+'</span></div><div class="admission-card-data"><div><span>대학별 환산점수</span>'+showScore+scoreExplanation+'</div><div><span>합격 가능성</span><strong class="'+(predicted?'probability-text':'placeholder-text')+'">'+proba+'</strong><small>'+(predicted?'과거 실제 합불 검증 적용':'0%가 아니라 추정 불가 상태')+'</small></div></div>'+weights+scoreBand+'<div class="admission-card-footer">'+source+'</div></article>';
  }).join('');
 }
-async function loadUniversities(){
- try{
-  const d=await Promise.all([getJSON('precomputed-2027.json'),getJSON('targets-2027.json')]);
-  predictions=d[0];targets=d[1].universities||[];
-  $('#university-targets').innerHTML='<p class="muted-xs">분석 대상 주요 20개 대학 (매디컬은 전국)</p><div class="target-grid">'+targets.map(s=>'<span class="target-pill">'+escapeHTML(s)+'</span>').join('')+'</div>';
-  renderPredictions();
- }catch(e){showMsg($('#university-results'),'대학별 자료를 불러오지 못했습니다: '+e.message);}
+function renderTargets(){
+ const el=$('#university-targets');
+ const term=$('#uni-search').value.trim().toLocaleLowerCase();
+ const selected=$('#uni-category').value;
+ const registered=new Set(outlook.map(p=>p.university));
+ let uni=targets.filter(u=>!term||[u,shortName(u)].some(v=>v.toLocaleLowerCase().includes(term)));
+ if(selected==='medical'||!['all','general'].includes(selected))uni=[];
+ if(!uni.length){el.innerHTML='<p class="muted-xs">현재 검색에서 표시할 일반대학 조사 대상이 없습니다. 전국 매디컬은 실제 확인된 모집단위만 상단 결과에 포함됩니다.</p>';return;}
+ el.innerHTML='<p class="muted-xs">아래 목록은 연구 대상 20개교입니다. 예측 완료 대학 목록이 아닙니다.</p><div class="target-grid">'+uni.map(u=>'<button type="button" class="target-pill '+(registered.has(u)?'registered':'')+'" data-university="'+esc(u)+'">'+esc(u)+'<small>'+(registered.has(u)?'모집단위 일부 등록':'자료 수집 중')+'</small></button>').join('')+'</div>';
+ el.querySelectorAll('button[data-university]').forEach(b=>b.addEventListener('click',()=>{
+  $('#uni-search').value=b.dataset.university;$('#uni-category').value='all';$('#uni-track').value='all';$('#grade-profile').value='all';
+  renderPrograms();renderTargets();$('#university-results').scrollIntoView({behavior:'smooth',block:'nearest'});
+ }));
 }
-for(const id of ['#uni-search','#grade-search'])$(id).addEventListener('input',renderPredictions);
-$('#uni-track').addEventListener('change',renderPredictions);
+async function loadAdmissions(){
+ try{
+  const [d,t]=await Promise.all([getJSON('admissions-outlook-2027.json'),getJSON('targets-2027.json')]);
+  outlook=d.programs||[];targets=t.universities||[];groupLabels=t.medical_fields||{};
+  $('#metric-programs').textContent=fmt(d.program_count);
+  $('#metric-ready').textContent=fmt(d.score_ready_count);
+  $('#metric-probability').textContent=fmt(d.probability_ready_count);
+  const grades=[...new Set(outlook.flatMap(p=>(p.scenarios||[]).map(s=>s.grade_profile)))].sort();
+  $('#grade-profile').innerHTML='<option value="all">전체 성적 조합</option>'+grades.map(v=>'<option value="'+esc(v)+'">'+esc(v)+'</option>').join('');
+  renderPrograms();renderTargets();
+ }catch(e){showMsg($('#university-results'),'대학별 사전 계산 데이터를 불러오지 못했습니다: '+e.message);}
+}
+for(const id of ['#uni-search','#uni-category','#uni-track','#grade-profile']){
+ const el=$(id);el.addEventListener(id==='#uni-search'?'input':'change',()=>{renderPrograms();renderTargets();});
+}
 async function loadCohort(){
  const el=$('#cohort-results');
  try{
-  const s=await getJSON('cohort-snapshot.json');
-  const arr=s.predictions||[];
-  if(!arr.length){showMsg(el,'비공개 9평 모의지원 표본 수집과 대학별 공식 환산식 검증이 완료되면 Actions에서 일괄 분석한 익명 결과를 제공합니다.');return;}
-  el.className='';
-  el.innerHTML=arr.map(r=>'<div class="university-result"><div><strong>'+escapeHTML(r.university)+' · '+escapeHTML(r.department)+'</strong><div class="muted-xs">모의지원 익명 집계 '+escapeHTML(r.participant_count_band)+'명</div></div><div class="muted-xs">점수 중앙값 '+fmt(r.score_p50)+' / '+fmt(r.score_scale)+'</div></div>').join('');
- }catch(e){showMsg(el,'모의지원 집계를 불러오지 못했습니다: '+e.message);}
+  const d=await getJSON('cohort-snapshot.json');
+  const arr=d.predictions||[];
+  if(!arr.length){showMsg(el,'2027학년도 대학별 모의지원 집계가 아직 없습니다. 검증된 환산식과 동의받은 9평 모의지원 표본이 충분히 쌓인 뒤 Actions 일괄 집계 결과가 게시됩니다.');return;}
+  el.innerHTML=arr.map(p=>'<article class="admission-card"><strong>'+esc(p.university)+' · '+esc(p.department)+'</strong><div class="card-data-note">표본 '+esc(p.participant_count_band)+'명 · 점수 중앙값 '+fmt(p.score_p50)+' / '+fmt(p.score_scale)+' · 가운데 50% 구간 '+fmt(p.score_p25)+'–'+fmt(p.score_p75)+'</div><p class="muted-xs">자발적 모의지원 표본으로 실제 합격을 의미하지 않습니다.</p></article>').join('');
+ }catch(e){showMsg(el,'모의지원 집계를 불러올 수 없습니다: '+e.message);}
 }
-Promise.all([loadDistributions(),loadForecast(),loadUniversities(),loadCohort()]);
+async function loadForecast(){
+ const el=$('#forecast-results');
+ try{
+  const d=await getJSON('score-adjustment.json');
+  const ready=(d.subjects||[]).filter(x=>x.status==='ready');
+  if(!ready.length){showMsg(el,'현재 과거 9평·수능 간 동일 분위 비교 데이터가 충분하지 않아 수능 점수 보정이 보류돼 있습니다.');return;}
+  el.innerHTML=ready.map(r=>'<div class="card-data-note"><strong>'+esc(r.subject)+'</strong> · 과거 시험 분포 기반 보정 준비 완료</div>').join('');
+ }catch(e){showMsg(el,'예측 근거 로딩 오류: '+e.message);}
+}
+const subjectKey=s=>s.subject+(s.option_name==='all'?'':' · '+s.option_name);
+function drawDistribution(){
+ const d=selectedDistribution,stage=$('#distribution-chart');if(!d)return;
+ $('#subject-total').textContent=fmt(d.total);$('#subject-highest').textContent=fmt(d.max_score);$('#subject-high-count').textContent=fmt(d.max_score_count);
+ $('#official-score-link').href=d.source_url;
+ const bins=[...d.bins].sort((a,b)=>a.score-b.score),mode=$('#distribution-mode').value;
+ let total=0;const points=[...bins].reverse().map(p=>{total+=p.count;return {...p,cumulative:total}}).reverse();
+ if(!points.length){showMsg(stage,'해당 과목 도수분포가 없습니다.');return;}
+ const W=900,H=245,L=60,R=12,T=18,B=33,dx=(W-L-R)/points.length,plotH=H-T-B;
+ const max=Math.max(1,...points.map(p=>mode==='count'?p.count:p.cumulative));
+ const y=v=>T+plotH*(1-v/max);
+ let svg='<svg class="frequency-svg" viewBox="0 0 900 245" aria-label="'+esc(subjectKey(d))+' 표준점수 분포">';
+ for(let i=0;i<=4;i++){const v=max*i/4;svg+='<line x1="'+L+'" y1="'+y(v)+'" x2="'+(W-R)+'" y2="'+y(v)+'" stroke="#e7ecf0"/><text x="'+(L-7)+'" y="'+(y(v)+4)+'" text-anchor="end" font-size="10" fill="#8594a4">'+fmt(Math.round(v))+'</text>';}
+ points.forEach((p,i)=>{const val=mode==='count'?p.count:p.cumulative,yy=y(val);svg+='<rect class="chart-bar" data-score="'+p.score+'" x="'+(L+i*dx+0.2).toFixed(2)+'" y="'+yy.toFixed(2)+'" width="'+Math.max(.9,dx-.8).toFixed(2)+'" height="'+Math.max(.8,T+plotH-yy).toFixed(2)+'"><title>'+p.score+'점: '+fmt(val)+'명</title></rect>';});
+ [0,.25,.5,.75,1].forEach(p=>{const i=Math.round((points.length-1)*p);svg+='<text x="'+(L+i*dx)+'" y="'+(H-7)+'" text-anchor="middle" font-size="11" fill="#71889d">'+points[i].score+'</text>';});
+ stage.innerHTML=svg+'</svg>';
+ stage.querySelector('svg').addEventListener('click',e=>{const bar=e.target.closest('[data-score]');if(!bar)return;const p=points.find(x=>x.score===Number(bar.dataset.score));$('#selected-score').textContent=p.score+'점 · 해당 인원 '+fmt(p.count)+'명 · 해당 점수 이상 누적 '+fmt(p.cumulative)+'명 ('+(p.cumulative/d.total*100).toFixed(2)+'%)';stage.querySelectorAll('.chart-bar').forEach(x=>x.classList.toggle('picked',bar===x));});
+ $('#score-frequency-table').innerHTML='<table><thead><tr><th>표준점수</th><th>해당 인원</th><th>해당 점수 이상 누적</th></tr></thead><tbody>'+[...points].reverse().map(p=>'<tr><td>'+p.score+'</td><td>'+fmt(p.count)+'명</td><td>'+fmt(p.cumulative)+'명</td></tr>').join('')+'</tbody></table>';
+}
+async function loadDistribution(){
+ try{
+  const d=await getJSON('score-distribution-2027.json');distributions=d.subjects||[];
+  if(!distributions.length){showMsg($('#distribution-chart'),'확정된 과목별 도수분포를 아직 등록하지 않았습니다.');return;}
+  const select=$('#subject-select');
+  select.innerHTML=distributions.map((s,i)=>'<option value="'+i+'">'+esc(subjectKey(s))+'</option>').join('');
+  selectedDistribution=distributions.find(s=>s.subject==='국어')||distributions[0];select.value=String(distributions.indexOf(selectedDistribution));drawDistribution();
+ }catch(e){showMsg($('#distribution-chart'),'확정 점수 분포 로딩 오류: '+e.message);}
+}
+$('#subject-select').addEventListener('change',e=>{selectedDistribution=distributions[Number(e.target.value)];drawDistribution();});
+$('#distribution-mode').addEventListener('change',drawDistribution);
+Promise.all([loadAdmissions(),loadCohort(),loadForecast(),loadDistribution()]);

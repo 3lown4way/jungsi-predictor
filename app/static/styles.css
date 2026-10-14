@@ -45,3 +45,38 @@
 .target-grid{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
 .target-pill{padding:7px 9px;background:#f1f6f6;border:1px solid #e1edec;border-radius:8px;font-size:11px;color:#536f7b}
 @media(max-width:720px){.control-strip,.filter-strip{grid-template-columns:1fr 1fr}.filter-strip label:first-child{grid-column:1/3}.distribution-kpis strong{font-size:16px}.distribution-kpis>div{padding:10px}.university-result{align-items:flex-start;flex-wrap:wrap}.chart-footer{display:block}}
+
+
+/* v0.9: admission outcomes first, mock-exam frequency detail last */
+.admission-hero{margin-bottom:0}
+.admission-metrics{margin:16px 0 19px}
+.focus-panel{padding:28px;border-color:#dbe9e9;box-shadow:0 10px 28px rgba(12,54,67,.045)}
+.admission-search-grid{display:grid;grid-template-columns:2fr 1.1fr 1fr 1.1fr;gap:11px;align-items:end}
+.admission-search-grid label{font-weight:700;font-size:12px}
+.admission-search-grid label input,.admission-search-grid label select{margin-top:2px}
+.admission-legend{display:flex;flex-wrap:wrap;gap:18px;font-size:11px;color:#688093;padding:15px 0;border-bottom:1px solid #edf0f2}
+.legend-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px}
+.legend-dot.ready{background:#0e987a}.legend-dot.pending{background:#ca9b4a}.legend-dot.missing{background:#b5c2cd}
+.admission-card{border:1px solid #e6edf0;border-radius:12px;padding:16px 18px;margin-top:13px;background:#fff}
+.admission-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.admission-card-title{font-size:15px;color:#213e52}
+.admission-status{border:1px solid #e4ecf0;background:#f5f8f9;color:#657f8e;padding:5px 9px;border-radius:9px;white-space:nowrap;font-size:11px}
+.admission-card-data{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.admission-card-data>div{background:#f8fafb;border:1px solid #edf2f4;border-radius:10px;padding:11px 13px;display:flex;flex-direction:column;gap:4px;justify-content:center}
+.admission-card-data span{font-size:11px;color:#768d9b}
+.admission-card-data strong{font-size:17px;color:#194a55}
+.admission-card-data small{font-size:10px;color:#8b9da9}
+.admission-card-data .placeholder-text{font-size:14px;color:#8596a5}
+.card-data-note{font-size:11px;color:#607787;margin-top:11px;line-height:1.65}
+.admission-card-footer{margin-top:8px}
+.target-strip{margin-top:35px;padding-top:23px;border-top:1px solid #e6ecee}
+.target-grid button.target-pill{display:flex;align-items:start;flex-direction:column;text-align:left;cursor:pointer;font:inherit;border:1px solid #e1edec;background:#f1f6f6;transition:background .15s}
+.target-grid button.target-pill:hover{background:#dff0ef}
+.target-grid button.target-pill small{font-size:9px;color:#8398a5;margin-top:4px}
+.target-grid button.target-pill.registered{border-color:#81c4b1}
+.evidence-panel{background:#fbfcfd}
+.method-details{margin-top:12px;border:1px solid #e0e9ed;border-radius:12px;padding:15px 17px;background:white}
+.method-details>summary{font-weight:700;color:#38566a;cursor:pointer;padding:3px}
+.method-details[open]>summary{margin-bottom:12px}
+@media(max-width:1120px){.admission-search-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){.admission-search-grid{grid-template-columns:1fr 1fr}.admission-search-grid label:first-child{grid-column:1/3}.admission-card-data{grid-template-columns:1fr}.admission-card-data strong{font-size:16px}}
