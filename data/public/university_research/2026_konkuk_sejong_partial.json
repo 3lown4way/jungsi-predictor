@@ -1,0 +1,181 @@
+{
+  "year": 2026,
+  "record_type": "partially_verified_official_weighting_for_historical_training_research",
+  "source_policy": "Do not mark final score computation ready without approved percentile-to-converted-score mapping and worked example checks",
+  "records": [
+    {
+      "university": "건국대학교",
+      "campus": "서울",
+      "group": "KU일반학생 언어중심(A)",
+      "weights": {
+        "korean": 0.4,
+        "math": 0.3,
+        "inquiry": 0.2,
+        "english": 0.1
+      },
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000052",
+      "grade_english_points": [
+        200,
+        197,
+        194,
+        190,
+        185,
+        180,
+        170,
+        160,
+        150
+      ],
+      "grade_history_deductions": [
+        0,
+        0,
+        0,
+        0,
+        -1,
+        -1.75,
+        -3,
+        -4.25,
+        -5
+      ],
+      "score_indicators": {
+        "korean": "standard_score",
+        "math": "standard_score",
+        "inquiry": "official_percentile_based_conversion",
+        "english": "grade"
+      },
+      "admission_score_source_note": "2026학년도 기준 반영지표별 점수×영역별 반영비율, 이후 모집단위 총점 환산, 소수점 넷째자리 반올림",
+      "year": 2026,
+      "status": "official_partial_rule_only_not_final_conversion",
+      "missing": [
+        "2026학년도 탐구 최종 변환표준점수",
+        "모집단위별 총점 산출 공식 예제 검산",
+        "2026 입시 전체 연도별 지원자 합불 자료"
+      ]
+    },
+    {
+      "university": "건국대학교",
+      "campus": "서울",
+      "group": "KU일반학생 수리중심(B)",
+      "weights": {
+        "korean": 0.3,
+        "math": 0.4,
+        "inquiry": 0.2,
+        "english": 0.1
+      },
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000052",
+      "grade_english_points": [
+        200,
+        197,
+        194,
+        190,
+        185,
+        180,
+        170,
+        160,
+        150
+      ],
+      "grade_history_deductions": [
+        0,
+        0,
+        0,
+        0,
+        -1,
+        -1.75,
+        -3,
+        -4.25,
+        -5
+      ],
+      "score_indicators": {
+        "korean": "standard_score",
+        "math": "standard_score",
+        "inquiry": "official_percentile_based_conversion",
+        "english": "grade"
+      },
+      "admission_score_source_note": "자연계 수의예과 포함 수리중심 적용. 최종 변표 공고는 수능 이후.",
+      "year": 2026,
+      "status": "official_partial_rule_only_not_final_conversion",
+      "missing": [
+        "2026학년도 탐구 최종 변환표준점수",
+        "모집단위별 총점 산출 공식 예제 검산",
+        "2026 입시 전체 연도별 지원자 합불 자료"
+      ]
+    },
+    {
+      "university": "세종대학교",
+      "campus": "서울",
+      "group": "수능 일반 인문",
+      "weights": {
+        "korean": 0.3,
+        "math": 0.3,
+        "english": 0.2,
+        "inquiry": 0.2
+      },
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000138",
+      "score_indicators": {
+        "korean": "standard_score",
+        "math": "standard_score",
+        "inquiry": "converted_standard_score",
+        "english": "grade"
+      },
+      "formula_note": "국어/수학 각 표준점수÷200, 영어 등급별 환산점수÷200, 탐구 두 과목 변표 합÷200를 각 영역 배점에 곱함",
+      "year": 2026,
+      "status": "official_partial_rule_only_not_final_conversion",
+      "missing": [
+        "2026학년도 탐구 최종 변환표준점수",
+        "모집단위별 총점 산출 공식 예제 검산",
+        "2026 입시 전체 연도별 지원자 합불 자료"
+      ]
+    },
+    {
+      "university": "세종대학교",
+      "campus": "서울",
+      "group": "수능 일반 자연",
+      "weights": {
+        "korean": 0.2,
+        "math": 0.35,
+        "english": 0.2,
+        "inquiry": 0.25
+      },
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000138",
+      "score_indicators": {
+        "korean": "standard_score",
+        "math": "standard_score",
+        "inquiry": "converted_standard_score",
+        "english": "grade"
+      },
+      "formula_note": "수능 1000점 반영. 과목별 변환표준점수와 정시 적용 유의사항 검산 전.",
+      "year": 2026,
+      "status": "official_partial_rule_only_not_final_conversion",
+      "missing": [
+        "2026학년도 탐구 최종 변환표준점수",
+        "모집단위별 총점 산출 공식 예제 검산",
+        "2026 입시 전체 연도별 지원자 합불 자료"
+      ]
+    },
+    {
+      "university": "세종대학교",
+      "campus": "서울",
+      "group": "수능 일반 자유전공",
+      "weights": {
+        "korean": 0.35,
+        "math": 0.35,
+        "english": 0.2,
+        "inquiry": 0.1
+      },
+      "source_url": "https://www.adiga.kr/ucp/uvt/uni/univDetailSelection.do?menuId=PCUVTINF2000&searchSyr=2026&unvCd=0000138",
+      "score_indicators": {
+        "korean": "standard_score",
+        "math": "standard_score",
+        "inquiry": "converted_standard_score",
+        "english": "grade"
+      },
+      "formula_note": "수능 1000점 반영. 탐구 변환표준점수 및 자유전공 지원 요건 검산 전.",
+      "year": 2026,
+      "status": "official_partial_rule_only_not_final_conversion",
+      "missing": [
+        "2026학년도 탐구 최종 변환표준점수",
+        "모집단위별 총점 산출 공식 예제 검산",
+        "2026 입시 전체 연도별 지원자 합불 자료"
+      ]
+    }
+  ]
+}
