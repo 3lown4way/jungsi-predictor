@@ -30,3 +30,6 @@ def test_national_medical_is_research_scope_not_false_2027_enrolment_claim():
     assert {'medicine','veterinary'}==set(data['faculty_candidates'])
     assert {'dentistry','oriental_medicine','pharmacy'}==set(data['incomplete_rosters'])
     assert all(not r['verified_2027_regular_admission'] for group in data['faculty_candidates'].values() for r in group)
+    assert {f:item['count'] for f,item in data['reference_faculty_counts'].items()}=={
+      'medicine':40,'dentistry':11,'oriental_medicine':12,'pharmacy':37,'veterinary':10}
+    assert all(not item['admission_units_verified'] for item in data['reference_faculty_counts'].values())

@@ -475,5 +475,37 @@
       "source_url": "https://www.adiga.kr/uct/acd/adc/characteristicsView.do?menuId=PCUCTACD1100"
     }
   },
-  "caveat": "nationwide university faculty roster only; not verified 2027 regular-admission licensing majors and not admission formula data"
+  "caveat": "nationwide university faculty roster only; not verified 2027 regular-admission licensing majors and not admission formula data",
+  "reference_faculty_counts": {
+    "medicine": {
+      "count": 40,
+      "source_url": "https://journal.kci.go.kr/medethics/archive/articlePdf?artiId=ART003251329",
+      "unit": "의과대학·의전원",
+      "admission_units_verified": false
+    },
+    "dentistry": {
+      "count": 11,
+      "source_url": "https://journal.kci.go.kr/medethics/archive/articlePdf?artiId=ART003251329",
+      "unit": "치과대학·치전원",
+      "admission_units_verified": false
+    },
+    "oriental_medicine": {
+      "count": 12,
+      "source_url": "https://www.kcue.or.kr/_upload/pds/2024/05/02/_cd9e11ea8ada9063e9826af64303ec27.pdf",
+      "unit": "한의과대학·한의전원 회원기관",
+      "admission_units_verified": false
+    },
+    "pharmacy": {
+      "count": 37,
+      "source_url": "https://www.kpsanet.or.kr/bbs_shop/read.htm?auto_frame=&board_code=sub2_2&cate_sub_idx=0&idx=1598783&key=&list_mode=web&me_popup=&page=&search_first_subject=&search_key=",
+      "unit": "약학대학(학생협회)",
+      "admission_units_verified": false
+    },
+    "veterinary": {
+      "count": 10,
+      "source_url": "https://kvmsa.or.kr/32",
+      "unit": "수의과대학",
+      "admission_units_verified": false
+    }
+  }
 }
