@@ -158,6 +158,10 @@ def walk_forward_backtest(distributions):
 
 def make_snapshot(directory=FREQUENCIES):
     distributions, files = read_frequencies(directory)
+    # Public builds must fail closed if a CSV slice has no documented total/XLSX approval.
+    if Path(directory).resolve() == FREQUENCIES.resolve():
+        from scripts.source_inventory import assert_approved_distributions
+        assert_approved_distributions(distributions)
     predictions = forecast(distributions)
     backtests = walk_forward_backtest(distributions)
     return {

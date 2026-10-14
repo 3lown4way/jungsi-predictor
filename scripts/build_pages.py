@@ -67,6 +67,8 @@ def run(output: Path, api_base_url: str = ''):
         # National score-frequency curves only; never student-level records.
         from scripts.score_adjustment import make_snapshot
         write_json(data_dir / 'score-adjustment.json', make_snapshot())
+        from scripts.source_inventory import build_report
+        write_json(data_dir / 'official-source-status.json', build_report())
         # Publish only already privacy-gated, non-identifying aggregate snapshots.
         snapshot_file = ROOT / 'data' / 'public' / 'snapshots' / '2027-september.json'
         if snapshot_file.is_file():

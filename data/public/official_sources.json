@@ -1,0 +1,123 @@
+[
+  {
+    "year": 2022,
+    "exam_type": "september",
+    "source_page": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=89122&lev=0&m=020402",
+    "publisher": "교육부/한국교육과정평가원",
+    "attachment_status": "release_only",
+    "listed_attachment_title": null,
+    "review_status": "release_page_located",
+    "data_quality_status": "numeric_data_not_imported",
+    "notice": "별첨 원본을 대조해야 함. 이 항목은 확정 점수 수치를 포함하지 않음."
+  },
+  {
+    "year": 2022,
+    "exam_type": "csat",
+    "source_page": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=89967&lev=0&m=020402",
+    "publisher": "교육부/한국교육과정평가원",
+    "attachment_status": "listed_xlsx",
+    "listed_attachment_title": "2022학년도 수능 표준점수 도수분포-.xlsx",
+    "review_status": "release_page_located",
+    "data_quality_status": "numeric_data_not_imported",
+    "notice": "별첨 원본을 대조해야 함. 이 항목은 확정 점수 수치를 포함하지 않음."
+  },
+  {
+    "year": 2023,
+    "exam_type": "september",
+    "source_page": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=92688&lev=0&m=020402",
+    "publisher": "교육부/한국교육과정평가원",
+    "attachment_status": "listed_xlsx",
+    "listed_attachment_title": "(별첨1) 영역, 과목별 표준점수 도수분포.xlsx",
+    "review_status": "release_page_located",
+    "data_quality_status": "numeric_data_not_imported",
+    "notice": "별첨 원본을 대조해야 함. 이 항목은 확정 점수 수치를 포함하지 않음."
+  },
+  {
+    "year": 2023,
+    "exam_type": "csat",
+    "source_page": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=93325&lev=0&m=020402",
+    "publisher": "교육부/한국교육과정평가원",
+    "attachment_status": "release_only",
+    "listed_attachment_title": null,
+    "review_status": "release_page_located",
+    "data_quality_status": "numeric_data_not_imported",
+    "notice": "별첨 원본을 대조해야 함. 이 항목은 확정 점수 수치를 포함하지 않음."
+  },
+  {
+    "year": 2024,
+    "exam_type": "september",
+    "source_page": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=96526&lev=0&m=020402",
+    "publisher": "교육부/한국교육과정평가원",
+    "attachment_status": "release_only",
+    "listed_attachment_title": null,
+    "review_status": "release_page_located",
+    "data_quality_status": "numeric_data_not_imported",
+    "notice": "별첨 원본을 대조해야 함. 이 항목은 확정 점수 수치를 포함하지 않음."
+  },
+  {
+    "year": 2024,
+    "exam_type": "csat",
+    "source_page": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=97319&lev=0&m=020402",
+    "publisher": "교육부/한국교육과정평가원",
+    "attachment_status": "release_only",
+    "listed_attachment_title": null,
+    "review_status": "release_page_located",
+    "data_quality_status": "numeric_data_not_imported",
+    "notice": "별첨 원본을 대조해야 함. 이 항목은 확정 점수 수치를 포함하지 않음."
+  },
+  {
+    "year": 2025,
+    "exam_type": "september",
+    "source_page": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=101136&lev=0&m=020402",
+    "publisher": "교육부/한국교육과정평가원",
+    "attachment_status": "listed_xlsx",
+    "listed_attachment_title": "2025학년도 9월 모의평가 표준점수 도수분포.xlsx",
+    "review_status": "release_page_located",
+    "data_quality_status": "numeric_data_not_imported",
+    "notice": "별첨 원본을 대조해야 함. 이 항목은 확정 점수 수치를 포함하지 않음."
+  },
+  {
+    "year": 2025,
+    "exam_type": "csat",
+    "source_page": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=101848&lev=0&m=020402",
+    "publisher": "교육부/한국교육과정평가원",
+    "attachment_status": "listed_xlsx",
+    "listed_attachment_title": "2025 수능 영역·과목별 표준점수 도수분포.xlsx",
+    "review_status": "release_page_located",
+    "data_quality_status": "numeric_data_not_imported",
+    "notice": "별첨 원본을 대조해야 함. 이 항목은 확정 점수 수치를 포함하지 않음."
+  },
+  {
+    "year": 2026,
+    "exam_type": "september",
+    "source_page": "https://eiec.kdi.re.kr/policy/materialView.do?num=271782",
+    "publisher": "한국교육과정평가원 (KDI 게시 자료)",
+    "attachment_status": "release_only",
+    "listed_attachment_title": null,
+    "review_status": "release_page_located",
+    "data_quality_status": "numeric_data_not_imported",
+    "notice": "별첨 원본을 대조해야 함. 이 항목은 확정 점수 수치를 포함하지 않음."
+  },
+  {
+    "year": 2026,
+    "exam_type": "csat",
+    "source_page": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=104758&lev=0&m=020402",
+    "publisher": "교육부/한국교육과정평가원",
+    "attachment_status": "listed_xlsx",
+    "listed_attachment_title": "2026 수능 영역과목별 표준점수 도수분포.xlsx",
+    "review_status": "release_page_located",
+    "data_quality_status": "numeric_data_not_imported",
+    "notice": "별첨 원본을 대조해야 함. 이 항목은 확정 점수 수치를 포함하지 않음."
+  },
+  {
+    "year": 2027,
+    "exam_type": "september",
+    "source_page": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=107307&lev=0&m=020402",
+    "publisher": "교육부/한국교육과정평가원",
+    "attachment_status": "listed_xlsx",
+    "listed_attachment_title": "2027학년도 수능 9월 모의평가 표준점수 도수분포.xlsx",
+    "review_status": "release_page_located",
+    "data_quality_status": "numeric_data_not_imported",
+    "notice": "별첨 원본을 대조해야 함. 이 항목은 확정 점수 수치를 포함하지 않음."
+  }
+]

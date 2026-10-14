@@ -189,3 +189,12 @@ python -m http.server 8080 --directory site
 - 과거 이동폭 최소~최대는 역사적 사례 범위이지 신뢰구간 아님.
 - 이 보정에 개인별 성적 DB나 로그인은 필요하지 않음. 다만 대학 모의지원자의 **결합 성적 분포**를 알려면 전국 과목별 단변량 도수분포만으로 부족하므로 향후 Supabase에 **모집단위별 환산점수 구간별 집계값만** 누적하는 구조 권장.
 - 정확한 입시 합격 확률은 별도 실제 합불 검증을 거쳐야 제공 가능.
+
+
+## v0.7 · 공식 점수 분포 출처/검증 장부
+
+- \`data/public/official_sources.json\`: 2022~2026학년도 9평+수능 10건, 2027학년도 9평 1건의 공식 발표 위치를 기록. 발표 위치를 찾았다고 XLSX 숫자를 수집한 것은 아님.
+- \`data/public/score_frequencies/*.csv\`: 공식 첨부 XLSX의 표준점수별 인원을 검수한 뒤에만 추가.
+- \`data/public/score_frequencies/approved_distributions.json\`: 과목·학년도·시험별 공식 응시인원 합계, 원본 XLSX SHA-256, 검수자, 날짜를 기록. CSV 숫자의 합계가 일치하지 않거나 승인이 없으면 GitHub Pages 빌드 실패.
+- \`python -m scripts.source_inventory --output official-source-status.json\`로 공개용 수집 현황 생성.
+- 현재 발표 위치 11건은 확인했지만 XLSX 원본의 개별 수치가 아직 등록되지 않았으므로 수능 표준점수 보정값을 임의로 표시하지 않음.

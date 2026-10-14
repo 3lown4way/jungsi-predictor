@@ -41,7 +41,11 @@ def run():
         from app.main import meta
         files=load(); coverage=meta()
     total=sum(x['program_count'] for x in coverage['program_coverage'])
-    report={'status':'ok','public_csv_files':[x.name for x in files],
+    from scripts.source_inventory import build_report
+    inventory=build_report()
+    report={'official_source_release_pages':inventory['release_pages_found'],
+            'official_imported_distributions':inventory['imported_distribution_groups'],
+            'status':'ok','public_csv_files':[x.name for x in files],
             'verified_formula_count':total,
             'yearly_coverage':coverage['program_coverage'],
             'actual_outcomes_in_public_snapshot':0,

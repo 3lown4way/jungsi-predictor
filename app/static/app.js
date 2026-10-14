@@ -121,3 +121,19 @@ async function loadScoreAdjustment() {
   }
 }
 loadScoreAdjustment();
+
+
+// Public release page inventory. Publication is NOT an imported official numeric dataset.
+async function loadOfficialSources(){
+ const el=$('#official-source-status');
+ if(!el)return;
+ try{
+  const res=await fetch('./data/official-source-status.json');
+  if(!res.ok)throw Error('HTTP '+res.status);
+  const d=await res.json();
+  const head='<p class="form-msg">공식 발표 위치 '+num(d.release_pages_found)+'건 · 엑셀 첨부 목록 확인 '+num(d.xlsx_attachments_listed)+'건 · 검증 후 등록된 과목별 도수분포 '+num(d.imported_distribution_groups)+'개</p>';
+  const cells=(d.entries||[]).map(row=>'<div class="coverage-card"><strong>'+esc(row.year)+'</strong><small>'+(row.exam_type==='september'?'9월 모의평가':'수능')+'</small><span>'+(row.numeric_data_imported?'도수분포 검증 등록':'수치 검증 전')+'</span><a class="score-source" href="'+esc(row.source_page)+'" target="_blank" rel="noopener noreferrer">공식 발표 확인 ↗</a></div>').join('');
+  el.innerHTML=head+'<div class="coverage-grid">'+cells+'</div>';
+ }catch(e){el.textContent='출처 목록 불러오기 실패: '+e.message;}
+}
+loadOfficialSources();
